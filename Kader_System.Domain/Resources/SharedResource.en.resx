@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activated" xml:space="preserve">
+    <value>Activated</value>
+  </data>
+  <data name="CannotBeFound" xml:space="preserve">
+    <value>{0} cannot be found</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="ClientCategory" xml:space="preserve">
+    <value>Client Category</value>
+  </data>
+  <data name="CompanyBranch" xml:space="preserve">
+    <value>Company branch</value>
+  </data>
+  <data name="CompanyIsNotActivated" xml:space="preserve">
+    <value>Company Is Not Activated</value>
+  </data>
+  <data name="DeActivated" xml:space="preserve">
+    <value>Deactivated</value>
+  </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>Deleted successfully</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Saved successfully</value>
+  </data>
+  <data name="Email_Password_Incorrect" xml:space="preserve">
+    <value>Email or Password is incorrect!</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Some thing went wrong.</value>
+  </data>
+  <data name="Exists" xml:space="preserve">
+    <value>Exists</value>
+  </data>
+  <data name="IsExist" xml:space="preserve">
+    <value>{0} is exist</value>
+  </data>
+  <data name="Job" xml:space="preserve">
+    <value>Job</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="LockTechnicalsLogins" xml:space="preserve">
+    <value>User login has been deactivated</value>
+  </data>
+  <data name="NotUpdate" xml:space="preserve">
+    <value>Not update</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="TaxOffice" xml:space="preserve">
+    <value>Tax office</value>
+  </data>
+  <data name="ThereIsActiveEmployeesRelatedToThisBranch" xml:space="preserve">
+    <value>There is active employees related to this is branch</value>
+  </data>
+  <data name="UnLockTechnicalsLogins" xml:space="preserve">
+    <value>User login has been activated</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>Updated successfully</value>
+  </data>
+  <data name="UserDataIsIncorrect" xml:space="preserve">
+    <value>User Data is incorrect !</value>
+  </data>
+  <data name="UserIsLoggedOut" xml:space="preserve">
+    <value>User  logged out Successfully.</value>
+  </data>
+  <data name="UserNotExist" xml:space="preserve">
+    <value>User does not exist.</value>
+  </data>
+  <data name="UserWithEmailExists" xml:space="preserve">
+    <value>User with this email address already exists.</value>
+  </data>
+  <data name="UserWithNameExists" xml:space="preserve">
+    <value>User with this User Name already exists.</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="CompanyIsNotActive" xml:space="preserve">
+    <value>Company is not active</value>
+  </data>
+  <data name="NotActive" xml:space="preserve">
+    <value>Not Active</value>
+  </data>
+  <data name="NotActiveNotUpdate" xml:space="preserve">
+    <value>Status Not Active Please Change Status To Can Update</value>
+  </data>
+  <data name="NotFoundMainBranchToCompany" xml:space="preserve">
+    <value>It cannot be updated because there is no main branch of the company</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="NotFoundData" xml:space="preserve">
+    <value>No data are found</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>user</value>
+  </data>
+  <data name="UserIsAlreadyLoggedIn" xml:space="preserve">
+    <value>User is already logged in.</value>
+  </data>
+  <data name="Technician" xml:space="preserve">
+    <value>Technician</value>
+  </data>
+  <data name="HasAnyRelation" xml:space="preserve">
+    <value>Can be delete because it is related to other data in the database</value>
+  </data>
+  <data name="ClientName" xml:space="preserve">
+    <value>Client </value>
+  </data>
+  <data name="UserWasLoggedOutBefore" xml:space="preserve">
+    <value>User was logged out before</value>
+  </data>
+  <data name="FinancialYear" xml:space="preserve">
+    <value>Financial year</value>
+  </data>
+  <data name="CanNotAddFinancialYear" xml:space="preserve">
+    <value>Can't add financial year within this period</value>
+  </data>
+  <data name="CanNotAddFinancialYearAsThereIsActiveOne" xml:space="preserve">
+    <value>Can't add financial year due to another active one</value>
+  </data>
+  <data name="CanNotActivateFinancialYearAsThereIsActiveOne" xml:space="preserve">
+    <value>Can't activate financial year due to another active one</value>
+  </data>
+  <data name="IsRequired" xml:space="preserve">
+    <value>Is required</value>
+  </data>
+  <data name="BothOfCompanyAndFinancialYearRequired" xml:space="preserve">
+    <value>Both of company and financial year are required</value>
+  </data>
+  <data name="CompanyIsRequired" xml:space="preserve">
+    <value>Company is required</value>
+  </data>
+  <data name="FinancialYearIsRequired" xml:space="preserve">
+    <value>Financial year is required</value>
+  </data>
+  <data name="BillBook" xml:space="preserve">
+    <value>Bill book</value>
+  </data>
+  <data name="CanNotAddFinancialYearAsThereIsDateNotConventioned" xml:space="preserve">
+    <value>Can not add financial year as there is date not conventioned</value>
+  </data>
+  <data name="CanNotAddBillBook" xml:space="preserve">
+    <value>Can't add bill book to conflict with the other</value>
+  </data>
+  <data name="ThisEmployeeIsNotTechnician" xml:space="preserve">
+    <value>This Employee Is Not Technician</value>
+  </data>
+  <data name="FinancialYearIsNotActive" xml:space="preserve">
+    <value>Financial year is not active</value>
+  </data>
+  <data name="CannotDeleteItemHasRelativeData" xml:space="preserve">
+    <value>Cannot Delete Item Has Relative Data</value>
+  </data>
+  <data name="PleaseChangeEmployeeActivationState" xml:space="preserve">
+    <value>Please Change Employee Activation State</value>
+  </data>
+  <data name="TheEmployeeNotActive" xml:space="preserve">
+    <value>The Employee Not Active</value>
+  </data>
+  <data name="ClientBranch" xml:space="preserve">
+    <value>Client branch</value>
+  </data>
+  <data name="ThereIs" xml:space="preserve">
+    <value>There is</value>
+  </data>
+  <data name="IsNotSuperAdmin" xml:space="preserve">
+    <value>This Role is not Allowed To Use This Service</value>
+  </data>
+  <data name="NumOfObjectsNotEqualNumOfUploadedImages" xml:space="preserve">
+    <value>Num of added clients not equal num of uploaded images</value>
+  </data>
+  <data name="PaymentGateway" xml:space="preserve">
+    <value>Payment gateway</value>
+  </data>
+  <data name="PathRoute" xml:space="preserve">
+    <value>PathRoute</value>
+  </data>
+  <data name="ThisEmployeeIsNotTech" xml:space="preserve">
+    <value>This Employee Is not Technician</value>
+  </data>
+  <data name="RefusedPermission" xml:space="preserve">
+    <value>Refused Permission</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="UnitOfConversion" xml:space="preserve">
+    <value>Unit of conversion</value>
+  </data>
+  <data name="Barcode" xml:space="preserve">
+    <value>Barcode</value>
+  </data>
+  <data name="ConversionFactor" xml:space="preserve">
+    <value>Conversion factor</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="UnitType" xml:space="preserve">
+    <value>Unit type</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="StockCategory" xml:space="preserve">
+    <value>Stock category</value>
+  </data>
+  <data name="Telephone" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="Stock" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="ThisStockHasAlreadyTechnique" xml:space="preserve">
+    <value>This Stock Has Already Technique</value>
+  </data>
+  <data name="ThisStockWithOutTechnique" xml:space="preserve">
+    <value>This Stock WithOut Technique</value>
+  </data>
+  <data name="NotFoundPhotos" xml:space="preserve">
+    <value>Not photos</value>
+  </data>
+  <data name="BranchResponsibleMobile" xml:space="preserve">
+    <value>Responsible mobile</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="ResponsibleTechnicianName" xml:space="preserve">
+    <value>Responsible technician</value>
+  </data>
+  <data name="ThereIsOnlineTech" xml:space="preserve">
+    <value>There is an online technician</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Bin" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="Rack" xml:space="preserve">
+    <value>Rack</value>
+  </data>
+  <data name="Row" xml:space="preserve">
+    <value>Row</value>
+  </data>
+  <data name="NotValidDate" xml:space="preserve">
+    <value>Date not belong to active financial year</value>
+  </data>
+  <data name="StockTrans" xml:space="preserve">
+    <value>Stock transaction</value>
+  </data>
+  <data name="InvalidDocNum" xml:space="preserve">
+    <value>The document number that belongs to the current financial year is not correct</value>
+  </data>
+  <data name="StockTransType" xml:space="preserve">
+    <value>Stock transaction type</value>
+  </data>
+  <data name="ItemSerial" xml:space="preserve">
+    <value>Item serial</value>
+  </data>
+  <data name="ThereIsNotEnoughQuantityInTheStock" xml:space="preserve">
+    <value>There is not enough amount in the stock to issue this quantity </value>
+  </data>
+  <data name="AvailableAmount" xml:space="preserve">
+    <value>Available amount = </value>
+  </data>
+  <data name="RequiredAmount" xml:space="preserve">
+    <value>Required amount =</value>
+  </data>
+  <data name="ThereIsSomeItemsNotEnoughQuantityInTheStock" xml:space="preserve">
+    <value>Operations have been traded on the item and the quantity does not allow exchange, so please cancel the following items and then add them again to show the last quantity in stock</value>
+  </data>
+  <data name="CannotSendDatatoNoOne" xml:space="preserve">
+    <value>Cannot Send Message to NoOne</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="DepartmentManager" xml:space="preserve">
+    <value>Department manager</value>
+  </data>
+  <data name="CanNotAssignAnyEmpToFindingOther" xml:space="preserve">
+    <value>It is not possible to add an employee as a manager of the department due to the presence of another one before</value>
+  </data>
+  <data name="EmployeeVacation" xml:space="preserve">
+    <value>There is leave for the same employee on the same day</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Request</value>
+  </data>
+  <data name="Project" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="CanNotAssignAnyEmpToFindingComManager" xml:space="preserve">
+    <value>It is not possible to add an employee as a manager of the company due to the presence of another one before</value>
+  </data>
+  <data name="ThereAreNotAttachments" xml:space="preserve">
+    <value>There are not attachments</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ThisEmployeeWasDeleted" xml:space="preserve">
+    <value>This employee was deleted</value>
+  </data>
+  <data name="ThisCannotBeDoneDueToThePresenceOf" xml:space="preserve">
+    <value>This cannot be done due to the presence of </value>
+  </data>
+  <data name="Departments" xml:space="preserve">
+    <value>Departments</value>
+  </data>
+  <data name="Jobs" xml:space="preserve">
+    <value>Jobs</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+  <data name="CannotDeletedThisRole" xml:space="preserve">
+    <value>This role cannot be deleted because it has users</value>
+  </data>
+  <data name="PasswordNotmatch" xml:space="preserve">
+    <value>Password not match</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User name</value>
+  </data>
+  <data name="UserNameOrEmail" xml:space="preserve">
+    <value>User name or email</value>
+  </data>
+  <data name="DepartmentsExist" xml:space="preserve">
+    <value>{0} department or more</value>
+  </data>
+  <data name="ProjectsExisit" xml:space="preserve">
+    <value>{0} project or more</value>
+  </data>
+  <data name="Companies" xml:space="preserve">
+    <value>Companies</value>
+  </data>
+  <data name="JobExist" xml:space="preserve">
+    <value>{0} JobExist</value>
+  </data>
+  <data name="EmployeeExist" xml:space="preserve">
+    <value>{0} employee or more</value>
+  </data>
+  <data name="TaskExist" xml:space="preserve">
+    <value>{0} task or more</value>
+  </data>
+  <data name="Client" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="PaymentVoucher" xml:space="preserve">
+    <value>Payment voucher</value>
+  </data>
+  <data name="ReceiptVoucher" xml:space="preserve">
+    <value>Receipt voucher</value>
+  </data>
+  <data name="Treasury" xml:space="preserve">
+    <value>Treasury</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PaymentGatway" xml:space="preserve">
+    <value>Payment gatway</value>
+  </data>
+  <data name="CannotUpdateTaskStatus" xml:space="preserve">
+    <value>Cannot be updated the status of the task  as it has not yet been approved</value>
+  </data>
+  <data name="ClientAppointmentMaking" xml:space="preserve">
+    <value>Client appointment making</value>
+  </data>
+  <data name="CompletionStatus" xml:space="preserve">
+    <value>Completion status</value>
+  </data>
+  <data name="ClientNotes" xml:space="preserve">
+    <value>Client notes</value>
+  </data>
+  <data name="ClientProcedure" xml:space="preserve">
+    <value>Client procedure</value>
+  </data>
+  <data name="CanNotAddingToNotThereIsProjectAndDepartment" xml:space="preserve">
+    <value>Can not add or edit to not there is project and department</value>
+  </data>
+  <data name="CanNotPayThisAmountToNotEnough" xml:space="preserve">
+    <value>This amount cannot be paid from the main treasury due to its availability</value>
+  </data>
+  <data name="ThisAmountCannotBePaidFromTheTreasuryBranchDueToItsAvailability" xml:space="preserve">
+    <value>This amount cannot be paid from the branch treasury due to its availability</value>
+  </data>
+  <data name="ThisAmountCannotBeTransferedFromTheTreasuryDueToItsAvailability" xml:space="preserve">
+    <value>This amount cannot be transfered from the treasury due to its availability</value>
+  </data>
+  <data name="ThisAmountCannotBeTransferedFromTheBranchTreasuryDueToItsAvailability" xml:space="preserve">
+    <value>This amount cannot be transfered from the treasury due to its availability</value>
+  </data>
+  <data name="BranchTreasury" xml:space="preserve">
+    <value>Branch treasury</value>
+  </data>
+  <data name="ThisEmployeeAlreadyIsAssignedBefore" xml:space="preserve">
+    <value>This employee already is assigned before</value>
+  </data>
+  <data name="CanNotRemoveThisBranchTreasuryAsThereIsAmount" xml:space="preserve">
+    <value>Can not remove this branch treasury as there is amount of money</value>
+  </data>
+  <data name="CanNotAddCommentToSpecificComment" xml:space="preserve">
+    <value>Can not add comment to specific comment</value>
+  </data>
+  <data name="TaskComment" xml:space="preserve">
+    <value>Task comment</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CanNotRemoveThisEmployeeAsHasAmountInHisTreasury" xml:space="preserve">
+    <value>This employee cannot be deleted because there is a balance in his treasury</value>
+  </data>
+  <data name="ItIsNecessaryThatAmountMoreThanZero" xml:space="preserve">
+    <value>It is necessary that amount more than zero</value>
+  </data>
+  <data name="ThisAmountCannotBeReceitedAsThisClientHasNotPrice" xml:space="preserve">
+    <value>This amount cannot be receited from the client because its price is lower</value>
+  </data>
+</root>
