@@ -1,4 +1,6 @@
-﻿namespace Kader_System.DataAccesss.DbContext;
+﻿using Kader_System.Domain.Models.Setting;
+
+namespace Kader_System.DataAccesss.DbContext;
 
 public class KaderDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
              ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin,
@@ -13,6 +15,13 @@ public class KaderDbContext : IdentityDbContext<ApplicationUser, ApplicationRole
 
     public DbSet<ApplicationUserDevice> UserDevices { get; set; }
     public DbSet<ComLog> Logs { get; set; }
+    public DbSet<StMainScreenCategory> MainScreenCategories { get; set; }
+    public DbSet<StMainScreen> MainScreens { get; set; }
+    public DbSet<StSubMainScreen> SubMainScreens { get; set; }
+    public DbSet<StAction> Actions { get; set; }
+    public DbSet<StSubMainScreenAction> SubMainScreenActions { get; set; }
+
+
     public DbSet<SharService> Services { get; set; }
     public DbSet<SharServicesCategory> ServicesCategories { get; set; }
     public DbSet<SharNews> News { get; set; }

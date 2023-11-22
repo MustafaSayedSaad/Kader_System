@@ -4,20 +4,17 @@ public static class SD
 {
     public static class GoRootPath
     {
-        public const string SharedImagesPath = "/wwwroot/Images/Shared/";
-        //public const string SharedImagesPath = "/FilesServer/Images/Shared/";
-
-        public const string SharedFilesPath = "/wwwroot/Files/Shared/";
-        public const string SharedAudiosPath = "/wwwroot/Audios/Shared/";
-        public const string SharedVideosPath = "/wwwroot/Videos/Shared/";
+        public const string SettingImagesPath = "/wwwroot/Images/Setting/";
+        public const string SettingFilesPath = "/wwwroot/Files/Setting/";
+        public const string SettingAudiosPath = "/wwwroot/Audios/Setting/";
+        public const string SettingVideosPath = "/wwwroot/Videos/Setting/";
     }
     public static class ReadRootPath
     {
-        public const string SharedImagesPath = "Images/Shared/";
-        //public const string SharedImagesPath = "FilesServer/Images/Shared/";
-        public const string SharedFilesPath = "Files/Shared/";
-        public const string SharedAudiosPath = "Audios/Shared/";
-        public const string SharedVideosPath = "Videos/Shared/";
+        public const string SettingImagesPath = "Images/Setting/";
+        public const string SettingFilesPath = "Files/Setting/";
+        public const string SettingAudiosPath = "Audios/Setting/";
+        public const string SettingVideosPath = "Videos/Setting/";
     }
 
     public static class FileSettings
@@ -157,8 +154,8 @@ public static class SD
 
     public static class Localization
     {
-        public const string Arabic = "ar";
-        public const string English = "en";
+        public const string Arabic = "ar-EG";
+        public const string English = "en-US";
         public const string IsExist = "IsExist";
         public const string Project = "Project";
         public const string Task = "Task";

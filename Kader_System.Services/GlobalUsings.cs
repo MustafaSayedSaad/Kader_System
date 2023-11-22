@@ -29,3 +29,6 @@ global using Kader_System.Domain.Dtos.Request.Shared;
 global using Kader_System.Services.IServices.Shared;
 global using Kader_System.Domain.Models.Shared;
 global using Kader_System.Domain.Constants.Enums;
+global using Kader_System.Domain.DTOs.Response.Setting;
+global using Kader_System.Domain.Dtos.Request.Setting;
+global using Kader_System.Services.IServices.Setting;

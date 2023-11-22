@@ -126,44 +126,17 @@
   <data name="Barcode" xml:space="preserve">
     <value>الباركود</value>
   </data>
-  <data name="BillType" xml:space="preserve">
-    <value />
-  </data>
-  <data name="BranchManagerMobile" xml:space="preserve">
-    <value>موبايل مدير الفرع</value>
-  </data>
-  <data name="BranchResponsibleMobile" xml:space="preserve">
-    <value>رقم موبايل المسؤول</value>
-  </data>
   <data name="Car" xml:space="preserve">
     <value>سيارة</value>
   </data>
   <data name="CarModel" xml:space="preserve">
     <value>موديل السيارة</value>
   </data>
-  <data name="CarNumber" xml:space="preserve">
-    <value>رقم السيارة</value>
-  </data>
-  <data name="Classification" xml:space="preserve">
-    <value>التصنيف</value>
-  </data>
   <data name="Client" xml:space="preserve">
     <value>العميل</value>
   </data>
-  <data name="ClientBranch" xml:space="preserve">
-    <value>فرع العميل</value>
-  </data>
-  <data name="ClientCategoryName" xml:space="preserve">
-    <value>تصنيف العميل</value>
-  </data>
-  <data name="ClientName" xml:space="preserve">
-    <value>اسم العميل</value>
-  </data>
   <data name="Code" xml:space="preserve">
     <value>الكود </value>
-  </data>
-  <data name="CommercialRecord" xml:space="preserve">
-    <value>السجل التجارى</value>
   </data>
   <data name="Companies" xml:space="preserve">
     <value>الشركات</value>
@@ -171,29 +144,14 @@
   <data name="Company" xml:space="preserve">
     <value>الشركة</value>
   </data>
-  <data name="CompanyBranch" xml:space="preserve">
-    <value>فرع الشركة</value>
-  </data>
-  <data name="CompanyBranchName" xml:space="preserve">
-    <value>اسم الفرع</value>
-  </data>
   <data name="Completed" xml:space="preserve">
     <value>اكتمال البيانات</value>
   </data>
   <data name="Confirmation password" xml:space="preserve">
     <value>التاكيد على الرقم السرى</value>
   </data>
-  <data name="ConversionFactor" xml:space="preserve">
-    <value>معامل التحوبل</value>
-  </data>
-  <data name="DebtLimit" xml:space="preserve">
-    <value>حد المديونية</value>
-  </data>
   <data name="Department" xml:space="preserve">
     <value>القسم</value>
-  </data>
-  <data name="DepartmentName" xml:space="preserve">
-    <value>اسم القسم</value>
   </data>
   <data name="Driver" xml:space="preserve">
     <value>سائق سيارة</value>
@@ -204,20 +162,8 @@
   <data name="Employee" xml:space="preserve">
     <value>الموظف</value>
   </data>
-  <data name="EndDate" xml:space="preserve">
-    <value>تاريخ النهاية</value>
-  </data>
   <data name="Expense" xml:space="preserve">
     <value>التكلفة</value>
-  </data>
-  <data name="ExpenseValue" xml:space="preserve">
-    <value>قيمة التكلفة</value>
-  </data>
-  <data name="FinancialYear" xml:space="preserve">
-    <value>السنة المالية</value>
-  </data>
-  <data name="FromSerial" xml:space="preserve">
-    <value>من سيريال</value>
   </data>
   <data name="Gender" xml:space="preserve">
     <value>النوع</value>
@@ -225,23 +171,8 @@
   <data name="Hire date" xml:space="preserve">
     <value>تاريخ التعيين</value>
   </data>
-  <data name="ImagePath" xml:space="preserve">
-    <value>الصورة</value>
-  </data>
   <data name="IsActive" xml:space="preserve">
     <value>نشط</value>
-  </data>
-  <data name="IsRecievedMobile" xml:space="preserve">
-    <value>مصدر العملية</value>
-  </data>
-  <data name="IsValTaxActive" xml:space="preserve">
-    <value>الضريبة مفعلة</value>
-  </data>
-  <data name="IsWaiting" xml:space="preserve">
-    <value>قيد الانتظار</value>
-  </data>
-  <data name="IsWTaxActive" xml:space="preserve">
-    <value>ضريبه الخصم مفعلة</value>
   </data>
   <data name="Item" xml:space="preserve">
     <value>الصنف</value>
@@ -252,39 +183,6 @@
   <data name="Job" xml:space="preserve">
     <value>الوظيفة</value>
   </data>
-  <data name="JobName" xml:space="preserve">
-    <value>اسم الوظيفة</value>
-  </data>
-  <data name="Level" xml:space="preserve">
-    <value>مستوى الموقع</value>
-  </data>
-  <data name="LocationStatus" xml:space="preserve">
-    <value>حالة الموقع</value>
-  </data>
-  <data name="MainCompany" xml:space="preserve">
-    <value>الشركة الأم</value>
-  </data>
-  <data name="MaritalStatus" xml:space="preserve">
-    <value>الحالة الاجتماعية</value>
-  </data>
-  <data name="MaturityPeriod" xml:space="preserve">
-    <value>فترة الاستحقاق باليوم</value>
-  </data>
-  <data name="MaxBillValue" xml:space="preserve">
-    <value>الحد الاقصي للفاتورة</value>
-  </data>
-  <data name="MaxLimit" xml:space="preserve">
-    <value>الحد الأقصى</value>
-  </data>
-  <data name="MilitaryStatus" xml:space="preserve">
-    <value>حاله التجنيد</value>
-  </data>
-  <data name="MinLimit" xml:space="preserve">
-    <value>الحد الأدنى</value>
-  </data>
-  <data name="MobileDate" xml:space="preserve">
-    <value>تاريخ الموبايل</value>
-  </data>
   <data name="Name" xml:space="preserve">
     <value>الاسم</value>
   </data>
@@ -294,20 +192,11 @@
   <data name="Name in English" xml:space="preserve">
     <value>الاسم بالانجليزى</value>
   </data>
-  <data name="Nature" xml:space="preserve">
-    <value>طبيعة المنتج</value>
-  </data>
-  <data name="OrderingLimit" xml:space="preserve">
-    <value>حد الطلبات</value>
-  </data>
   <data name="Password" xml:space="preserve">
     <value>كلمه المرور</value>
   </data>
   <data name="Password and confirmation password must match." xml:space="preserve">
     <value>تاكيد الرقم السرى غير مطابق للاخر</value>
-  </data>
-  <data name="PaymentGateway" xml:space="preserve">
-    <value>جهة التحويل</value>
   </data>
   <data name="Permission" xml:space="preserve">
     <value>الصلاحية</value>
@@ -321,23 +210,8 @@
   <data name="Region" xml:space="preserve">
     <value>المنطقة</value>
   </data>
-  <data name="RegionName" xml:space="preserve">
-    <value>اسم المنطقة</value>
-  </data>
   <data name="Required" xml:space="preserve">
     <value>مطلوب</value>
-  </data>
-  <data name="ResponsibleName" xml:space="preserve">
-    <value>اسم المسئول</value>
-  </data>
-  <data name="ResponsibleTechnicianName" xml:space="preserve">
-    <value>الفنى المسئول</value>
-  </data>
-  <data name="SectionName" xml:space="preserve">
-    <value>اسم الادارة</value>
-  </data>
-  <data name="SellingMethod" xml:space="preserve">
-    <value>طريقة البيع</value>
   </data>
   <data name="Shelf" xml:space="preserve">
     <value>الرف</value>
@@ -345,47 +219,11 @@
   <data name="Site" xml:space="preserve">
     <value>الموقع الالكتروني</value>
   </data>
-  <data name="StartDate" xml:space="preserve">
-    <value>تاريخ البداية</value>
-  </data>
   <data name="State" xml:space="preserve">
     <value>المحافظة</value>
   </data>
-  <data name="StateName" xml:space="preserve">
-    <value>اسم المحافظة</value>
-  </data>
   <data name="Stock" xml:space="preserve">
     <value>المخزن</value>
-  </data>
-  <data name="StockCategory" xml:space="preserve">
-    <value>تصنيف المخزن</value>
-  </data>
-  <data name="StockTechnique" xml:space="preserve">
-    <value>اسلوب الصرف من المخزن</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="String2" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TaxCardNo" xml:space="preserve">
-    <value>رقم البطاقه الضريبية</value>
-  </data>
-  <data name="TaxFileNo" xml:space="preserve">
-    <value>رقم الملف الضريبي</value>
-  </data>
-  <data name="TaxOffice" xml:space="preserve">
-    <value>مأمورية الضرايب</value>
-  </data>
-  <data name="TaxOfficeName" xml:space="preserve">
-    <value>مأمورية الضرائب</value>
-  </data>
-  <data name="Technician" xml:space="preserve">
-    <value>الفنى</value>
-  </data>
-  <data name="TechnicianName" xml:space="preserve">
-    <value>اسم الفنى</value>
   </data>
   <data name="Telephone" xml:space="preserve">
     <value>الهاتف</value>
@@ -420,38 +258,8 @@
   <data name="The {0} is required" xml:space="preserve">
     <value>{0} مطلوب</value>
   </data>
-  <data name="ToSerial" xml:space="preserve">
-    <value>إلى سيريال</value>
-  </data>
-  <data name="Unit" xml:space="preserve">
-    <value>الوحدة</value>
-  </data>
-  <data name="UnitType" xml:space="preserve">
-    <value>نوع الوحدة</value>
-  </data>
   <data name="User name" xml:space="preserve">
     <value>اسم المستخدم للدخول على النظام فيما بعد</value>
-  </data>
-  <data name="UserName" xml:space="preserve">
-    <value>اسم المستخدم</value>
-  </data>
-  <data name="UserNameOrEmail" xml:space="preserve">
-    <value>اسم المستخدم أو البريد مطلوب</value>
-  </data>
-  <data name="VatTax" xml:space="preserve">
-    <value>ضريبه ق . م</value>
-  </data>
-  <data name="VatTaxNum" xml:space="preserve">
-    <value>رقم تسجيل ض.ق</value>
-  </data>
-  <data name="WalkingLine" xml:space="preserve">
-    <value>خط السير</value>
-  </data>
-  <data name="WTax" xml:space="preserve">
-    <value>ضريبه الخصم</value>
-  </data>
-  <data name="Year" xml:space="preserve">
-    <value>السنة</value>
   </data>
   <data name="{0} can only be between {1} and {2}" xml:space="preserve">
     <value>{0}يجب ان يكون بين {1} و {2}</value>

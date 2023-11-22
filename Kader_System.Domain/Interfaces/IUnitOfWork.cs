@@ -1,4 +1,6 @@
-﻿namespace Kader_System.Domain.Interfaces;
+﻿using Kader_System.Domain.Interfaces.Setting;
+
+namespace Kader_System.Domain.Interfaces;
 
 public interface IUnitOfWork : IDisposable
 {
@@ -8,6 +10,13 @@ public interface IUnitOfWork : IDisposable
     IUserDeviceRepository UserDevices { get; }
     IRoleRepository Roles { get; }
     IUserRoleRepository UserRoles { get; }
+    ISubMainScreenRepository SubMainScreens { get; }
+    ISubMainScreenActionRepository SubMainScreenActions { get; }
+    IMainScreenRepository MainScreens { get; }
+    IMainScreenCategoryRepository MainScreenCategories { get; }
+
+
+
     INewsRepository News { get; }
     IServiceRepository Services { get; }
     IServicesCategoryRepository ServicesCategories { get; }

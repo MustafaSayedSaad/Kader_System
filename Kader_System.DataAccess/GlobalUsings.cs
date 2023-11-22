@@ -26,3 +26,7 @@ global using Kader_System.Domain.Models.Shared;
 global using static Kader_System.Domain.Constants.SD;
 global using Kader_System.DataAccess.Repositories.Shared;
 global using Kader_System.DataAccesss.DbContext;
+global using Kader_System.Domain.Interfaces.Setting;
+global using Kader_System.Domain.Models.Setting;
+global using Kader_System.DataAccess.Repositories.Setting;
+

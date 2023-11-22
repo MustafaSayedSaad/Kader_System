@@ -1,4 +1,7 @@
-﻿namespace Kader_System.DataAccess.Seeding;
+﻿using Kader_System.Domain.Constants.Enums;
+using Kader_System.Domain.Models.Setting;
+
+namespace Kader_System.DataAccess.Seeding;
 
 public static class ModelBuilderExtensions
 {
@@ -41,6 +44,46 @@ public static class ModelBuilderExtensions
            });
 
         #endregion
+
+        modelBuilder.Entity<StAction>()
+            .HasData(
+           new StAction()
+           {
+               Id = 1,
+               Name = "إظهار",
+               NameInEnglish = ActionsEnums.View.ToString(),
+           },
+           new StAction()
+           {
+               Id = 2,
+               Name = "اضافة",
+               NameInEnglish = ActionsEnums.Add.ToString(),
+           },
+           new StAction()
+           {
+               Id = 3,
+               Name = "تعديل",
+               NameInEnglish = ActionsEnums.Edit.ToString(),
+           },
+           new StAction()
+           {
+               Id = 4,
+               Name = "حذف",
+               NameInEnglish = ActionsEnums.Delete.ToString(),
+           },
+           new StAction()
+           {
+               Id = 5,
+               Name = "حذف نهائى",
+               NameInEnglish = ActionsEnums.ForceDelete.ToString(),
+           },
+           new StAction()
+           {
+               Id = 6,
+               Name = "طباعة",
+               NameInEnglish = ActionsEnums.Ptint.ToString(),
+           }
+           );
     }
 
     public static void AddQueryFilterToAllEntitiesAssignableFrom<T>(this ModelBuilder modelBuilder,

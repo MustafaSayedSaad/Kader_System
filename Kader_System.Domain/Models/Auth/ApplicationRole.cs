@@ -2,6 +2,7 @@
 
 public class ApplicationRole : IdentityRole, IBaseEntity
 {
+    public string Title_name_en { get; set; } = string.Empty;        
     public bool IsDeleted { get; set; }
     public DateTime? InsertDate { get; set; } 
     public DateTime? UpdateDate { get; set; } 

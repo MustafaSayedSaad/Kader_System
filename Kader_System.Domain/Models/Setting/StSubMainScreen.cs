@@ -1,7 +1,7 @@
 ﻿namespace Kader_System.Domain.Models.Setting;
 
-[Table("St_Pages")]
-public class StPage : BaseEntity
+[Table("St_SubMainScreens")]
+public class StSubMainScreen : BaseEntity
 {
     [Key]
     public int Id { get; set; }
