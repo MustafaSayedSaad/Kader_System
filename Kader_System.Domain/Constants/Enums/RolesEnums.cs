@@ -2,8 +2,5 @@
 
 public enum RolesEnums
 {
-    Superadmin,
-    Admin,
-    Departmentadmin,
-    User
+    Superadmin
 }

@@ -10,7 +10,6 @@ using Kader_System.Domain.Options;
 using Kader_System.Domain.SwaggerFilter;
 using Kader_System.Domain;
 using Kader_System.Services.Services.Auth;
-using Kader_System.Services.Services.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -18,6 +17,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text.Json.Serialization;
 using System.Text;
+using Kader_System.Services.Services.Setting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -142,9 +142,9 @@ builder.Services.AddSwaggerGen(x =>
         Title = $"{Shared.Kader} {Modules.Auth}",
         Version = Modules.V1
     });
-    x.SwaggerDoc(Modules.Shared, new OpenApiInfo
+    x.SwaggerDoc(Modules.Setting, new OpenApiInfo
     {
-        Title = $"{Shared.Kader} {Modules.Shared}",
+        Title = $"{Shared.Kader} {Modules.Setting}",
         Version = Modules.V1
     });
 
@@ -190,12 +190,8 @@ builder.Services.AddScoped<IPermService, PermService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ILoggingRepository, LoggingRepository>();
 builder.Services.AddScoped<IStaticDataRepository, StaticDataRepository>();
-builder.Services.AddScoped<INewsService, NewsService>();
-builder.Services.AddScoped<IServicesCategoriesService, ServicesCategoriesService>();
-builder.Services.AddScoped<IServicesService, ServicesService>();
-builder.Services.AddScoped<IPoliticsService, PoliticsService>();
-builder.Services.AddScoped<IContactUsService, ContactUsService>();
-builder.Services.AddScoped<IAboutUsService, AboutUsService>();
+builder.Services.AddScoped<IMainScreenCategoryService, MainScreenCategoryService>();
+builder.Services.AddScoped<IMainScreenService, MainScreenService>();
 
 #endregion
 
@@ -238,7 +234,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction() || app.Env
     app.UseSwaggerUI(x =>
     {
         x.SwaggerEndpoint($"/swagger/{Modules.Auth}/swagger.json", "Auth_Management v1");
-        x.SwaggerEndpoint($"/swagger/{Modules.Shared}/swagger.json", "Shared_Management v1");
+        x.SwaggerEndpoint($"/swagger/{Modules.Setting}/swagger.json", "Setting_Management v1");
     });
 }
 

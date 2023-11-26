@@ -44,9 +44,9 @@ public class AuthService : IAuthService
                     UserName = model.UserNameOrEmail
                 },
                 Error = err,
-                Message = string.Format(_sharLocalizer[Localization.CannotBeFound],
+                Msg = string.Format(_sharLocalizer[Localization.CannotBeFound],
                 _sharLocalizer[Localization.UserNameOrEmail]),
-                IsSuccess = false
+                Check = false
             };
 
         var test = await _signInManager.PasswordSignInAsync(user.UserName!, model.Password, model.RememberMe, false);
@@ -58,8 +58,8 @@ public class AuthService : IAuthService
                     UserName = model.UserNameOrEmail
                 },
                 Error = err,
-                Message = _sharLocalizer[Localization.PasswordNotmatch],
-                IsSuccess = false
+                Msg = _sharLocalizer[Localization.PasswordNotmatch],
+                Check = false
             };
 
         if (!user.IsActive)
@@ -74,7 +74,7 @@ public class AuthService : IAuthService
                     UserName = model.UserNameOrEmail
                 },
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -107,7 +107,7 @@ public class AuthService : IAuthService
 
         return new Response<AuthLoginUserResponse>
         {
-            IsSuccess = true,
+            Check = true,
             Data = result
         };
     }
@@ -123,7 +123,7 @@ public class AuthService : IAuthService
             {
                 Data = model,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
         string err = _sharLocalizer[Localization.Error];
@@ -136,9 +136,9 @@ public class AuthService : IAuthService
 
         return new Response<AuthUpdateUserRequest>()
         {
-            IsSuccess = isSucceeded,
+            Check = isSucceeded,
             Data = model,
-            Message = isSucceeded ? _sharLocalizer[Localization.Updated] : _sharLocalizer[err]
+            Msg = isSucceeded ? _sharLocalizer[Localization.Updated] : _sharLocalizer[err]
         };
     }
 
@@ -155,7 +155,7 @@ public class AuthService : IAuthService
             {
                 Data = id,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -163,7 +163,7 @@ public class AuthService : IAuthService
 
         return new Response<string>()
         {
-            IsSuccess = true,
+            Check = true,
             Data = user.VisiblePassword
         };
     }
@@ -182,7 +182,7 @@ public class AuthService : IAuthService
             {
                 Data = mappedResponse,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -198,7 +198,7 @@ public class AuthService : IAuthService
             {
                 Data = mappedResponse,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -212,7 +212,7 @@ public class AuthService : IAuthService
             {
                 Data = mappedResponse,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -225,14 +225,14 @@ public class AuthService : IAuthService
             {
                 Data = mappedResponse,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
         return new Response<AuthChangePassOfUserResponse>()
         {
-            Message = string.Format(_sharLocalizer[Localization.Updated]),
-            IsSuccess = true,
+            Msg = string.Format(_sharLocalizer[Localization.Updated]),
+            Check = true,
             Data = mappedResponse
         };
     }
@@ -254,7 +254,7 @@ public class AuthService : IAuthService
             {
                 Data = model,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -273,14 +273,14 @@ public class AuthService : IAuthService
             {
                 Data = model,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
         transaction.Commit();
         return new Response<AuthSetNewPasswordRequest>()
         {
-            Message = string.Format(_sharLocalizer[Localization.Updated]),
-            IsSuccess = true,
+            Msg = string.Format(_sharLocalizer[Localization.Updated]),
+            Check = true,
             Data = model
         };
     }
@@ -302,7 +302,7 @@ public class AuthService : IAuthService
             {
                 Data = newPassword,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -326,14 +326,14 @@ public class AuthService : IAuthService
             {
                 Data = newPassword,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
         transaction.Commit();
         return new Response<string>()
         {
-            Message = string.Format(_sharLocalizer[Localization.Updated]),
-            IsSuccess = true,
+            Msg = string.Format(_sharLocalizer[Localization.Updated]),
+            Check = true,
             Data = newPassword
         };
 
@@ -353,7 +353,7 @@ public class AuthService : IAuthService
             {
                 Data = string.Empty,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
         string err = _sharLocalizer[Localization.Error];
@@ -366,16 +366,16 @@ public class AuthService : IAuthService
             if (!result)
                 return new Response<string>()
                 {
-                    IsSuccess = false,
+                    Check = false,
                     Data = userId,
                     Error = err,
-                    Message = err
+                    Msg = err
                 };
             return new Response<string>()
             {
-                IsSuccess = true,
+                Check = true,
                 Data = userId,
-                Message = _sharLocalizer[Localization.Deleted]
+                Msg = _sharLocalizer[Localization.Deleted]
             };
         }
         catch (Exception ex)
@@ -385,7 +385,7 @@ public class AuthService : IAuthService
             return new Response<string>()
             {
                 Error = err,
-                Message = ex.Message + (ex.InnerException == null ? string.Empty : ex.InnerException.Message)
+                Msg = ex.Message + (ex.InnerException == null ? string.Empty : ex.InnerException.Message)
             };
         }
     }

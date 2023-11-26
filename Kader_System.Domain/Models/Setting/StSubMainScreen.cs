@@ -11,5 +11,7 @@ public class StSubMainScreen : BaseEntity
 
     public int Screen_main_id { get; set; }
     [ForeignKey(nameof(Screen_main_id))]
-    public StMainScreenCategory MainScreenCategory { get; set; } = default!;
+    public StMainScreen MainScreen { get; set; } = default!;
+
+    public ICollection<StSubMainScreenAction> ListOfActions { get; set; } = [];
 }

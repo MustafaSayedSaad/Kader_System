@@ -17,9 +17,9 @@ public class PermController(IPermService service) : ControllerBase
     public async Task<IActionResult> CreateRoleAsync(PermCreateRoleRequest model)
     {
         var response = await _service.CreateRoleAsync(model);
-        if (response.IsSuccess)
+        if (response.Check)
             return Ok(response);
-        else if (!response.IsSuccess)
+        else if (!response.Check)
             return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
@@ -28,9 +28,9 @@ public class PermController(IPermService service) : ControllerBase
     public async Task<IActionResult> UpdateRoleAsync([FromRoute] string id, SelectListForUserRequest model)
     {
         var response = await _service.UpdateRoleAsync(id, model);
-        if (response.IsSuccess)
+        if (response.Check)
             return Ok(response);
-        else if (!response.IsSuccess)
+        else if (!response.Check)
             return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
@@ -39,9 +39,9 @@ public class PermController(IPermService service) : ControllerBase
     public async Task<IActionResult> DeleteRoleByIdAsync([FromRoute] string id)
     {
         var response = await _service.DeleteRoleByIdAsync(id);
-        if (response.IsSuccess)
+        if (response.Check)
             return Ok(response);
-        else if (!response.IsSuccess)
+        else if (!response.Check)
             return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
@@ -50,9 +50,9 @@ public class PermController(IPermService service) : ControllerBase
     public async Task<IActionResult> GetEachUserWithHisRolesAsync([FromQuery] PermGetEachUserWithRolesRequest model)
     {
         var response = await _service.GetEachUserWithHisRolesAsync(model);
-        if (response.IsSuccess)
+        if (response.Check)
             return Ok(response);
-        else if (!response.IsSuccess)
+        else if (!response.Check)
             return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
@@ -61,9 +61,9 @@ public class PermController(IPermService service) : ControllerBase
     public async Task<IActionResult> ManageUserRolesAsync([FromRoute] string userId)
     {
         var response = await _service.ManageUserRolesAsync(userId);
-        if (response.IsSuccess)
+        if (response.Check)
             return Ok(response);
-        else if (!response.IsSuccess)
+        else if (!response.Check)
             return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
@@ -72,9 +72,9 @@ public class PermController(IPermService service) : ControllerBase
     public async Task<IActionResult> UpdateUserRolesAsync(PermGetManagementModelResponse model)
     {
         var response = await _service.UpdateUserRolesAsync(model);
-        if (response.IsSuccess)
+        if (response.Check)
             return Ok(response);
-        else if (!response.IsSuccess)
+        else if (!response.Check)
             return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
@@ -87,9 +87,9 @@ public class PermController(IPermService service) : ControllerBase
     public async Task<IActionResult> ManageRolePermissionsAsync([FromRoute] string roleId)
     {
         var response = await _service.ManageRolePermissionsAsync(roleId);
-        if (response.IsSuccess)
+        if (response.Check)
             return Ok(response);
-        else if (!response.IsSuccess)
+        else if (!response.Check)
             return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
@@ -98,9 +98,9 @@ public class PermController(IPermService service) : ControllerBase
     public async Task<IActionResult> UpdateRolePermissionsAsync(PermUpdateManagementModelRequest model)
     {
         var response = await _service.UpdateRolePermissionsAsync(model);
-        if (response.IsSuccess)
+        if (response.Check)
             return Ok(response);
-        else if (!response.IsSuccess)
+        else if (!response.Check)
             return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }

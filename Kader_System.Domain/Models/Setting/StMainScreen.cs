@@ -8,7 +8,7 @@ public class StMainScreen : BaseEntity
     public string Screen_cat_title_en { get; set; } = string.Empty;
     public string Screen_cat_title_ar { get; set; } = string.Empty;
 
-    public int Screen_main_id { get; set; }
-    [ForeignKey(nameof(Screen_main_id))]
+    public int Screen_cat_id { get; set; }
+    [ForeignKey(nameof(Screen_cat_id))]
     public StMainScreenCategory MainScreenCategory { get; set; } = default!;
 }

@@ -1,5 +1,4 @@
-﻿
-namespace Kader_System.Services.Services.Setting;
+﻿namespace Kader_System.Services.Services.Setting;
 
 public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedResource> sharLocalizer, IMapper mapper) : IMainScreenService
 {
@@ -9,290 +8,161 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
 
     #region Main screen
 
-    public async Task<Response<SharCreateServicesCategoryRequest>> CreateServicesCategoryAsync(SharCreateServicesCategoryRequest model)
-    {
-        if (await _unitOfWork.ServicesCategories.ExistAsync(x =>
-            (x.Name.Trim().ToLower() == model.Name.Trim().ToLower()) || (x.NameInEnglish.Trim().ToLower() == model.NameInEnglish.Trim().ToLower())))
-        {
-            string msg = string.Format(_sharLocalizer[Localization.IsExist], model.Name);
-
-            return new Response<SharCreateServicesCategoryRequest>()
-            {
-                Message = msg,
-                Data = model
-            };
-        }
-        var servicesCategory = _mapper.Map<SharServicesCategory>(model);
-
-        await _unitOfWork.ServicesCategories.AddAsync(servicesCategory);
-        await _unitOfWork.CompleteAsync();
-
-
-        return new Response<SharCreateServicesCategoryRequest>()
-        {
-            Message = _sharLocalizer[Localization.Done],
-            IsSuccess = true,
-            Data = _mapper.Map<SharCreateServicesCategoryRequest>(model)
-        };
-    }
-
-    public async Task<Response<IEnumerable<SelectListResponse>>> GetAllServicesCategoriesAsync(string lang)
-    {
-        var result =
-                await _unitOfWork.ServicesCategories.GetSpecificSelectAsync(null!,
-                select: x => new SelectListResponse
-                {
-                    Id = x.Id,
-                    Name = lang == Localization.Arabic ? x.Name : x.NameInEnglish,
-
-                }, orderBy: x =>
-                  x.OrderByDescending(x => x.Id));
-
-        if (result == null || result.ToList().Count == 0)
-        {
-            string resultMsg = _sharLocalizer[Localization.NotFoundData];
-
-            return new Response<IEnumerable<SelectListResponse>>()
-            {
-                Data = new List<SelectListResponse>(),
-                Error = resultMsg,
-                Message = resultMsg
-            };
-        }
-        return new Response<IEnumerable<SelectListResponse>>()
-        {
-            Data = result,
-            IsSuccess = true
-        };
-    }
-
-    public async Task<Response<SharGetServicesCategoryResponse>> GetServicesCategoryByIdAsync(int id)
-    {
-        var servicesCategory = await _unitOfWork.ServicesCategories.GetByIdAsync(id);
-
-        if (servicesCategory is null)
-        {
-            string resultMsg = _sharLocalizer[Localization.NotFoundData];
-
-            return new Response<SharGetServicesCategoryResponse>()
-            {
-                Data = new SharGetServicesCategoryResponse(),
-                Error = resultMsg,
-                Message = resultMsg
-            };
-        }
-        return new Response<SharGetServicesCategoryResponse>()
-        {
-            Data = new SharGetServicesCategoryResponse
-            {
-                Id = id,
-                Name = servicesCategory.Name,
-                NameInEnglish = servicesCategory.NameInEnglish
-            },
-            IsSuccess = true
-        };
-    }
-
-    public async Task<Response<SharEditServicesCategoryRequest>> UpdateServicesCategoryAsync(int id, SharEditServicesCategoryRequest model)
-    {
-        var servicesCategory = await _unitOfWork.ServicesCategories.GetByIdAsync(id);
-
-        if (servicesCategory == null || model.Id != id)
-        {
-            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
-                _sharLocalizer[Localization.ServicesCategory], id);
-
-            return new Response<SharEditServicesCategoryRequest>()
-            {
-                Data = null!,
-                Error = resultMsg,
-                Message = resultMsg
-            };
-        }
-
-        string err = _sharLocalizer[Localization.Error];
-
-        servicesCategory.Name = model.Name;
-        servicesCategory.NameInEnglish = model.NameInEnglish;
-
-        _unitOfWork.ServicesCategories.Update(servicesCategory);
-        bool result = await _unitOfWork.CompleteAsync() > 0;
-
-        return new Response<SharEditServicesCategoryRequest>()
-        {
-            IsSuccess = result,
-            Data = null!,
-            Message = result ? _sharLocalizer[Localization.Updated] : _sharLocalizer[err]
-        };
-    }
-
-    public async Task<Response<string>> UpdateActiveOrNotServicesCategoryAsync(int id)
-    {
-        var servicesCategory = await _unitOfWork.ServicesCategories.GetByIdAsync(id);
-
-        if (servicesCategory is null)
-        {
-            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
-                _sharLocalizer[Localization.ServicesCategory]);
-
-            return new Response<string>()
-            {
-                Data = string.Empty,
-                Error = resultMsg,
-                Message = resultMsg
-            };
-        }
-
-        servicesCategory.IsActive = !servicesCategory.IsActive;
-        _unitOfWork.ServicesCategories.Update(servicesCategory);
-
-        return new Response<string>()
-        {
-            IsSuccess = await _unitOfWork.CompleteAsync() > 0,
-            Data = servicesCategory!.Name,
-            IsActive = servicesCategory.IsActive,
-            Message = servicesCategory.IsActive
-            ? _sharLocalizer[Localization.Activated]
-            : _sharLocalizer[Localization.DeActivated]
-        };
-    }
-
-    public async Task<Response<string>> DeleteServicesCategoryAsync(int id)
-    {
-        var servicesCategory = await _unitOfWork.ServicesCategories.GetByIdAsync(id);
-
-        if (servicesCategory == null)
-        {
-            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
-                _sharLocalizer[Localization.ServicesCategory], id);
-
-            return new Response<string>()
-            {
-                Data = string.Empty,
-                Error = resultMsg,
-                Message = resultMsg
-            };
-        }
-        string err = _sharLocalizer[Localization.Error];
-        try
-        {
-            _unitOfWork.ServicesCategories.Remove(servicesCategory);
-
-            bool result = await _unitOfWork.CompleteAsync() > 0;
-
-            if (!result)
-                return new Response<string>()
-                {
-                    IsSuccess = false,
-                    Data = servicesCategory.Name,
-                    Error = err,
-                    Message = err
-                };
-            return new Response<string>()
-            {
-                IsSuccess = true,
-                Data = servicesCategory.Name,
-                Message = _sharLocalizer[Localization.Deleted]
-            };
-        }
-        catch (Exception ex)
-        {
-            return new Response<string>()
-            {
-                Error = err,
-                Message = ex.Message + (ex.InnerException == null ? "" : ex.InnerException.Message)
-            };
-        }
-    }
-
-    public async Task<Response<SharGetServicesCategoryWthAllServicesResponse>> GetServicesCategoryWithAllServicesByIdAsync(int id)
-    {
-        try
-        {
-            var servicesCategory = await _unitOfWork.ServicesCategories.GetFirstOrDefaultAsync(x => x.Id == id, includeProperties: "Services");
-
-            if (servicesCategory is null)
-            {
-                string resultMsg = _sharLocalizer[Localization.NotFoundData];
-
-                return new Response<SharGetServicesCategoryWthAllServicesResponse>()
-                {
-                    Data = new SharGetServicesCategoryWthAllServicesResponse(),
-                    Error = resultMsg,
-                    Message = resultMsg
-                };
-            }
-            return new Response<SharGetServicesCategoryWthAllServicesResponse>()
-            {
-                Data = _mapper.Map<SharGetServicesCategoryWthAllServicesResponse>(servicesCategory),
-                IsSuccess = true
-            };
-        }
-        catch (Exception ex)
-        {
-            return new Response<SharGetServicesCategoryWthAllServicesResponse>()
-            {
-                Error = ex.Message,
-                Message = ex.Message + (ex.InnerException == null ? "" : ex.InnerException.Message)
-            };
-        }
-    }
-
-    private async Task<string> GetUserNameById(string userId) =>
-    (await _unitOfWork.Users.GetFirstOrDefaultAsync(x => x.Id == userId)).UserName!;
-
-
-
-
-
-    public async Task<Response<IEnumerable<StSelectListResponse>>> ListOfMainScreensAsync(string lang)
+    public async Task<Response<IEnumerable<StSelectListForMainScreenResponse>>> ListOfMainScreensAsync(string lang)
     {
         var result =
                 await _unitOfWork.MainScreens.GetSpecificSelectAsync(null!,
-                select: x => new StSelectListResponse
+                select: x => new StSelectListForMainScreenResponse
                 {
                     Id = x.Id,
                     Title = lang == Localization.Arabic ? x.Screen_cat_title_ar : x.Screen_cat_title_en,
-                    Image = null
+                    Main_id = x.Screen_cat_id,
+                    Main_title = lang == Localization.Arabic ? x.MainScreenCategory.Screen_main_title_ar : x.MainScreenCategory.Screen_main_title_en,
+                    Main_image = string.Concat(ReadRootPath.SettingImagesPath, x.MainScreenCategory.Screen_main_image)
                 }, orderBy: x =>
                   x.OrderByDescending(x => x.Id));
 
-        if (result == null || result.ToList().Count == 0)
+        if (!result.Any())
         {
             string resultMsg = _sharLocalizer[Localization.NotFoundData];
 
-            return new Response<IEnumerable<StSelectListResponse>>()
+            return new Response<IEnumerable<StSelectListForMainScreenResponse>>()
             {
-                Data = new List<StSelectListResponse>(),
+                Data = new List<StSelectListForMainScreenResponse>(),
                 Error = resultMsg,
                 Msg = resultMsg
             };
         }
-        return new Response<IEnumerable<StSelectListResponse>>()
+
+        return new Response<IEnumerable<StSelectListForMainScreenResponse>>()
         {
             Data = result,
             Check = true
         };
     }
 
-    public Task<Response<IEnumerable<StGetAllMainScreensResponse>>> GetAllMainScreensAsync(string lang)
+    public async Task<Response<StGetAllMainScreensResponse>> GetAllMainScreensAsync(string lang, StGetAllFiltrationsForMainScreenRequest model)
     {
-        throw new NotImplementedException();
+        Expression<Func<StMainScreen, bool>> filter = x => x.IsDeleted == model.IsDeleted;
+
+        var result = new StGetAllMainScreensResponse
+        {
+            TotalRecords = await _unitOfWork.MainScreens.CountAsync(filter: filter),
+
+            Items = (await _unitOfWork.MainScreens.GetSpecificSelectAsync(filter: filter,
+                 take: model.PageSize,
+                 skip: (model.PageNumber - 1) * model.PageSize,
+                 select: x => new MainScreenData
+                 {
+                     Id = x.Id,
+                     Main_id = x.Screen_cat_id,
+                     Main_title = lang == Localization.Arabic ? x.MainScreenCategory.Screen_main_title_ar : x.MainScreenCategory.Screen_main_title_en,
+                     Main_image = string.Concat(ReadRootPath.SettingImagesPath, x.MainScreenCategory.Screen_main_image),
+                     Title = lang == Localization.Arabic ? x.Screen_cat_title_ar : x.Screen_cat_title_en
+                 }, orderBy: x =>
+                   x.OrderByDescending(x => x.Id))).ToList()
+        };
+        if (result.TotalRecords is 0)
+        {
+            string resultMsg = _sharLocalizer[Localization.NotFoundData];
+
+            return new Response<StGetAllMainScreensResponse>()
+            {
+                Data = new StGetAllMainScreensResponse()
+                {
+                    Items = new List<MainScreenData>()
+                },
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+
+        return new Response<StGetAllMainScreensResponse>()
+        {
+            Data = result,
+            Check = true
+        };
     }
 
-    public Task<Response<StCreateMainScreenRequest>> CreateMainScreenAsync(StCreateMainScreenRequest model)
+    public async Task<Response<StCreateMainScreenRequest>> CreateMainScreenAsync(StCreateMainScreenRequest model)
     {
-        throw new NotImplementedException();
+        await _unitOfWork.MainScreens.AddAsync(new StMainScreen
+        {
+            Screen_cat_title_ar = model.Screen_main_title_ar,
+            Screen_cat_title_en = model.Screen_main_title_en,
+            Screen_cat_id = model.Screen_main_id
+        });
+        await _unitOfWork.CompleteAsync();
+
+        return new Response<StCreateMainScreenRequest>()
+        {
+            Msg = _sharLocalizer[Localization.Done],
+            Check = true,
+            Data = model
+        };
     }
 
-    public Task<Response<StGetMainScreenByIdResponse>> GetMainScreenByIdAsync(int id)
+    public async Task<Response<StGetMainScreenByIdResponse>> GetMainScreenByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var obj = await _unitOfWork.MainScreens.GetFirstOrDefaultAsync(x => x.Id == id, includeProperties: "MainScreenCategory");
+
+        if (obj is null)
+        {
+            string resultMsg = _sharLocalizer[Localization.NotFoundData];
+
+            return new Response<StGetMainScreenByIdResponse>()
+            {
+                Data = new StGetMainScreenByIdResponse(),
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+        return new Response<StGetMainScreenByIdResponse>()
+        {
+            Data = new StGetMainScreenByIdResponse
+            {
+                Id = id,
+                Screen_cat_id = obj.Id,
+                Screen_cat_title_ar = obj.Screen_cat_title_ar,
+                Screen_cat_title_en = obj.Screen_cat_title_en,
+                Screen_main_id = obj.Screen_cat_id,
+                Main_title_ar = obj.MainScreenCategory.Screen_main_title_ar,
+                Main_title_en = obj.MainScreenCategory.Screen_main_title_en
+            },
+            Check = true
+        };
     }
 
-    public Task<Response<StUpdateMainScreenRequest>> UpdateMainScreenAsync(int id, StUpdateMainScreenRequest model)
+    public async Task<Response<StUpdateMainScreenRequest>> UpdateMainScreenAsync(int id, StUpdateMainScreenRequest model)
     {
-        throw new NotImplementedException();
+        var obj = await _unitOfWork.MainScreens.GetFirstOrDefaultAsync(x => x.Id == model.Screen_cat_id);
+
+        if (obj == null)
+        {
+            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
+                _sharLocalizer[Localization.Service]);
+
+            return new Response<StUpdateMainScreenRequest>()
+            {
+                Data = model,
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+
+        obj.Screen_cat_title_ar = model.Screen_main_title_ar;
+        obj.Screen_cat_title_en = model.Screen_main_title_en;
+        obj.Screen_cat_id = model.Screen_main_id;
+
+        _unitOfWork.MainScreens.Update(obj);
+        await _unitOfWork.CompleteAsync();
+
+        return new Response<StUpdateMainScreenRequest>()
+        {
+            Check = true,
+            Data = model,
+            Msg = _sharLocalizer[Localization.Updated]
+        };
     }
 
     public Task<Response<string>> UpdateActiveOrNotMainScreenAsync(int id)
@@ -300,9 +170,43 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
         throw new NotImplementedException();
     }
 
-    public Task<Response<string>> DeleteMainScreenAsync(int id)
+    public async Task<Response<string>> DeleteMainScreenAsync(int id)
     {
-        throw new NotImplementedException();
+        var obj = await _unitOfWork.MainScreens.GetByIdAsync(id);
+
+        if (obj == null)
+        {
+            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
+                _sharLocalizer[Localization.MainScreen]);
+
+            return new Response<string>()
+            {
+                Data = string.Empty,
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+
+        string err = _sharLocalizer[Localization.Error];
+
+        _unitOfWork.MainScreens.Remove(obj);
+
+        bool result = await _unitOfWork.CompleteAsync() > 0;
+
+        if (!result)
+            return new Response<string>()
+            {
+                Check = false,
+                Data = string.Empty,
+                Error = err,
+                Msg = err
+            };
+        return new Response<string>()
+        {
+            Check = true,
+            Data = string.Empty,
+            Msg = _sharLocalizer[Localization.Deleted]
+        };
     }
 
     #endregion

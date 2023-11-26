@@ -14,15 +14,6 @@ public class UnitOfWork : IUnitOfWork
     public IMainScreenRepository MainScreens { get; private set; }
     public IMainScreenCategoryRepository MainScreenCategories { get; private set; }
 
-
-    public INewsRepository News { get; private set; }
-    public IServiceRepository Services { get; private set; }
-    public IServicesCategoryRepository ServicesCategories { get; private set; }
-    public IPoliticsRepository Politics { get; private set; }
-    public IContactUsRepository ContactUs { get; private set; }
-    public IAboutUsRepository AboutUs { get; private set; }
-
-
     public UnitOfWork(KaderDbContext context, IConfiguration config)
     {
         _context = context;
@@ -37,13 +28,6 @@ public class UnitOfWork : IUnitOfWork
         SubMainScreenActions = new SubMainScreenActionRepository(_context);
         MainScreens = new MainScreenRepository(_context);
         MainScreenCategories = new MainScreenCategoryRepository(_context);
-
-        Services = new ServiceRepository(_context);
-        ServicesCategories = new ServicesCategoryRepository(_context);
-        Politics = new PoliticsRepository(_context);
-        ContactUs = new ContactUsRepository(_context);
-        AboutUs = new AboutUsRepository(_context);
-        News = new NewsRepository(_context);
     }
 
     public IDatabaseTransaction BeginTransaction() =>

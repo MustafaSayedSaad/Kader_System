@@ -1,25 +1,15 @@
 ﻿namespace Kader_System.Services.Services.Auth;
 
-public class PermService : IPermService
+public class PermService(UserManager<ApplicationUser> userManager,
+                   IStringLocalizer<SharedResource> sharLocalizer, ILogger<AuthService> logger,
+                   RoleManager<ApplicationRole> roleManager, IUnitOfWork unitOfWork, IHttpContextAccessor accessor) : IPermService
 {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly RoleManager<ApplicationRole> _roleManager;
-    private readonly ILogger<AuthService> _logger;
-    private readonly IStringLocalizer<SharedResource> _sharLocalizer;
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IHttpContextAccessor _accessor;
-
-    public PermService(UserManager<ApplicationUser> userManager,
-                       IStringLocalizer<SharedResource> sharLocalizer, ILogger<AuthService> logger,
-                       RoleManager<ApplicationRole> roleManager, IUnitOfWork unitOfWork, IHttpContextAccessor accessor)
-    {
-        _userManager = userManager;
-        _sharLocalizer = sharLocalizer;
-        _logger = logger;
-        _roleManager = roleManager;
-        _unitOfWork = unitOfWork;
-        _accessor = accessor;
-    }
+    private readonly UserManager<ApplicationUser> _userManager = userManager;
+    private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
+    private readonly ILogger<AuthService> _logger = logger;
+    private readonly IStringLocalizer<SharedResource> _sharLocalizer = sharLocalizer;
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly IHttpContextAccessor _accessor = accessor;
 
     #region Roles
 
@@ -42,14 +32,14 @@ public class PermService : IPermService
             {
                 Data = new List<SelectListForUserResponse>(),
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
         return new Response<IEnumerable<SelectListForUserResponse>>()
         {
-            //Message = _sharLocalizer[Localization.Displayed],
+            //Msg = _sharLocalizer[Localization.Displayed],
             Data = result,
-            IsSuccess = true
+            Check = true
         };
     }
 
@@ -62,9 +52,9 @@ public class PermService : IPermService
             {
                 Data = model,
                 Error = err,
-                Message = string.Format(_sharLocalizer[Localization.IsExist],
+                Msg = string.Format(_sharLocalizer[Localization.IsExist],
                 _sharLocalizer[Localization.Role], $"({model.Name})"),
-                IsSuccess = false
+                Check = false
             };
         var role = new ApplicationRole()
         {
@@ -77,14 +67,14 @@ public class PermService : IPermService
         if (result.Succeeded)
             return new Response<PermCreateRoleRequest>()
             {
-                Message = _sharLocalizer[Localization.Done],
-                IsSuccess = true,
+                Msg = _sharLocalizer[Localization.Done],
+                Check = true,
                 Data = model,
             };
         return new Response<PermCreateRoleRequest>()
         {
             Error = result.Errors.Select(x => x.Description).First(),
-            Message = err
+            Msg = err
         };
     }
 
@@ -103,7 +93,7 @@ public class PermService : IPermService
             {
                 Data = new SelectListForUserRequest(),
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -117,9 +107,9 @@ public class PermService : IPermService
 
         return new Response<SelectListForUserRequest>()
         {
-            IsSuccess = idResult.Succeeded,
+            Check = idResult.Succeeded,
             Data = new SelectListForUserRequest(),
-            Message = idResult.Succeeded ? _sharLocalizer[Localization.Updated] : _sharLocalizer[err]
+            Msg = idResult.Succeeded ? _sharLocalizer[Localization.Updated] : _sharLocalizer[err]
         };
     }
 
@@ -136,7 +126,7 @@ public class PermService : IPermService
             {
                 Data = string.Empty,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -150,7 +140,7 @@ public class PermService : IPermService
             {
                 Data = string.Empty,
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -173,16 +163,16 @@ public class PermService : IPermService
         if (!result)
             return new Response<string>()
             {
-                IsSuccess = false,
+                Check = false,
                 Data = id,
                 Error = err,
-                Message = err
+                Msg = err
             };
         return new Response<string>()
         {
-            IsSuccess = true,
+            Check = true,
             Data = id,
-            Message = _sharLocalizer[Localization.Deleted]
+            Msg = _sharLocalizer[Localization.Deleted]
         };
     }
 
@@ -222,7 +212,7 @@ public class PermService : IPermService
         return new Response<PermGetAllUsersRolesResponse>()
         {
             Data = result,
-            IsSuccess = true
+            Check = true
         };
     }
 
@@ -251,14 +241,14 @@ public class PermService : IPermService
             {
                 Data = new PermGetManagementModelResponse(),
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
         return new Response<PermGetManagementModelResponse>()
         {
             Data = result,
-            IsSuccess = true
+            Check = true
         };
     }
 
@@ -274,8 +264,8 @@ public class PermService : IPermService
         return new Response<PermGetManagementModelResponse>()
         {
             Data = model,
-            Message = _sharLocalizer[Localization.Updated],
-            IsSuccess = true
+            Msg = _sharLocalizer[Localization.Updated],
+            Check = true
         };
 
     }
@@ -300,13 +290,13 @@ public class PermService : IPermService
             {
                 Data = new List<string>(),
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
         return new Response<IEnumerable<string>>()
         {
             Data = allPermissions,
-            IsSuccess = true
+            Check = true
         };
     }
 
@@ -323,7 +313,7 @@ public class PermService : IPermService
             {
                 Data = new PermGetRolesPermissionsResponse(),
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -348,7 +338,7 @@ public class PermService : IPermService
         return new Response<PermGetRolesPermissionsResponse>()
         {
             Data = result,
-            IsSuccess = true
+            Check = true
         };
     }
 
@@ -366,7 +356,7 @@ public class PermService : IPermService
             {
                 Data = new PermUpdateManagementModelRequest(),
                 Error = resultMsg,
-                Message = resultMsg
+                Msg = resultMsg
             };
         }
 
@@ -392,8 +382,8 @@ public class PermService : IPermService
         return new Response<PermUpdateManagementModelRequest>()
         {
             Data = model,
-            IsSuccess = true,
-            Message = _sharLocalizer[Localization.Updated]
+            Check = true,
+            Msg = _sharLocalizer[Localization.Updated]
         };
     }
 

@@ -1,6 +1,4 @@
-﻿using Kader_System.Domain.Interfaces.Setting;
-
-namespace Kader_System.Domain.Interfaces;
+﻿namespace Kader_System.Domain.Interfaces;
 
 public interface IUnitOfWork : IDisposable
 {
@@ -14,15 +12,6 @@ public interface IUnitOfWork : IDisposable
     ISubMainScreenActionRepository SubMainScreenActions { get; }
     IMainScreenRepository MainScreens { get; }
     IMainScreenCategoryRepository MainScreenCategories { get; }
-
-
-
-    INewsRepository News { get; }
-    IServiceRepository Services { get; }
-    IServicesCategoryRepository ServicesCategories { get; }
-    IPoliticsRepository Politics { get; }
-    IContactUsRepository ContactUs { get; }
-    IAboutUsRepository AboutUs { get; }
 
     Task<int> CompleteAsync();
 }

@@ -117,4 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CannotBeFound" xml:space="preserve">
+    <value>{0} cannot be found</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Saved successfully</value>
+  </data>
+  <data name="MainScreen" xml:space="preserve">
+    <value>Main screen</value>
+  </data>
+  <data name="MainScreenCategory" xml:space="preserve">
+    <value>Main screen category</value>
+  </data>
+  <data name="NotFoundData" xml:space="preserve">
+    <value>Not found data</value>
+  </data>
 </root>

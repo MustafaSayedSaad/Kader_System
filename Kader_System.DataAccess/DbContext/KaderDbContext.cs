@@ -21,14 +21,6 @@ public class KaderDbContext : IdentityDbContext<ApplicationUser, ApplicationRole
     public DbSet<StAction> Actions { get; set; }
     public DbSet<StSubMainScreenAction> SubMainScreenActions { get; set; }
 
-
-    public DbSet<SharService> Services { get; set; }
-    public DbSet<SharServicesCategory> ServicesCategories { get; set; }
-    public DbSet<SharNews> News { get; set; }
-    public DbSet<SharPolitics> Politics { get; set; }
-    public DbSet<SharContactUs> ContactUs { get; set; }
-    public DbSet<SharAboutUs> AboutUs { get; set; }
-
     #endregion
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

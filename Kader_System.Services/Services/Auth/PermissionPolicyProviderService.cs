@@ -1,11 +1,8 @@
 ﻿namespace Kader_System.Services.Services.Auth;
 
-public class PermissionPolicyProviderService : IAuthorizationPolicyProvider
+public class PermissionPolicyProviderService(IOptions<AuthorizationOptions> options) : IAuthorizationPolicyProvider
 {
-    public DefaultAuthorizationPolicyProvider FallbackPolicyProvider { get; }
-
-    public PermissionPolicyProviderService(IOptions<AuthorizationOptions> options) =>
-        FallbackPolicyProvider = new DefaultAuthorizationPolicyProvider(options);
+    public DefaultAuthorizationPolicyProvider FallbackPolicyProvider { get; } = new DefaultAuthorizationPolicyProvider(options);
 
     public Task<AuthorizationPolicy> GetDefaultPolicyAsync() =>
          FallbackPolicyProvider.GetDefaultPolicyAsync();

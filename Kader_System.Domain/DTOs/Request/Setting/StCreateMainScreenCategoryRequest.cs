@@ -1,6 +1,6 @@
 ﻿namespace Kader_System.Domain.Dtos.Request.Setting;
 
-public class StCreateMainScreenRequest
+public class StCreateMainScreenCategoryRequest
 {
     [Display(Name = Annotations.NameInEnglish), Required(ErrorMessage = Annotations.FieldIsRequired)]
     public string Screen_main_title_en { get; set; } = string.Empty;
@@ -8,5 +8,6 @@ public class StCreateMainScreenRequest
     [Display(Name = Annotations.NameInArabic), Required(ErrorMessage = Annotations.FieldIsRequired)]
     public string Screen_main_title_ar { get; set; } = string.Empty;
 
-    public int Screen_main_id { get; set; }
+    [AllowedLetters(FileSettings.SpecialChar), MaxFileLettersCount(FileSettings.Length)]
+    public IFormFile? Screen_main_image { get; set; }
 }

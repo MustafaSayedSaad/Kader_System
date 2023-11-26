@@ -3,5 +3,5 @@
 public class PaginationData<T> where T : class
 {
     public int TotalRecords { get; set; } = 0;
-    public List<T> List { get; set; }  = new();
+    public List<T> Items { get; set; }  = [];
 }

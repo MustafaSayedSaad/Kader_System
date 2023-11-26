@@ -14,7 +14,8 @@ public static class ModelBuilderExtensions
             new ApplicationRole()
             {
                 Id = SuperAdmin.RoleId,
-                Name = Domain.Constants.Enums.RolesEnums.Superadmin.ToString(),
+                Name = RolesEnums.Superadmin.ToString(),
+                Title_name_en = SuperAdmin.RoleNameInAr,
                 ConcurrencyStamp = "1",
                 NormalizedName = "SUPERADMIN"
             });
@@ -24,10 +25,10 @@ public static class ModelBuilderExtensions
             new ApplicationUser()
             {
                 Id = SuperAdmin.Id,
-                UserName = "AhmedBaary",
-                NormalizedUserName = "AHMEDBAARY",
-                Email = "ahmed88@gmail.com",
-                NormalizedEmail = "AHMED88@GMAIL.COM",
+                UserName = "Mr_Mohammed",
+                NormalizedUserName = "Mohammed",
+                Email = "mohammed88@gmail.com",
+                NormalizedEmail = "MOHAMMED88@GMAIL.COM",
                 EmailConfirmed = true,
                 IsActive = true,
                 PasswordHash = new PasswordHasher<ApplicationUser>().HashPassword(null!, SuperAdmin.Password),

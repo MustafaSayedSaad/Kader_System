@@ -25,7 +25,7 @@ public static class SD
     public static class Modules
     {
         public const string Auth = "Auth";
-        public const string Shared = "Shared";
+        public const string Setting = "Setting";
         public const string V1 = "v1";
         public const string Bearer = "Bearer";
 
@@ -34,7 +34,8 @@ public static class SD
     {
         public const string Id = "b74ddd14-6340-4840-95c2-db12554843e5basb1";
         public const string RoleId = "fab4fac1-c546-41de-aebc-a14da68957ab1";
-        public static string Password = "AhmedBaary1234";
+        public static string Password = "Mohammed88";
+        public static string RoleNameInAr = "سوبر أدمن";
     }
     public static class Roles
     {
@@ -67,17 +68,30 @@ public static class SD
     }
     public static class ApiRoutes
     {
-        public class ServicesCategory
+        public class MainScreenCategory
         {
-            public const string ListOfServicesCategory = "ListOfServicesCategory";
-            public const string GetAllServicesCategory = "GetAllServicesCategory";
-            public const string CreateServicesCategory = "CreateServicesCategory";
-            public const string UpdateServicesCategory = "UpdateServicesCategory/{id}";
-            public const string GetServicesCategoryById = "GetServicesCategoryById/{id}";
-            public const string GetServicesCategoryWithAllServicesById = "GetServicesCategoryWithAllServicesById/{id}";
-            public const string DeleteServicesCategory = "DeleteServicesCategory/{id}";
-            public const string ChangeActiveOrNot = "ChangeActiveOrNotServicesCategory/{id}";
+            public const string ListOfMainScreensCategories = "screen_main/create";
+            public const string GetAllMainScreenCategories = "screen_main";
+            public const string CreateMainScreenCategory = "screen_main";
+            public const string UpdateMainScreenCategory = "screen_main/{id}";
+            public const string GetMainScreenCategoryById = "screen_main/{id}";
+            public const string DeleteMainScreenCategory = "screen_main/{id}";
+            public const string ChangeActiveOrNot = "ChangeActiveOrNotService/{id}";
         }
+
+        public class MainScreen
+        {
+            public const string ListOfMainScreens = "screen_cat/create";
+            public const string GetAllMainScreens = "screen_cat";
+            public const string CreateMainScreen = "screen_cat";
+            public const string UpdateMainScreen = "screen_cat/{id}";
+            public const string GetMainScreenById = "screen_cat/{id}";
+            public const string DeleteMainScreen = "screen_cat/{id}";
+            public const string ChangeActiveOrNot = "ChangeActiveOrNotService/{id}";
+        }
+
+
+
         public class Services
         {
             public const string ListOfServices = "ListOfServices/{servicesCategoryId}";
@@ -179,6 +193,20 @@ public static class SD
 
         public const string CannotBeFound = "CannotBeFound";
         public const string Departments = "Departments";
+
+        public const string MainScreen = "MainScreen";
+        public const string MainScreenCategory = "MainScreenCategory";
+
+
+
+
+
+
+
+
+
+
+
         public const string DepartmentsExist = "DepartmentsExist";
         public const string Jobs = "Jobs";
         public const string JobExist = "JobExist";
@@ -363,6 +391,7 @@ public static class SD
         public const string Task = "Task";
         public const string UserName = "User name";
         public const string UserNameOrEmail = "User name or email";
+
         public const string CourseAsset = "Course asset";
         public const string CourseAssetDescription = "Course asset description";//
         public const string CourseAssetType = "Course asset type";

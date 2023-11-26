@@ -1,34 +1,26 @@
 ﻿namespace Kader_System.Services.Services.Auth;
 
-public class DbInitSeedsService : IDbInitSeedsService
+public class DbInitSeedsService(RoleManager<ApplicationRole> roleManager) : IDbInitSeedsService
 {
-    private readonly RoleManager<ApplicationRole> _roleManager;
-
-    public DbInitSeedsService(RoleManager<ApplicationRole> roleManager) =>
-        _roleManager = roleManager;
+    private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
 
     #region Claims
 
     public async Task SeedClaimsForSuperAdmin()
     {
-        var superAdminRole = await _roleManager.FindByNameAsync(Domain.Constants.Enums.RolesEnums.Superadmin.ToString());
+        var superAdminRole = await _roleManager.FindByNameAsync(RolesEnums.Superadmin.ToString());
 
-        List<string> modules = new();
+        List<string> modules = [];
 
         foreach (var item in Enum.GetValues(typeof(PermissionsModulesEnums)))
             modules.Add(item.ToString()!);
 
-
-        //string[] modules = { PermissionsModules.Companies.ToString(), PermissionsModules.Auth.ToString() };
-
-        //string[] modules = { PermissionsModules.Companies.ToString(), PermissionsModules.Auth.ToString() };
-
         var allClaims = await _roleManager.GetClaimsAsync(superAdminRole!);
-        List<string> allPermissions = new();
-        foreach (var module in modules)
+        List<string> allPermissions = [];
+        foreach (string module in modules)
             allPermissions.AddRange(Permissions.GeneratePermissionsList(module));
 
-        foreach (var permission in allPermissions)
+        foreach (string permission in allPermissions)
             if (!allClaims.Any(c => c.Type == RolesClaims.Permission && c.Value == permission))
                 await _roleManager.AddClaimAsync(superAdminRole!, new Claim(RolesClaims.Permission, permission));
     }
