@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Newtonsoft.Json;
-
-namespace Kader_System.Services.Services.Setting;
+﻿namespace Kader_System.Services.Services.Setting;
 
 public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedResource> sharLocalizer, IMapper mapper) : ISubMainScreenService
 {
@@ -241,9 +238,39 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
         };
     }
 
-    public Task<Response<StGetSubMainScreenByIdResponse>> GetSubMainScreenByIdAsync(int id)
+    public async Task<Response<StGetSubMainScreenByIdResponse>> GetSubMainScreenByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var obj = await _unitOfWork.SubMainScreens.GetFirstOrDefaultAsync(x => x.Id == id, includeProperties: "ListOfActions,Action");
+
+        if (obj is null)
+        {
+            string resultMsg = _sharLocalizer[Localization.NotFoundData];
+
+            return new Response<StGetSubMainScreenByIdResponse>()
+            {
+                Data = new(),
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+        return new Response<StGetSubMainScreenByIdResponse>()
+        {
+            Data = new StGetSubMainScreenByIdResponse
+            {
+                Id = id,
+                Screen_cat_id = obj.Id,
+                Screen_sub_title_ar = obj.Screen_sub_title_ar,
+                Screen_sub_title_en = obj.Screen_sub_title_en,
+                Url = obj.Url,
+                Actions = obj.ListOfActions.Select(x => new ActionsData
+                {
+                    Id = x.ActionId,
+                    Name = x.Action.Name,
+                    NameInEnglish = x.Action.NameInEnglish
+                }).ToList()
+            },
+            Check = true
+        };
     }
 
     public Task<Response<StUpdateSubMainScreenRequest>> UpdateSubMainScreenAsync(int id, StUpdateMainScreenRequest model)

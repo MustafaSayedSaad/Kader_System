@@ -9,6 +9,6 @@ public class StGetSubMainScreenByIdResponse
     public string Url { get; set; } = string.Empty;
     public List<ActionsData> Actions { get; set; } = [];
 }
-public class ActionsData : SelectListResponse
+public class ActionsData : SpecificSelectListResponse
 {
 }
