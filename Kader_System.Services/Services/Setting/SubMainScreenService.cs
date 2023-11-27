@@ -9,55 +9,6 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
     #region Sub main screen
 
 
-    public async Task<Response<StCreateMainScreenRequest>> CreateMainScreenAsync(StCreateMainScreenRequest model)
-    {
-        await _unitOfWork.MainScreens.AddAsync(new StMainScreen
-        {
-            Screen_cat_title_ar = model.Screen_main_title_ar,
-            Screen_cat_title_en = model.Screen_main_title_en,
-            Screen_cat_id = model.Screen_main_id
-        });
-        await _unitOfWork.CompleteAsync();
-
-        return new Response<StCreateMainScreenRequest>()
-        {
-            Msg = _sharLocalizer[Localization.Done],
-            Check = true,
-            Data = model
-        };
-    }
-
-    public async Task<Response<StGetMainScreenByIdResponse>> GetMainScreenByIdAsync(int id)
-    {
-        var obj = await _unitOfWork.MainScreens.GetFirstOrDefaultAsync(x => x.Id == id, includeProperties: "MainScreenCategory");
-
-        if (obj is null)
-        {
-            string resultMsg = _sharLocalizer[Localization.NotFoundData];
-
-            return new Response<StGetMainScreenByIdResponse>()
-            {
-                Data = new StGetMainScreenByIdResponse(),
-                Error = resultMsg,
-                Msg = resultMsg
-            };
-        }
-        return new Response<StGetMainScreenByIdResponse>()
-        {
-            Data = new StGetMainScreenByIdResponse
-            {
-                Id = id,
-                Screen_cat_id = obj.Id,
-                Screen_cat_title_ar = obj.Screen_cat_title_ar,
-                Screen_cat_title_en = obj.Screen_cat_title_en,
-                Screen_main_id = obj.Screen_cat_id,
-                Main_title_ar = obj.MainScreenCategory.Screen_main_title_ar,
-                Main_title_en = obj.MainScreenCategory.Screen_main_title_en
-            },
-            Check = true
-        };
-    }
-
     public async Task<Response<StUpdateMainScreenRequest>> UpdateMainScreenAsync(int id, StUpdateMainScreenRequest model)
     {
         var obj = await _unitOfWork.MainScreens.GetFirstOrDefaultAsync(x => x.Id == model.Screen_cat_id);
@@ -240,7 +191,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
 
     public async Task<Response<StGetSubMainScreenByIdResponse>> GetSubMainScreenByIdAsync(int id)
     {
-        var obj = await _unitOfWork.SubMainScreens.GetFirstOrDefaultAsync(x => x.Id == id, includeProperties: "ListOfActions,Action");
+        var obj = await _unitOfWork.SubMainScreens.GetFirstOrDefaultAsync(x => x.Id == id, includeProperties: "ListOfActions.Action");
 
         if (obj is null)
         {
@@ -273,7 +224,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
         };
     }
 
-    public Task<Response<StUpdateSubMainScreenRequest>> UpdateSubMainScreenAsync(int id, StUpdateMainScreenRequest model)
+    public async Task<Response<StUpdateSubMainScreenRequest>> UpdateSubMainScreenAsync(int id, StUpdateMainScreenRequest model)
     {
         throw new NotImplementedException();
     }
