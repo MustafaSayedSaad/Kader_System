@@ -29,3 +29,5 @@ global using Kader_System.Domain.DTOs.Response.Setting;
 global using Kader_System.Domain.Dtos.Request.Setting;
 global using Kader_System.Services.IServices.Setting;
 global using Kader_System.Domain.Models.Setting;
+global using Kader_System.Domain.Interfaces.Logging;
+global using Newtonsoft.Json;

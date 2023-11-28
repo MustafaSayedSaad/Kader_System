@@ -120,6 +120,9 @@
   <data name="CannotBeFound" xml:space="preserve">
     <value>{0} ليست موجودة</value>
   </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>تم الحذف بنجاح</value>
+  </data>
   <data name="Done" xml:space="preserve">
     <value>تم الحفظ بنجاح</value>
   </data>
@@ -131,5 +134,11 @@
   </data>
   <data name="NotFoundData" xml:space="preserve">
     <value>لا يوجد بيانات</value>
+  </data>
+  <data name="SubMainScreen" xml:space="preserve">
+    <value>الشاشة الفرعية</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>تم التحديث بنجاح</value>
   </data>
 </root>

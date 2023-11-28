@@ -76,7 +76,6 @@ public static class SD
             public const string UpdateMainScreenCategory = "screen_main/{id}";
             public const string GetMainScreenCategoryById = "screen_main/{id}";
             public const string DeleteMainScreenCategory = "screen_main/{id}";
-            public const string ChangeActiveOrNot = "ChangeActiveOrNotService/{id}";
         }
 
         public class MainScreen
@@ -87,50 +86,16 @@ public static class SD
             public const string UpdateMainScreen = "screen_cat/{id}";
             public const string GetMainScreenById = "screen_cat/{id}";
             public const string DeleteMainScreen = "screen_cat/{id}";
-            public const string ChangeActiveOrNot = "ChangeActiveOrNotService/{id}";
         }
 
-
-
-        public class Services
+        public class SubMainScreen
         {
-            public const string ListOfServices = "ListOfServices/{servicesCategoryId}";
-            public const string GetAllServices = "GetAllServices";
-            public const string GetLastThreeServices = "GetLastThreeServices";
-            public const string CreateService = "CreateService";
-            public const string UpdateServices = "UpdateServices/{id}";
-            public const string GetServicesById = "GetServicesById/{id}";
-            public const string DeleteService = "DeleteService/{id}";
-            public const string ChangeActiveOrNot = "ChangeActiveOrNotService/{id}";
-        }
-        public class News
-        {
-            public const string GetAllNews = "GetAllNews";
-            public const string GetLastThreeNews = "GetLastThreeNews";
-            public const string CreateNews = "CreateNews";
-            public const string UpdateNews = "UpdateNews/{id}";
-            public const string GetNewsById = "GetNewsById/{id}";
-            public const string DeleteNews = "DeleteNews/{id}";
-            public const string ChangeActiveOrNot = "ChangeActiveOrNotNews/{id}";
-        }
-        public class AboutUs
-        {
-            public const string GetAboutUs = "GetAboutUs";
-            public const string CreateAboutUs = "CreateAboutUs";
-            public const string UpdateAboutUs = "UpdateAboutUs";
-            public const string GetAboutUsForEdit = "GetAboutUsForEdit";
-            public const string DeleteAboutUs = "DeleteAboutUs/{id}";
-        }
-        public class ContactUs
-        {
-            public const string GetAllContactUs = "GetAllContactUs";
-            public const string CreateContactUs = "CreateContactUs";
-        }
-        public class Politics
-        {
-            public const string GetAllPolicies = "GetAllPolicies";
-            public const string CreatePolitics = "CreatePolitics";
-            public const string DeletePolitics = "DeletePolitics/{id}";
+            public const string ListOfSubMainScreens = "screen_sub/create";
+            public const string GetAllSubMainScreens = "screen_sub";
+            public const string CreateSubMainScreen = "screen_sub";
+            public const string UpdateSubMainScreen = "screen_sub/{id}";
+            public const string GetSubMainScreenById = "screen_sub/{id}";
+            public const string DeleteSubMainScreen = "screen_sub/{id}";
         }
         public class User
         {
@@ -194,8 +159,9 @@ public static class SD
         public const string CannotBeFound = "CannotBeFound";
         public const string Departments = "Departments";
 
-        public const string MainScreen = "MainScreen";
         public const string MainScreenCategory = "MainScreenCategory";
+        public const string MainScreen = "MainScreen";
+        public const string SubMainScreen = "SubMainScreen";
 
 
 

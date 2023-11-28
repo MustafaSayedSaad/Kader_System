@@ -28,7 +28,7 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
 
             return new Response<IEnumerable<StSelectListForMainScreenResponse>>()
             {
-                Data = new List<StSelectListForMainScreenResponse>(),
+                Data = [],
                 Error = resultMsg,
                 Msg = resultMsg
             };
@@ -70,7 +70,7 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
             {
                 Data = new StGetAllMainScreensResponse()
                 {
-                    Items = new List<MainScreenData>()
+                    Items = []
                 },
                 Error = resultMsg,
                 Msg = resultMsg
@@ -140,7 +140,7 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
         if (obj == null)
         {
             string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
-                _sharLocalizer[Localization.Service]);
+                _sharLocalizer[Localization.MainScreen]);
 
             return new Response<StUpdateMainScreenRequest>()
             {

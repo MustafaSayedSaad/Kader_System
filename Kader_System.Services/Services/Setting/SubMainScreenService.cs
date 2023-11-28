@@ -1,92 +1,13 @@
 ﻿namespace Kader_System.Services.Services.Setting;
 
-public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedResource> sharLocalizer, IMapper mapper) : ISubMainScreenService
+public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedResource> sharLocalizer, IMapper mapper, ILoggingRepository loggingRepository) : ISubMainScreenService
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IStringLocalizer<SharedResource> _sharLocalizer = sharLocalizer;
     private readonly IMapper _mapper = mapper;
+    private readonly ILoggingRepository _loggingRepository = loggingRepository;
 
     #region Sub main screen
-
-
-    public async Task<Response<StUpdateMainScreenRequest>> UpdateMainScreenAsync(int id, StUpdateMainScreenRequest model)
-    {
-        var obj = await _unitOfWork.MainScreens.GetFirstOrDefaultAsync(x => x.Id == model.Screen_cat_id);
-
-        if (obj == null)
-        {
-            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
-                _sharLocalizer[Localization.Service]);
-
-            return new Response<StUpdateMainScreenRequest>()
-            {
-                Data = model,
-                Error = resultMsg,
-                Msg = resultMsg
-            };
-        }
-
-        obj.Screen_cat_title_ar = model.Screen_main_title_ar;
-        obj.Screen_cat_title_en = model.Screen_main_title_en;
-        obj.Screen_cat_id = model.Screen_main_id;
-
-        _unitOfWork.MainScreens.Update(obj);
-        await _unitOfWork.CompleteAsync();
-
-        return new Response<StUpdateMainScreenRequest>()
-        {
-            Check = true,
-            Data = model,
-            Msg = _sharLocalizer[Localization.Updated]
-        };
-    }
-
-    public Task<Response<string>> UpdateActiveOrNotMainScreenAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<Response<string>> DeleteMainScreenAsync(int id)
-    {
-        var obj = await _unitOfWork.MainScreens.GetByIdAsync(id);
-
-        if (obj == null)
-        {
-            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
-                _sharLocalizer[Localization.MainScreen]);
-
-            return new Response<string>()
-            {
-                Data = string.Empty,
-                Error = resultMsg,
-                Msg = resultMsg
-            };
-        }
-
-        string err = _sharLocalizer[Localization.Error];
-
-        _unitOfWork.MainScreens.Remove(obj);
-
-        bool result = await _unitOfWork.CompleteAsync() > 0;
-
-        if (!result)
-            return new Response<string>()
-            {
-                Check = false,
-                Data = string.Empty,
-                Error = err,
-                Msg = err
-            };
-        return new Response<string>()
-        {
-            Check = true,
-            Data = string.Empty,
-            Msg = _sharLocalizer[Localization.Deleted]
-        };
-    }
-
-
-
 
     public async Task<Response<IEnumerable<StSelectListForSubMainScreenResponse>>> ListOfSubMainScreensAsync(string lang)
     {
@@ -94,7 +15,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
                 await _unitOfWork.SubMainScreens.GetSpecificSelectAsync(null!,
                 select: x => new StSelectListForSubMainScreenResponse
                 {
-                    Id = x.Id,             
+                    Id = x.Id,
                     Sub_title = lang == Localization.Arabic ? x.Screen_sub_title_ar : x.Screen_sub_title_en,
                     Screen_main_id = x.Screen_main_id,
                     Url = x.Url
@@ -168,18 +89,18 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
 
     public async Task<Response<StCreateSubMainScreenRequest>> CreateSubMainScreenAsync(StCreateSubMainScreenRequest model)
     {
-            var obj = await _unitOfWork.SubMainScreens.AddAsync(new StSubMainScreen
+        var obj = await _unitOfWork.SubMainScreens.AddAsync(new StSubMainScreen
+        {
+            Screen_sub_title_en = model.Screen_sub_title_en,
+            Screen_sub_title_ar = model.Screen_sub_title_ar,
+            Screen_main_id = model.Screen_main_id,
+            Url = model.Url,
+            ListOfActions = model.Actions.Select(ob => new StSubMainScreenAction
             {
-                Screen_sub_title_en = model.Screen_sub_title_en,
-                Screen_sub_title_ar = model.Screen_sub_title_ar,
-                Screen_main_id = model.Screen_main_id,
-                Url = model.Url,
-                ListOfActions = model.Actions.Select(ob => new StSubMainScreenAction
-                {
-                    ActionId = ob
-                }).ToList()
-            });
-             await _unitOfWork.CompleteAsync();
+                ActionId = ob
+            }).ToList()
+        });
+        await _unitOfWork.CompleteAsync();
 
         return new Response<StCreateSubMainScreenRequest>()
         {
@@ -204,6 +125,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
                 Msg = resultMsg
             };
         }
+
         return new Response<StGetSubMainScreenByIdResponse>()
         {
             Data = new StGetSubMainScreenByIdResponse
@@ -224,9 +146,60 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
         };
     }
 
-    public async Task<Response<StUpdateSubMainScreenRequest>> UpdateSubMainScreenAsync(int id, StUpdateMainScreenRequest model)
+    public async Task<Response<StUpdateSubMainScreenRequest>> UpdateSubMainScreenAsync(int id, StUpdateSubMainScreenRequest model)
     {
-        throw new NotImplementedException();
+        var obj = await _unitOfWork.SubMainScreens.GetFirstOrDefaultAsync(x => x.Id == id, includeProperties: "ListOfActions");
+
+        if (obj is null)
+        {
+            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
+                _sharLocalizer[Localization.SubMainScreen]);
+
+            return new Response<StUpdateSubMainScreenRequest>()
+            {
+                Data = new(),
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+
+        using var transaction = _unitOfWork.BeginTransaction();
+        try
+        {
+             _unitOfWork.SubMainScreenActions.RemoveRange(obj.ListOfActions);
+            await _unitOfWork.CompleteAsync();
+
+            var resultObj = await _unitOfWork.SubMainScreens.AddAsync(new StSubMainScreen
+            {
+                Screen_sub_title_en = model.Screen_sub_title_en,
+                Screen_sub_title_ar = model.Screen_sub_title_ar,
+                Screen_main_id = model.Screen_main_id,
+                Url = model.Url,
+                ListOfActions = model.Actions.Select(ob => new StSubMainScreenAction
+                {
+                    ActionId = ob
+                }).ToList()
+            });
+            await _unitOfWork.CompleteAsync();
+            transaction.Commit();
+
+            return new Response<StUpdateSubMainScreenRequest>()
+            {
+                Msg = _sharLocalizer[Localization.Done],
+                Check = true,
+                Data = model
+            };
+        }
+        catch (Exception ex)
+        {
+            transaction.Rollback();
+            await _loggingRepository.LogExceptionInDb(ex, JsonConvert.SerializeObject(model));
+            return new Response<StUpdateSubMainScreenRequest>()
+            {
+                Error = ex.Message,
+                Msg = ex.Message + (ex.InnerException == null ? string.Empty : ex.InnerException.Message)
+            };
+        }
     }
 
     public Task<Response<string>> UpdateActiveOrNotSubMainScreenAsync(int id)
@@ -234,9 +207,43 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
         throw new NotImplementedException();
     }
 
-    public Task<Response<string>> DeleteSubMainScreenAsync(int id)
+    public async Task<Response<string>> DeleteSubMainScreenAsync(int id)
     {
-        throw new NotImplementedException();
+        var obj = await _unitOfWork.SubMainScreens.GetFirstOrDefaultAsync(x => x.Id == id, includeProperties: "ListOfActions");
+
+        if (obj == null)
+        {
+            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
+                _sharLocalizer[Localization.SubMainScreen]);
+
+            return new Response<string>()
+            {
+                Data = string.Empty,
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+
+        string err = _sharLocalizer[Localization.Error];
+
+        _unitOfWork.SubMainScreens.Remove(obj);
+
+        bool result = await _unitOfWork.CompleteAsync() > 0;
+
+        if (!result)
+            return new Response<string>()
+            {
+                Check = false,
+                Data = string.Empty,
+                Error = err,
+                Msg = err
+            };
+        return new Response<string>()
+        {
+            Check = true,
+            Data = string.Empty,
+            Msg = _sharLocalizer[Localization.Deleted]
+        };
     }
 
     #endregion
