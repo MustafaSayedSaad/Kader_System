@@ -2,29 +2,52 @@
 
 public static class Permissions
 {
-    public static List<string> GeneratePermissionsList(string module)
+    public static List<GetPermissionsWithActions> GeneratePermissionsList(string module)
     {
         if (module == "Auth")
             return
             [
-                $"Permissions.{module}.All"
+                new()
+                {
+                    ClaimValue = $"Permissions.{module}.View",
+                    ActionId = (int)ActionsEnums.View
+                }
             ];
 
         else
             return
             [
-                $"Permissions.{module}.All",
-                $"Permissions.{module}.Ptint",
-                $"Permissions.{module}.Create",
-                $"Permissions.{module}.Edit",
-                $"Permissions.{module}.Delete",
-                $"Permissions.{module}.ForceDelete"
+                new()
+                {
+                    ClaimValue = $"Permissions.{module}.View",
+                    ActionId = (int)ActionsEnums.View
+                },
+                new()
+                {
+                    ClaimValue = $"Permissions.{module}.Ptint",
+                    ActionId = (int)ActionsEnums.Ptint
+                },
+                new()
+                {
+                    ClaimValue = $"Permissions.{module}.Edit",
+                    ActionId = (int)ActionsEnums.Edit
+                },
+                new()
+                {
+                    ClaimValue = $"Permissions.{module}.Delete",
+                    ActionId = (int)ActionsEnums.Delete
+                },
+                new()
+                {
+                    ClaimValue = $"Permissions.{module}.ForceDelete",
+                    ActionId = (int)ActionsEnums.ForceDelete
+                }
             ];
     }
 
-    public static List<string> GenerateAllPermissions()
+    public static List<GetPermissionsWithActions> GenerateAllPermissions()
     {
-        var allPermissions = new List<string>();
+        List<GetPermissionsWithActions> allPermissions = [];
 
         var modules = Enum.GetValues(typeof(PermissionsModulesEnums));
 
@@ -36,13 +59,13 @@ public static class Permissions
 
     public static class Auth
     {
-        public const string All = "Permissions.Auth.All";
+        public const string View = "Permissions.Auth.View";
     }
 
 
     public static class Companies
     {
-        public const string All = "Permissions.Companies.All";
+        public const string View = "Permissions.Companies.View";
         public const string Ptint = "Permissions.Companies.Ptint";
         public const string Create = "Permissions.Companies.Create";
         public const string Edit = "Permissions.Companies.Edit";

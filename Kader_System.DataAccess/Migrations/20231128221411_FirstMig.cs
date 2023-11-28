@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Kader_System.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class ChangingOfDataSeed : Migration
+    public partial class FirstMig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -368,9 +368,6 @@ namespace Kader_System.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Sub_title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Screen_code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ActionId = table.Column<int>(type: "int", nullable: false),
                     Sub_id = table.Column<int>(type: "int", nullable: false),
                     RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -434,13 +431,13 @@ namespace Kader_System.DataAccess.Migrations
                 schema: "dbo",
                 table: "Auth_Roles",
                 columns: new[] { "Id", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NormalizedName", "Title_name_en", "UpdateBy", "UpdateDate" },
-                values: new object[] { "fab4fac1-c546-41de-aebc-a14da68957ab1", "1", null, null, null, null, true, false, "Superadmin", "SUPERADMIN", "سوبر أدمن", null, null });
+                values: new object[] { "fab4fac1-c546-41de-aebc-a14da68957ab1", "1", null, null, null, null, true, false, "سوبر أدمن", "SUPERADMIN", "Superadmin", null, null });
 
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "Auth_Users",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "Email", "EmailConfirmed", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdateBy", "UpdateDate", "UserName", "VisiblePassword" },
-                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5basb1", 0, "35503e31-aaa3-4739-a791-3023c634ec06", null, null, "mohammed88@gmail.com", true, null, null, true, false, false, null, "MOHAMMED88@GMAIL.COM", "Mohammed", "AQAAAAIAAYagAAAAEHqtYw8p8KuR7QEAnL0wZi/vBDeyREhVqJ3cMNJrlCS0REeIH8zMYJ6qZjfxec7vbQ==", null, false, "9065a11b-83e0-4c1a-a155-a8f48ba2ff29", false, null, null, "Mr_Mohammed", "Mohammed88" });
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5basb1", 0, "9e2fe29d-a5fd-43b4-89c6-9af0eea45413", null, null, "mohammed88@gmail.com", true, null, null, true, false, false, null, "MOHAMMED88@GMAIL.COM", "Mohammed", "AQAAAAIAAYagAAAAEEUaRejv1Wv/q0J7mhZ2nGxIFxe+4gnwOiTpW5J23/FPJ7rSFo0G/OqKHjRw4gu6Sw==", null, false, "3c748041-cf1d-4024-94cc-ea92b7e87bee", false, null, null, "Mr_Mohammed", "Mohammed88" });
 
             migrationBuilder.InsertData(
                 table: "St_Actions",

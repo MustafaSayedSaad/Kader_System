@@ -274,10 +274,10 @@ public class PermService(UserManager<ApplicationUser> userManager,
 
     #region Spicial to permissions(Claims) of role
 
-    public async Task<Response<IEnumerable<string>>> GetAllPermissionsByCategoryNameAsync(List<string> permissionsCategoryNames)
+    public async Task<Response<IEnumerable<GetPermissionsWithActions>>> GetAllPermissionsByCategoryNameAsync(List<string> permissionsCategoryNames)
     {
 
-        var allPermissions = new List<string>();
+        var allPermissions = new List<GetPermissionsWithActions>();
 
         foreach (var module in permissionsCategoryNames)
             await Task.Run(() => allPermissions.AddRange(Permissions.GeneratePermissionsList(module.ToString()!)));
@@ -286,14 +286,14 @@ public class PermService(UserManager<ApplicationUser> userManager,
         {
             string resultMsg = _sharLocalizer[Localization.NotFoundData];
 
-            return new Response<IEnumerable<string>>()
+            return new Response<IEnumerable<GetPermissionsWithActions>>()
             {
-                Data = new List<string>(),
+                Data = [],
                 Error = resultMsg,
                 Msg = resultMsg
             };
         }
-        return new Response<IEnumerable<string>>()
+        return new Response<IEnumerable<GetPermissionsWithActions>>()
         {
             Data = allPermissions,
             Check = true
@@ -321,7 +321,7 @@ public class PermService(UserManager<ApplicationUser> userManager,
         var allClaims = Permissions.GenerateAllPermissions(); // It is meant all endpoints
         var allPermissions = allClaims.Select(p => new CheckBox
         {
-            DisplayValue = p
+            DisplayValue = p.ClaimValue
         }).ToList();
 
         foreach (var permission in allPermissions)

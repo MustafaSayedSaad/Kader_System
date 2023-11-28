@@ -17,26 +17,23 @@ public class DbInitSeedsService(RoleManager<ApplicationRole> roleManager, IUnitO
             modules.Add(item.ToString()!);
 
         var allClaims = await _roleManager.GetClaimsAsync(superAdminRole!);
-        List<string> allPermissions = [];
+        List<GetPermissionsWithActions> allRoleClaims = [];
         foreach (string module in modules)
-            allPermissions.AddRange(Permissions.GeneratePermissionsList(module));
+            allRoleClaims.AddRange(Permissions.GeneratePermissionsList(module));
 
-        foreach (string permission in allPermissions)
-            if (!allClaims.Any(c => c.Type == RolesClaims.Permission && c.Value == permission))
+        foreach (var roleClaim in allRoleClaims)
+            if (!allClaims.Any(c => c.Type == RolesClaims.Permission &&  c.Value == roleClaim.ClaimValue))
             {
-                await _roleManager.AddClaimAsync(superAdminRole!, new Claim(RolesClaims.Permission, permission));
+                //await _roleManager.AddClaimAsync(superAdminRole!, new Claim(RolesClaims.Permission, permission));
 
                 await _unitOfWork.RoleClaims.AddAsync(new ApplicationRoleClaim
                 {
                     RoleId = superAdminRole!.Id,
                     ClaimType = RolesClaims.Permission,
-                    ClaimValue = permission,
-                    Sub_title = "s",
-                    Screen_code = "1_s",
-                    Url = "ss",
-
+                    ClaimValue = roleClaim.ClaimValue,
+                    ActionId = roleClaim.ActionId
                 });
-
+                await _unitOfWork.CompleteAsync();
             }
     }
 

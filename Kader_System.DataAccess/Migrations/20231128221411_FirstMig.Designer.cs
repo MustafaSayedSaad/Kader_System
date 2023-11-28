@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kader_System.DataAccess.Migrations
 {
     [DbContext(typeof(KaderDbContext))]
-    [Migration("20231128143101_ChangingOfDataSeed")]
-    partial class ChangingOfDataSeed
+    [Migration("20231128221411_FirstMig")]
+    partial class FirstMig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -86,9 +86,9 @@ namespace Kader_System.DataAccess.Migrations
                             ConcurrencyStamp = "1",
                             IsActive = true,
                             IsDeleted = false,
-                            Name = "Superadmin",
+                            Name = "سوبر أدمن",
                             NormalizedName = "SUPERADMIN",
-                            Title_name_en = "سوبر أدمن"
+                            Title_name_en = "Superadmin"
                         });
                 });
 
@@ -113,20 +113,8 @@ namespace Kader_System.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Screen_code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Sub_id")
                         .HasColumnType("int");
-
-                    b.Property<string>("Sub_title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -236,7 +224,7 @@ namespace Kader_System.DataAccess.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5basb1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "35503e31-aaa3-4739-a791-3023c634ec06",
+                            ConcurrencyStamp = "9e2fe29d-a5fd-43b4-89c6-9af0eea45413",
                             Email = "mohammed88@gmail.com",
                             EmailConfirmed = true,
                             IsActive = true,
@@ -244,9 +232,9 @@ namespace Kader_System.DataAccess.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MOHAMMED88@GMAIL.COM",
                             NormalizedUserName = "Mohammed",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHqtYw8p8KuR7QEAnL0wZi/vBDeyREhVqJ3cMNJrlCS0REeIH8zMYJ6qZjfxec7vbQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEUaRejv1Wv/q0J7mhZ2nGxIFxe+4gnwOiTpW5J23/FPJ7rSFo0G/OqKHjRw4gu6Sw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9065a11b-83e0-4c1a-a155-a8f48ba2ff29",
+                            SecurityStamp = "3c748041-cf1d-4024-94cc-ea92b7e87bee",
                             TwoFactorEnabled = false,
                             UserName = "Mr_Mohammed",
                             VisiblePassword = "Mohammed88"
@@ -939,7 +927,7 @@ namespace Kader_System.DataAccess.Migrations
             modelBuilder.Entity("Kader_System.Domain.Models.Setting.StSubMainScreenAction", b =>
                 {
                     b.HasOne("Kader_System.Domain.Models.Setting.StAction", "Action")
-                        .WithMany()
+                        .WithMany("ListOfسSubMainScreen")
                         .HasForeignKey("ActionId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -960,6 +948,11 @@ namespace Kader_System.DataAccess.Migrations
                     b.Navigation("ListOfDevices");
 
                     b.Navigation("RefreshTokens");
+                });
+
+            modelBuilder.Entity("Kader_System.Domain.Models.Setting.StAction", b =>
+                {
+                    b.Navigation("ListOfسSubMainScreen");
                 });
 
             modelBuilder.Entity("Kader_System.Domain.Models.Setting.StSubMainScreen", b =>

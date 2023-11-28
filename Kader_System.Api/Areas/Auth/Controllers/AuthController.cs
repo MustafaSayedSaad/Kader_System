@@ -3,7 +3,7 @@
 [Area(Modules.Auth)]
 [ApiController]
 [ApiExplorerSettings(GroupName = Modules.Auth)]
-[Authorize(Permissions.Auth.All)]
+[Authorize(Permissions.Auth.View)]
 [Route("Api/[controller]")]
 public class AuthController(IAuthService service) : ControllerBase
 {

@@ -14,7 +14,7 @@ public interface IPermService
     Task<Response<PermGetManagementModelResponse>> UpdateUserRolesAsync(PermGetManagementModelResponse model);
 
     // Spicial to permissions(Claims) of role
-    Task<Response<IEnumerable<string>>> GetAllPermissionsByCategoryNameAsync(List<string> permissionsCategoryNames);
+    Task<Response<IEnumerable<GetPermissionsWithActions>>> GetAllPermissionsByCategoryNameAsync(List<string> permissionsCategoryNames);
     Task<Response<PermGetRolesPermissionsResponse>> ManageRolePermissionsAsync(string roleId);
     Task<Response<PermUpdateManagementModelRequest>> UpdateRolePermissionsAsync(PermUpdateManagementModelRequest model);
 }
