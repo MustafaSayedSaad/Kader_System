@@ -6,6 +6,7 @@ public class UnitOfWork : IUnitOfWork
     protected readonly IConfiguration _config;
 
     public IUserRepository Users { get; private set; }
+    public IRoleClaimRepository RoleClaims { get; private set; }
     public IRoleRepository Roles { get; private set; }
     public IUserRoleRepository UserRoles { get; private set; }
     public IUserDeviceRepository UserDevices { get; private set; }
@@ -20,6 +21,7 @@ public class UnitOfWork : IUnitOfWork
         _config = config;
 
         Users = new UserRepository(_context);
+        RoleClaims = new RoleClaimRepository(_context);
         UserDevices = new UserDeviceRepository(_context);
         Roles = new RoleRepository(_context);
         UserRoles = new UserRoleRepository(_context);

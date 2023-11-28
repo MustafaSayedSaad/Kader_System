@@ -5,6 +5,7 @@ public interface IUnitOfWork : IDisposable
     IDatabaseTransaction BeginTransaction();
 
     IUserRepository Users { get; }
+    IRoleClaimRepository RoleClaims { get; }
     IUserDeviceRepository UserDevices { get; }
     IRoleRepository Roles { get; }
     IUserRoleRepository UserRoles { get; }

@@ -14,8 +14,8 @@ public static class ModelBuilderExtensions
             new ApplicationRole()
             {
                 Id = SuperAdmin.RoleId,
-                Name = RolesEnums.Superadmin.ToString(),
-                Title_name_en = SuperAdmin.RoleNameInAr,
+                Name = SuperAdmin.RoleNameInAr,
+                Title_name_en = RolesEnums.Superadmin.ToString(),
                 ConcurrencyStamp = "1",
                 NormalizedName = "SUPERADMIN"
             });
@@ -48,42 +48,17 @@ public static class ModelBuilderExtensions
 
         modelBuilder.Entity<StAction>()
             .HasData(
-           new StAction()
-           {
-               Id = 1,
-               Name = "إظهار",
-               NameInEnglish = ActionsEnums.View.ToString(),
-           },
-           new StAction()
-           {
-               Id = 2,
-               Name = "اضافة",
-               NameInEnglish = ActionsEnums.Add.ToString(),
-           },
-           new StAction()
-           {
-               Id = 3,
-               Name = "تعديل",
-               NameInEnglish = ActionsEnums.Edit.ToString(),
-           },
-           new StAction()
-           {
-               Id = 4,
-               Name = "حذف",
-               NameInEnglish = ActionsEnums.Delete.ToString(),
-           },
-           new StAction()
-           {
-               Id = 5,
-               Name = "حذف نهائى",
-               NameInEnglish = ActionsEnums.ForceDelete.ToString(),
-           },
-           new StAction()
-           {
-               Id = 6,
-               Name = "طباعة",
-               NameInEnglish = ActionsEnums.Ptint.ToString(),
-           }
+           new StAction(){ Id = 1, Name = "إظهار", NameInEnglish = ActionsEnums.View.ToString()},
+
+           new StAction(){ Id = 2, Name = "اضافة", NameInEnglish = ActionsEnums.Add.ToString()},
+           
+           new StAction(){ Id = 3, Name = "تعديل", NameInEnglish = ActionsEnums.Edit.ToString()},
+
+           new StAction() { Id = 4, Name = "حذف", NameInEnglish = ActionsEnums.Delete.ToString()},
+
+           new StAction() { Id = 5, Name = "حذف نهائى", NameInEnglish = ActionsEnums.ForceDelete.ToString()},
+          
+           new StAction() { Id = 6, Name = "طباعة", NameInEnglish = ActionsEnums.Ptint.ToString()}
            );
     }
 
