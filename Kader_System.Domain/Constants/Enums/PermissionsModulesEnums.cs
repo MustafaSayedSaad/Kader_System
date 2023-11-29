@@ -2,5 +2,6 @@
 
 public enum PermissionsModulesEnums
 {
-    Companies
+    Companies,
+    Setting
 }

@@ -9,7 +9,6 @@ public class AuthLoginUserRequest
     [Display(Name = Annotations.Password), Required(ErrorMessage = Annotations.FieldIsRequired)]
     public string Password { get; set; } = string.Empty;
 
-    [DefaultValue(false)]
     [Display(Name = Annotations.RememberMe)]
     public bool RememberMe { get; set; }
 

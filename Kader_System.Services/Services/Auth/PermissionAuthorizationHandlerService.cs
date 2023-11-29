@@ -16,7 +16,7 @@ public class PermissionAuthorizationHandlerService(IHttpContextAccessor accessor
             return;
         }
 
-        bool canAccess = await Task.Run(() => context.User.Claims.Any(c => c.Type == RolesClaims.Permission && c.Value == requirement.Permission && c.Issuer == Shared.Kader));
+        bool canAccess = await Task.Run(() => context.User.Claims.Any(c => c.Type == RolesClaims.Permission && c.Value == requirement.Permission && c.Issuer == Shared.KaderSystem));
         if (canAccess)
         {
             context.Succeed(requirement);

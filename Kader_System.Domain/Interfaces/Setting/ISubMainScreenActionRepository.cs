@@ -2,4 +2,5 @@
 
 public interface ISubMainScreenActionRepository : IBaseRepository<StSubMainScreenAction>
 {
+    Task<IEnumerable<GetEachSubMainWithActions>> GetEachSubMainWithActionsAsync(string lang);
 }

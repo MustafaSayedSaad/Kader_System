@@ -3,7 +3,7 @@
 [Area(Modules.Auth)]
 [ApiController]
 [ApiExplorerSettings(GroupName = Modules.Auth)]
-[Authorize(Permissions.Auth.View)]
+[Authorize(Permissions.Setting.View)]
 [Route("Api/[controller]")]
 public class PermController(IPermService service) : ControllerBase
 {
@@ -11,7 +11,7 @@ public class PermController(IPermService service) : ControllerBase
 
     [HttpGet(ApiRoutes.Perm.GetAllRoles)]
     public async Task<IActionResult> GetAllRolesAsync() =>
-        Ok(await _service.GetAllRolesAsync());
+        Ok(await _service.GetAllRolesAsync(GetCurrentRequestLanguage()));
 
     [HttpPost(ApiRoutes.Perm.CreateRole)]
     public async Task<IActionResult> CreateRoleAsync(PermCreateRoleRequest model)
@@ -83,16 +83,19 @@ public class PermController(IPermService service) : ControllerBase
     public async Task<IActionResult> GetAllPermissionsByCategoryNameAsync([FromQuery] List<string> permissionsCategoryNames) =>
         Ok(await _service.GetAllPermissionsByCategoryNameAsync(permissionsCategoryNames));
 
+
+
     [HttpGet(ApiRoutes.Perm.ManageRolePermissions)]
     public async Task<IActionResult> ManageRolePermissionsAsync([FromRoute] string roleId)
     {
-        var response = await _service.ManageRolePermissionsAsync(roleId);
+        var response = await _service.ManageRolePermissionsAsync(roleId, GetCurrentRequestLanguage());
         if (response.Check)
             return Ok(response);
         else if (!response.Check)
             return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
+
 
     [HttpPost(ApiRoutes.Perm.UpdateRolePermissions)]
     public async Task<IActionResult> UpdateRolePermissionsAsync(PermUpdateManagementModelRequest model)
@@ -105,6 +108,9 @@ public class PermController(IPermService service) : ControllerBase
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
 
+
+    private string GetCurrentRequestLanguage() =>
+        Request.Headers.AcceptLanguage.ToString().Split(',').First();
     //[AllowAnonymous]
     //[HttpPost("TestForAnything")]
     //public async Task<IActionResult> UpdateTestAsync(/*[FromForm] PermTest model*/IEnumerable<int> ids)

@@ -3,6 +3,7 @@
 [Area(Modules.Setting)]
 [ApiExplorerSettings(GroupName = Modules.Setting)]
 [ApiController]
+[Authorize(Permissions.Setting.View)]
 [Route("api/v1/")]
 public class MainScreensCategoriesController(IMainScreenCategoryService service) : ControllerBase
 {

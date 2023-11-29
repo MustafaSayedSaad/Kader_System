@@ -139,12 +139,12 @@ builder.Services.AddSwaggerGen(x =>
 {
     x.SwaggerDoc(Modules.Auth, new OpenApiInfo
     {
-        Title = $"{Shared.Kader} {Modules.Auth}",
+        Title = $"{Shared.KaderSystem} {Modules.Auth}",
         Version = Modules.V1
     });
     x.SwaggerDoc(Modules.Setting, new OpenApiInfo
     {
-        Title = $"{Shared.Kader} {Modules.Setting}",
+        Title = $"{Shared.KaderSystem} {Modules.Setting}",
         Version = Modules.V1
     });
 

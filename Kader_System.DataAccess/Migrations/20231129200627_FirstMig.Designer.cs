@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kader_System.DataAccess.Migrations
 {
     [DbContext(typeof(KaderDbContext))]
-    [Migration("20231128221411_FirstMig")]
+    [Migration("20231129200627_FirstMig")]
     partial class FirstMig
     {
         /// <inheritdoc />
@@ -100,9 +100,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ActionId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
 
@@ -113,16 +110,9 @@ namespace Kader_System.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Sub_id")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ActionId");
-
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("Sub_id");
 
                     b.ToTable("Auth_RoleClaims", "dbo");
                 });
@@ -224,7 +214,7 @@ namespace Kader_System.DataAccess.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5basb1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9e2fe29d-a5fd-43b4-89c6-9af0eea45413",
+                            ConcurrencyStamp = "914b5be0-1e0a-4d48-9aec-15aadddbb86a",
                             Email = "mohammed88@gmail.com",
                             EmailConfirmed = true,
                             IsActive = true,
@@ -232,9 +222,9 @@ namespace Kader_System.DataAccess.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MOHAMMED88@GMAIL.COM",
                             NormalizedUserName = "Mohammed",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEUaRejv1Wv/q0J7mhZ2nGxIFxe+4gnwOiTpW5J23/FPJ7rSFo0G/OqKHjRw4gu6Sw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEO3b5f9LvA6fNEhF6Si6M4ofgqxKQ76ySJaW54Dv0pvpHB6eH6nzvymBWS5Tc8/xg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3c748041-cf1d-4024-94cc-ea92b7e87bee",
+                            SecurityStamp = "6e87e54d-b7b8-44f2-9476-b2d76e771f37",
                             TwoFactorEnabled = false,
                             UserName = "Mr_Mohammed",
                             VisiblePassword = "Mohammed88"
@@ -738,6 +728,10 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Screen_main_id")
                         .HasColumnType("int");
 
@@ -815,27 +809,11 @@ namespace Kader_System.DataAccess.Migrations
 
             modelBuilder.Entity("Kader_System.Domain.Models.Auth.ApplicationRoleClaim", b =>
                 {
-                    b.HasOne("Kader_System.Domain.Models.Setting.StAction", "Action")
-                        .WithMany()
-                        .HasForeignKey("ActionId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("Kader_System.Domain.Models.Auth.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("Kader_System.Domain.Models.Setting.StSubMainScreen", "SubMainScreen")
-                        .WithMany()
-                        .HasForeignKey("Sub_id")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Action");
-
-                    b.Navigation("SubMainScreen");
                 });
 
             modelBuilder.Entity("Kader_System.Domain.Models.Auth.ApplicationUserClaim", b =>
@@ -927,7 +905,7 @@ namespace Kader_System.DataAccess.Migrations
             modelBuilder.Entity("Kader_System.Domain.Models.Setting.StSubMainScreenAction", b =>
                 {
                     b.HasOne("Kader_System.Domain.Models.Setting.StAction", "Action")
-                        .WithMany("ListOfسSubMainScreen")
+                        .WithMany("ListOfSubMainScreen")
                         .HasForeignKey("ActionId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -952,7 +930,7 @@ namespace Kader_System.DataAccess.Migrations
 
             modelBuilder.Entity("Kader_System.Domain.Models.Setting.StAction", b =>
                 {
-                    b.Navigation("ListOfسSubMainScreen");
+                    b.Navigation("ListOfSubMainScreen");
                 });
 
             modelBuilder.Entity("Kader_System.Domain.Models.Setting.StSubMainScreen", b =>

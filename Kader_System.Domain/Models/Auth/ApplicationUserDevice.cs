@@ -8,6 +8,7 @@ public class ApplicationUserDevice : BaseEntity
 
     public string DeviceId { get; set; } = string.Empty;
 
+
     [ForeignKey(nameof(UserId))]
     public string UserId { get; set; } = string.Empty;
     public ApplicationUser User { get; set; } = default!;

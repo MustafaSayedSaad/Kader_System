@@ -97,7 +97,8 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
             Url = model.Url,
             ListOfActions = model.Actions.Select(ob => new StSubMainScreenAction
             {
-                ActionId = ob
+                ActionId = ob,
+
             }).ToList()
         });
         await _unitOfWork.CompleteAsync();

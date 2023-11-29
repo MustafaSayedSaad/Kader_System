@@ -4,7 +4,7 @@ public static class Permissions
 {
     public static List<GetPermissionsWithActions> GeneratePermissionsList(string module)
     {
-        if (module == "Auth")
+        if (module == "Setting")
             return
             [
                 new()
@@ -57,9 +57,9 @@ public static class Permissions
         return allPermissions;
     }
 
-    public static class Auth
+    public static class Setting
     {
-        public const string View = "Permissions.Auth.View";
+        public const string View = "Permissions.Setting.View";
     }
 
 

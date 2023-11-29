@@ -3,5 +3,5 @@
 public class PermUpdateManagementModelRequest 
 {
     public string RoleId { get; set; } = string.Empty;
-    public List<CheckBox> ListOfCheckBoxes { get; set; } = new();
+    public List<ActionsWithClaimValue> ActionsWithClaimValues { get; set; } = [];
 }

@@ -51,7 +51,7 @@ public static class SD
     }
     public static class Shared
     {
-        public const string Kader = "Kader";
+        public const string KaderSystem = "KaderSystem";
         public const string KaderSystemConnection = "KaderSystemConnection";
         public const string JwtSettings = "JwtSettings";
         public const string AccessToken = "access_token";

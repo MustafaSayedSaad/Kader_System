@@ -26,4 +26,5 @@ global using Kader_System.DataAccesss.DbContext;
 global using Kader_System.Domain.Interfaces.Setting;
 global using Kader_System.Domain.Models.Setting;
 global using Kader_System.DataAccess.Repositories.Setting;
+global using Kader_System.Domain.Dtos.Response;
 

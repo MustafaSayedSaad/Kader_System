@@ -1,8 +1,8 @@
 ﻿namespace Kader_System.Services.Services.Auth;
 
 public class PermService(UserManager<ApplicationUser> userManager,
-                   IStringLocalizer<SharedResource> sharLocalizer, ILogger<AuthService> logger,
-                   RoleManager<ApplicationRole> roleManager, IUnitOfWork unitOfWork, IHttpContextAccessor accessor) : IPermService
+                         IStringLocalizer<SharedResource> sharLocalizer, ILogger<AuthService> logger,
+                         RoleManager<ApplicationRole> roleManager, IUnitOfWork unitOfWork, IHttpContextAccessor accessor) : IPermService
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
@@ -13,14 +13,14 @@ public class PermService(UserManager<ApplicationUser> userManager,
 
     #region Roles
 
-    public async Task<Response<IEnumerable<SelectListForUserResponse>>> GetAllRolesAsync()
+    public async Task<Response<IEnumerable<SelectListForUserResponse>>> GetAllRolesAsync(string lang)
     {
         var result =
                 await _unitOfWork.Roles.GetSpecificSelectAsync(null!,
                 select: x => new SelectListForUserResponse
                 {
                     Id = x.Id,
-                    Name = x.Name!
+                    Name = Localization.Arabic == lang ? x.Title_name_ar : x.Name!
                 }, orderBy: x =>
                   x.OrderByDescending(x => x.Id));
 
@@ -62,6 +62,7 @@ public class PermService(UserManager<ApplicationUser> userManager,
         };
         role.InsertBy = role.UpdateBy = GetUserId();
         role.InsertDate = role.UpdateDate = new DateTime().NowEg();
+        role.Title_name_ar = model.Title_name_ar;
 
         var result = await _roleManager.CreateAsync(role);
         if (result.Succeeded)
@@ -342,6 +343,98 @@ public class PermService(UserManager<ApplicationUser> userManager,
         };
     }
 
+    //public async Task<Response<PermUpdateManagementModelRequest>> UpdateRolePermissionsAsync(PermUpdateManagementModelRequest model)
+    //{
+
+    //    var role = await _roleManager.FindByIdAsync(model.RoleId);
+
+    //    if (role == null)
+    //    {
+    //        string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
+    //            _sharLocalizer[Localization.Role], model.RoleId);
+
+    //        return new Response<PermUpdateManagementModelRequest>()
+    //        {
+    //            Data = new PermUpdateManagementModelRequest(),
+    //            Error = resultMsg,
+    //            Msg = resultMsg
+    //        };
+    //    }
+
+    //    var roleClaims = await _roleManager.GetClaimsAsync(role);//true
+
+    //    var falseValues = model.ListOfCheckBoxes.Where(y => !y.IsSelected).Select(x => x.DisplayValue).ToList();
+
+    //    var claims = roleClaims.Where(x => falseValues.Contains(x.Value)).ToList();
+
+    //    if (claims.Any())
+    //    {
+    //        foreach (var claim in claims)
+    //            await _roleManager.RemoveClaimAsync(role, claim);
+    //    }
+
+    //    var selectedClaims = model.ListOfCheckBoxes.Where(c => c.IsSelected).ToList();
+
+    //    if (selectedClaims.Any())
+    //    {
+    //        foreach (var claim in selectedClaims)
+    //            await _roleManager.AddClaimAsync(role, new Claim(RolesClaims.Permission, claim.DisplayValue));
+    //    }
+    //    return new Response<PermUpdateManagementModelRequest>()
+    //    {
+    //        Data = model,
+    //        Check = true,
+    //        Msg = _sharLocalizer[Localization.Updated]
+    //    };
+    //}
+
+    #endregion
+
+    private string GetUserId() =>
+        _accessor!.HttpContext == null ? string.Empty : _accessor!.HttpContext!.User.GetUserId();
+
+    private async Task<ApplicationUser> GetUserByUserId(string userId) =>
+    await _unitOfWork.Users.GetFirstOrDefaultAsync(x => x.Id == userId,
+        includeProperties: "Employee");
+
+    public async Task<Response<PermGetPermissionsToSpecificRoleResponse>> ManageRolePermissionsAsync(string roleId, string lang)
+    {
+        var role = await _roleManager.FindByIdAsync(roleId);
+
+        if (role == null)
+        {
+            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
+                _sharLocalizer[Localization.Role], roleId);
+            return new Response<PermGetPermissionsToSpecificRoleResponse>()
+            {
+                Data = new(),
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+
+        var roleClaims = _roleManager.GetClaimsAsync(role).Result.Select(c => c.Value).ToList();
+
+        var eachubMainWithActions = await _unitOfWork.SubMainScreenActions.GetEachSubMainWithActionsAsync(lang);
+
+        foreach (var action in eachubMainWithActions.SelectMany(x => x.Actions))
+            if (roleClaims.Any(c => c == action.ClaimValue))
+                action.IsSelected = true;
+
+        var result = new PermGetPermissionsToSpecificRoleResponse()
+        {
+            RoleId = roleId,
+            RoleName = role.Name!,
+            EachSubMainWithActions = eachubMainWithActions.ToList()
+        };
+
+        return new Response<PermGetPermissionsToSpecificRoleResponse>()
+        {
+            Data = result,
+            Check = true
+        };
+    }
+
     public async Task<Response<PermUpdateManagementModelRequest>> UpdateRolePermissionsAsync(PermUpdateManagementModelRequest model)
     {
 
@@ -362,23 +455,21 @@ public class PermService(UserManager<ApplicationUser> userManager,
 
         var roleClaims = await _roleManager.GetClaimsAsync(role);//true
 
-        var falseValues = model.ListOfCheckBoxes.Where(y => !y.IsSelected).Select(x => x.DisplayValue).ToList();
+        var falseValues = model.ActionsWithClaimValues.Where(y => !y.IsSelected).Select(x => x.ClaimValue).ToList();
 
-        var claims = roleClaims.Where(x => falseValues.Contains(x.Value)).ToList();
+        var removedClaims = roleClaims.Where(x => falseValues.Contains(x.Value)).ToList();
 
-        if (claims.Any())
-        {
-            foreach (var claim in claims)
+        if (removedClaims.Count != 0)
+            foreach (Claim claim in removedClaims)
                 await _roleManager.RemoveClaimAsync(role, claim);
-        }
 
-        var selectedClaims = model.ListOfCheckBoxes.Where(c => c.IsSelected).ToList();
 
-        if (selectedClaims.Any())
-        {
-            foreach (var claim in selectedClaims)
-                await _roleManager.AddClaimAsync(role, new Claim(RolesClaims.Permission, claim.DisplayValue));
-        }
+        var trueValues = model.ActionsWithClaimValues.Where(c => c.IsSelected).ToList();
+
+        if (trueValues.Count != 0)
+            foreach (var claim in trueValues)
+                await _roleManager.AddClaimAsync(role, new Claim(RolesClaims.Permission, claim.ClaimValue));
+
         return new Response<PermUpdateManagementModelRequest>()
         {
             Data = model,
@@ -387,12 +478,4 @@ public class PermService(UserManager<ApplicationUser> userManager,
         };
     }
 
-    #endregion
-
-    private string GetUserId() =>
-        _accessor!.HttpContext == null ? string.Empty : _accessor!.HttpContext!.User.GetUserId();
-
-    private async Task<ApplicationUser> GetUserByUserId(string userId) =>
-    await _unitOfWork.Users.GetFirstOrDefaultAsync(x => x.Id == userId,
-        includeProperties: "Employee");
 }

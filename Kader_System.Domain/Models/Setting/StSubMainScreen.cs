@@ -8,6 +8,7 @@ public class StSubMainScreen : BaseEntity
     public string Screen_sub_title_en { get; set; } = string.Empty;
     public string Screen_sub_title_ar { get; set; } = string.Empty;
     public string Url { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
 
     public int Screen_main_id { get; set; }
     [ForeignKey(nameof(Screen_main_id))]

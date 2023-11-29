@@ -149,6 +149,28 @@ namespace Kader_System.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Auth_RoleClaims",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Auth_RoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Auth_RoleClaims_Auth_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalSchema: "dbo",
+                        principalTable: "Auth_Roles",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Auth_RefreshTokens",
                 columns: table => new
                 {
@@ -341,6 +363,7 @@ namespace Kader_System.DataAccess.Migrations
                     Screen_sub_title_en = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Screen_sub_title_ar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Screen_main_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -358,40 +381,6 @@ namespace Kader_System.DataAccess.Migrations
                         name: "FK_St_SubMainScreens_St_MainScreens_Screen_main_id",
                         column: x => x.Screen_main_id,
                         principalTable: "St_MainScreens",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Auth_RoleClaims",
-                schema: "dbo",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ActionId = table.Column<int>(type: "int", nullable: false),
-                    Sub_id = table.Column<int>(type: "int", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Auth_RoleClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Auth_RoleClaims_Auth_Roles_RoleId",
-                        column: x => x.RoleId,
-                        principalSchema: "dbo",
-                        principalTable: "Auth_Roles",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Auth_RoleClaims_St_Actions_ActionId",
-                        column: x => x.ActionId,
-                        principalTable: "St_Actions",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Auth_RoleClaims_St_SubMainScreens_Sub_id",
-                        column: x => x.Sub_id,
-                        principalTable: "St_SubMainScreens",
                         principalColumn: "Id");
                 });
 
@@ -437,7 +426,7 @@ namespace Kader_System.DataAccess.Migrations
                 schema: "dbo",
                 table: "Auth_Users",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "Email", "EmailConfirmed", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdateBy", "UpdateDate", "UserName", "VisiblePassword" },
-                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5basb1", 0, "9e2fe29d-a5fd-43b4-89c6-9af0eea45413", null, null, "mohammed88@gmail.com", true, null, null, true, false, false, null, "MOHAMMED88@GMAIL.COM", "Mohammed", "AQAAAAIAAYagAAAAEEUaRejv1Wv/q0J7mhZ2nGxIFxe+4gnwOiTpW5J23/FPJ7rSFo0G/OqKHjRw4gu6Sw==", null, false, "3c748041-cf1d-4024-94cc-ea92b7e87bee", false, null, null, "Mr_Mohammed", "Mohammed88" });
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5basb1", 0, "914b5be0-1e0a-4d48-9aec-15aadddbb86a", null, null, "mohammed88@gmail.com", true, null, null, true, false, false, null, "MOHAMMED88@GMAIL.COM", "Mohammed", "AQAAAAIAAYagAAAAEEO3b5f9LvA6fNEhF6Si6M4ofgqxKQ76ySJaW54Dv0pvpHB6eH6nzvymBWS5Tc8/xg==", null, false, "6e87e54d-b7b8-44f2-9476-b2d76e771f37", false, null, null, "Mr_Mohammed", "Mohammed88" });
 
             migrationBuilder.InsertData(
                 table: "St_Actions",
@@ -464,22 +453,10 @@ namespace Kader_System.DataAccess.Migrations
                 column: "User_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Auth_RoleClaims_ActionId",
-                schema: "dbo",
-                table: "Auth_RoleClaims",
-                column: "ActionId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Auth_RoleClaims_RoleId",
                 schema: "dbo",
                 table: "Auth_RoleClaims",
                 column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Auth_RoleClaims_Sub_id",
-                schema: "dbo",
-                table: "Auth_RoleClaims",
-                column: "Sub_id");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",

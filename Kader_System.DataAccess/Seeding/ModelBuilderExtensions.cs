@@ -14,8 +14,8 @@ public static class ModelBuilderExtensions
             new ApplicationRole()
             {
                 Id = SuperAdmin.RoleId,
-                Name = SuperAdmin.RoleNameInAr,
-                Title_name_en = RolesEnums.Superadmin.ToString(),
+                Name = RolesEnums.Superadmin.ToString(),
+                Title_name_ar = SuperAdmin.RoleNameInAr,
                 ConcurrencyStamp = "1",
                 NormalizedName = "SUPERADMIN"
             });
@@ -26,7 +26,7 @@ public static class ModelBuilderExtensions
             {
                 Id = SuperAdmin.Id,
                 UserName = "Mr_Mohammed",
-                NormalizedUserName = "Mohammed",
+                NormalizedUserName = "MR_MOHAMMED",
                 Email = "mohammed88@gmail.com",
                 NormalizedEmail = "MOHAMMED88@GMAIL.COM",
                 EmailConfirmed = true,

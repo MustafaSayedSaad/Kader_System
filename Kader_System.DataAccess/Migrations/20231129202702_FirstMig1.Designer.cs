@@ -4,6 +4,7 @@ using Kader_System.DataAccesss.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kader_System.DataAccess.Migrations
 {
     [DbContext(typeof(KaderDbContext))]
-    partial class KaderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231129202702_FirstMig1")]
+    partial class FirstMig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +60,7 @@ namespace Kader_System.DataAccess.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("Title_name_ar")
+                    b.Property<string>("Title_name_en")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -83,9 +86,9 @@ namespace Kader_System.DataAccess.Migrations
                             ConcurrencyStamp = "1",
                             IsActive = true,
                             IsDeleted = false,
-                            Name = "Superadmin",
+                            Name = "سوبر أدمن",
                             NormalizedName = "SUPERADMIN",
-                            Title_name_ar = "سوبر أدمن"
+                            Title_name_en = "Superadmin"
                         });
                 });
 
@@ -211,7 +214,7 @@ namespace Kader_System.DataAccess.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5basb1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5e862278-0233-450c-91c9-87a831ade600",
+                            ConcurrencyStamp = "ca095bdc-699d-4a7c-b5ed-5d03a379f699",
                             Email = "mohammed88@gmail.com",
                             EmailConfirmed = true,
                             IsActive = true,
@@ -219,9 +222,9 @@ namespace Kader_System.DataAccess.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MOHAMMED88@GMAIL.COM",
                             NormalizedUserName = "MR_MOHAMMED",
-                            PasswordHash = "AQAAAAIAAYagAAAAEI9b/69ua+Nc7UKcSdNCqZtNQX3eFTKzduA+dqWk3YnxwPBy1f2MLkGd58lbRWmp7w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECNDuehFxs7lCByaOdZSg661GBkHd0Z2/iBRA6EjPNXJi8G1cJYPUU3+JhE2flZYXQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6f245b26-e35f-4fb1-be4f-9e22668f3903",
+                            SecurityStamp = "98c5a41f-c6d2-45c5-b5a7-efecda0e8baf",
                             TwoFactorEnabled = false,
                             UserName = "Mr_Mohammed",
                             VisiblePassword = "Mohammed88"
