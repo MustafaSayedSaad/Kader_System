@@ -79,7 +79,7 @@ public class PermService(UserManager<ApplicationUser> userManager,
         };
     }
 
-    public async Task<Response<SelectListForUserRequest>> UpdateRoleAsync(string id, SelectListForUserRequest model)
+    public async Task<Response<SelectListForUserRequest>> UpdateRoleAsync(string id, PermUpdateRoleRequest model)
     {
         var role = await _roleManager.FindByIdAsync(id);
 
@@ -103,6 +103,7 @@ public class PermService(UserManager<ApplicationUser> userManager,
         role.Name = model.Name;
         role.UpdateBy = GetUserId();
         role.UpdateDate = new DateTime().NowEg();
+        role.Title_name_ar = model.Title_name_ar;
 
         var idResult = await _roleManager.UpdateAsync(role);
 
@@ -255,7 +256,6 @@ public class PermService(UserManager<ApplicationUser> userManager,
 
     public async Task<Response<PermGetManagementModelResponse>> UpdateUserRolesAsync(PermGetManagementModelResponse model)
     {
-
         var user = await _userManager.FindByIdAsync(model.UserId);
         var userRoles = await _userManager.GetRolesAsync(user!);
 
@@ -478,4 +478,18 @@ public class PermService(UserManager<ApplicationUser> userManager,
         };
     }
 
+    public Task<Response<IEnumerable<SelectListForUserResponse>>> GetAllRolesAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Response<SelectListForUserRequest>> UpdateRoleAsync(string id, SelectListForUserRequest model)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<Response<IEnumerable<string>>> IPermService.GetAllPermissionsByCategoryNameAsync(List<string> permissionsCategoryNames)
+    {
+        throw new NotImplementedException();
+    }
 }
