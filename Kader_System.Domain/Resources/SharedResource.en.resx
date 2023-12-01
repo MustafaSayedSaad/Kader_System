@@ -135,6 +135,9 @@
   <data name="NotFoundData" xml:space="preserve">
     <value>Not found data</value>
   </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
   <data name="SubMainScreen" xml:space="preserve">
     <value>Sub main screen</value>
   </data>

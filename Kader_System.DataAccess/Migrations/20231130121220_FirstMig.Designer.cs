@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kader_System.DataAccess.Migrations
 {
     [DbContext(typeof(KaderDbContext))]
-    [Migration("20231129200627_FirstMig")]
+    [Migration("20231130121220_FirstMig")]
     partial class FirstMig
     {
         /// <inheritdoc />
@@ -60,7 +60,7 @@ namespace Kader_System.DataAccess.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("Title_name_en")
+                    b.Property<string>("Title_name_ar")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -86,9 +86,9 @@ namespace Kader_System.DataAccess.Migrations
                             ConcurrencyStamp = "1",
                             IsActive = true,
                             IsDeleted = false,
-                            Name = "سوبر أدمن",
+                            Name = "Superadmin",
                             NormalizedName = "SUPERADMIN",
-                            Title_name_en = "Superadmin"
+                            Title_name_ar = "سوبر أدمن"
                         });
                 });
 
@@ -214,17 +214,17 @@ namespace Kader_System.DataAccess.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5basb1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "914b5be0-1e0a-4d48-9aec-15aadddbb86a",
+                            ConcurrencyStamp = "cfa7d469-65bc-427b-a472-8bffec874ec2",
                             Email = "mohammed88@gmail.com",
                             EmailConfirmed = true,
                             IsActive = true,
                             IsDeleted = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MOHAMMED88@GMAIL.COM",
-                            NormalizedUserName = "Mohammed",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEO3b5f9LvA6fNEhF6Si6M4ofgqxKQ76ySJaW54Dv0pvpHB6eH6nzvymBWS5Tc8/xg==",
+                            NormalizedUserName = "MR_MOHAMMED",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOmlRafv8iKwsyWKHv+OV+AeHN4D2hzTQDT0dXhh5UGC2ZI4jx1ez1SdFC1Z7OHb9w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6e87e54d-b7b8-44f2-9476-b2d76e771f37",
+                            SecurityStamp = "c2fb2af1-2927-4a7a-a17b-dc290597ae68",
                             TwoFactorEnabled = false,
                             UserName = "Mr_Mohammed",
                             VisiblePassword = "Mohammed88"

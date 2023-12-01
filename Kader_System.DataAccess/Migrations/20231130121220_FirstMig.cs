@@ -22,7 +22,7 @@ namespace Kader_System.DataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Title_name_en = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title_name_ar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -419,14 +419,14 @@ namespace Kader_System.DataAccess.Migrations
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "Auth_Roles",
-                columns: new[] { "Id", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NormalizedName", "Title_name_en", "UpdateBy", "UpdateDate" },
-                values: new object[] { "fab4fac1-c546-41de-aebc-a14da68957ab1", "1", null, null, null, null, true, false, "سوبر أدمن", "SUPERADMIN", "Superadmin", null, null });
+                columns: new[] { "Id", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NormalizedName", "Title_name_ar", "UpdateBy", "UpdateDate" },
+                values: new object[] { "fab4fac1-c546-41de-aebc-a14da68957ab1", "1", null, null, null, null, true, false, "Superadmin", "SUPERADMIN", "سوبر أدمن", null, null });
 
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "Auth_Users",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "Email", "EmailConfirmed", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdateBy", "UpdateDate", "UserName", "VisiblePassword" },
-                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5basb1", 0, "914b5be0-1e0a-4d48-9aec-15aadddbb86a", null, null, "mohammed88@gmail.com", true, null, null, true, false, false, null, "MOHAMMED88@GMAIL.COM", "Mohammed", "AQAAAAIAAYagAAAAEEO3b5f9LvA6fNEhF6Si6M4ofgqxKQ76ySJaW54Dv0pvpHB6eH6nzvymBWS5Tc8/xg==", null, false, "6e87e54d-b7b8-44f2-9476-b2d76e771f37", false, null, null, "Mr_Mohammed", "Mohammed88" });
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5basb1", 0, "cfa7d469-65bc-427b-a472-8bffec874ec2", null, null, "mohammed88@gmail.com", true, null, null, true, false, false, null, "MOHAMMED88@GMAIL.COM", "MR_MOHAMMED", "AQAAAAIAAYagAAAAEOmlRafv8iKwsyWKHv+OV+AeHN4D2hzTQDT0dXhh5UGC2ZI4jx1ez1SdFC1Z7OHb9w==", null, false, "c2fb2af1-2927-4a7a-a17b-dc290597ae68", false, null, null, "Mr_Mohammed", "Mohammed88" });
 
             migrationBuilder.InsertData(
                 table: "St_Actions",
