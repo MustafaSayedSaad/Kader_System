@@ -25,7 +25,7 @@ public class PermController(IPermService service) : ControllerBase
     }
 
     [HttpPut(ApiRoutes.Perm.UpdateRole)]
-    public async Task<IActionResult> UpdateRoleAsync([FromRoute] string id, SelectListForUserRequest model)
+    public async Task<IActionResult> UpdateRoleAsync([FromRoute] string id, PermUpdateRoleRequest model)
     {
         var response = await _service.UpdateRoleAsync(id, model);
         if (response.Check)
@@ -78,11 +78,6 @@ public class PermController(IPermService service) : ControllerBase
             return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
-
-    [HttpGet(ApiRoutes.Perm.GetAllPermissionsByCategoryName)]
-    public async Task<IActionResult> GetAllPermissionsByCategoryNameAsync([FromQuery] List<string> permissionsCategoryNames) =>
-        Ok(await _service.GetAllPermissionsByCategoryNameAsync(permissionsCategoryNames));
-
 
 
     [HttpGet(ApiRoutes.Perm.ManageRolePermissions)]

@@ -1,12 +1,10 @@
 ﻿namespace Kader_System.Services.Services.Auth;
 
-public class PermService(UserManager<ApplicationUser> userManager,
-                         IStringLocalizer<SharedResource> sharLocalizer, ILogger<AuthService> logger,
+public class PermService(UserManager<ApplicationUser> userManager, IStringLocalizer<SharedResource> sharLocalizer,
                          RoleManager<ApplicationRole> roleManager, IUnitOfWork unitOfWork, IHttpContextAccessor accessor) : IPermService
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly RoleManager<ApplicationRole> _roleManager = roleManager;
-    private readonly ILogger<AuthService> _logger = logger;
     private readonly IStringLocalizer<SharedResource> _sharLocalizer = sharLocalizer;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IHttpContextAccessor _accessor = accessor;
@@ -79,7 +77,7 @@ public class PermService(UserManager<ApplicationUser> userManager,
         };
     }
 
-    public async Task<Response<SelectListForUserRequest>> UpdateRoleAsync(string id, PermUpdateRoleRequest model)
+    public async Task<Response<PermUpdateRoleRequest>> UpdateRoleAsync(string id, PermUpdateRoleRequest model)
     {
         var role = await _roleManager.FindByIdAsync(id);
 
@@ -90,9 +88,9 @@ public class PermService(UserManager<ApplicationUser> userManager,
 
 
 
-            return new Response<SelectListForUserRequest>()
+            return new Response<PermUpdateRoleRequest>()
             {
-                Data = new SelectListForUserRequest(),
+                Data = new(),
                 Error = resultMsg,
                 Msg = resultMsg
             };
@@ -107,10 +105,10 @@ public class PermService(UserManager<ApplicationUser> userManager,
 
         var idResult = await _roleManager.UpdateAsync(role);
 
-        return new Response<SelectListForUserRequest>()
+        return new Response<PermUpdateRoleRequest>()
         {
             Check = idResult.Succeeded,
-            Data = new SelectListForUserRequest(),
+            Data = model,
             Msg = idResult.Succeeded ? _sharLocalizer[Localization.Updated] : _sharLocalizer[err]
         };
     }
@@ -275,128 +273,6 @@ public class PermService(UserManager<ApplicationUser> userManager,
 
     #region Spicial to permissions(Claims) of role
 
-    public async Task<Response<IEnumerable<GetPermissionsWithActions>>> GetAllPermissionsByCategoryNameAsync(List<string> permissionsCategoryNames)
-    {
-
-        var allPermissions = new List<GetPermissionsWithActions>();
-
-        foreach (var module in permissionsCategoryNames)
-            await Task.Run(() => allPermissions.AddRange(Permissions.GeneratePermissionsList(module.ToString()!)));
-
-        if (!allPermissions.Any())
-        {
-            string resultMsg = _sharLocalizer[Localization.NotFoundData];
-
-            return new Response<IEnumerable<GetPermissionsWithActions>>()
-            {
-                Data = [],
-                Error = resultMsg,
-                Msg = resultMsg
-            };
-        }
-        return new Response<IEnumerable<GetPermissionsWithActions>>()
-        {
-            Data = allPermissions,
-            Check = true
-        };
-    }
-
-    public async Task<Response<PermGetRolesPermissionsResponse>> ManageRolePermissionsAsync(string roleId)
-    {
-
-        var role = await _roleManager.FindByIdAsync(roleId);
-
-        if (role == null)
-        {
-            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
-                _sharLocalizer[Localization.Role], roleId);
-            return new Response<PermGetRolesPermissionsResponse>()
-            {
-                Data = new PermGetRolesPermissionsResponse(),
-                Error = resultMsg,
-                Msg = resultMsg
-            };
-        }
-
-        var roleClaims = _roleManager.GetClaimsAsync(role).Result.Select(c => c.Value).ToList();
-        var allClaims = Permissions.GenerateAllPermissions(); // It is meant all endpoints
-        var allPermissions = allClaims.Select(p => new CheckBox
-        {
-            DisplayValue = p.ClaimValue
-        }).ToList();
-
-        foreach (var permission in allPermissions)
-            if (roleClaims.Any(c => c == permission.DisplayValue))
-                permission.IsSelected = true;
-
-        var result = new PermGetRolesPermissionsResponse
-        {
-            RoleId = roleId,
-            RoleName = role.Name!,
-            ListOfCheckBoxes = allPermissions
-        };
-
-        return new Response<PermGetRolesPermissionsResponse>()
-        {
-            Data = result,
-            Check = true
-        };
-    }
-
-    //public async Task<Response<PermUpdateManagementModelRequest>> UpdateRolePermissionsAsync(PermUpdateManagementModelRequest model)
-    //{
-
-    //    var role = await _roleManager.FindByIdAsync(model.RoleId);
-
-    //    if (role == null)
-    //    {
-    //        string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
-    //            _sharLocalizer[Localization.Role], model.RoleId);
-
-    //        return new Response<PermUpdateManagementModelRequest>()
-    //        {
-    //            Data = new PermUpdateManagementModelRequest(),
-    //            Error = resultMsg,
-    //            Msg = resultMsg
-    //        };
-    //    }
-
-    //    var roleClaims = await _roleManager.GetClaimsAsync(role);//true
-
-    //    var falseValues = model.ListOfCheckBoxes.Where(y => !y.IsSelected).Select(x => x.DisplayValue).ToList();
-
-    //    var claims = roleClaims.Where(x => falseValues.Contains(x.Value)).ToList();
-
-    //    if (claims.Any())
-    //    {
-    //        foreach (var claim in claims)
-    //            await _roleManager.RemoveClaimAsync(role, claim);
-    //    }
-
-    //    var selectedClaims = model.ListOfCheckBoxes.Where(c => c.IsSelected).ToList();
-
-    //    if (selectedClaims.Any())
-    //    {
-    //        foreach (var claim in selectedClaims)
-    //            await _roleManager.AddClaimAsync(role, new Claim(RolesClaims.Permission, claim.DisplayValue));
-    //    }
-    //    return new Response<PermUpdateManagementModelRequest>()
-    //    {
-    //        Data = model,
-    //        Check = true,
-    //        Msg = _sharLocalizer[Localization.Updated]
-    //    };
-    //}
-
-    #endregion
-
-    private string GetUserId() =>
-        _accessor!.HttpContext == null ? string.Empty : _accessor!.HttpContext!.User.GetUserId();
-
-    private async Task<ApplicationUser> GetUserByUserId(string userId) =>
-    await _unitOfWork.Users.GetFirstOrDefaultAsync(x => x.Id == userId,
-        includeProperties: "Employee");
-
     public async Task<Response<PermGetPermissionsToSpecificRoleResponse>> ManageRolePermissionsAsync(string roleId, string lang)
     {
         var role = await _roleManager.FindByIdAsync(roleId);
@@ -434,7 +310,6 @@ public class PermService(UserManager<ApplicationUser> userManager,
             Check = true
         };
     }
-
     public async Task<Response<PermUpdateManagementModelRequest>> UpdateRolePermissionsAsync(PermUpdateManagementModelRequest model)
     {
 
@@ -478,18 +353,8 @@ public class PermService(UserManager<ApplicationUser> userManager,
         };
     }
 
-    public Task<Response<IEnumerable<SelectListForUserResponse>>> GetAllRolesAsync()
-    {
-        throw new NotImplementedException();
-    }
+    #endregion
 
-    public Task<Response<SelectListForUserRequest>> UpdateRoleAsync(string id, SelectListForUserRequest model)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<Response<IEnumerable<string>>> IPermService.GetAllPermissionsByCategoryNameAsync(List<string> permissionsCategoryNames)
-    {
-        throw new NotImplementedException();
-    }
+    private string GetUserId() =>
+        _accessor!.HttpContext == null ? string.Empty : _accessor!.HttpContext!.User.GetUserId();
 }
