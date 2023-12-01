@@ -24,7 +24,7 @@ public static class ExceptionMiddlewareExtensions
                         Error = ex.Message + ex.InnerException!.Message!
                     }.ToString() ?? string.Empty;
 
-                    await context.Response.WriteAsync(text);
+                    await context.Response.WriteAsJsonAsync(text);
                 }
             });
         });

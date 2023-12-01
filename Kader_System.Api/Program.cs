@@ -183,8 +183,8 @@ builder.Services.AddSwaggerGen(x =>
 
 builder.Services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationHandlerService>();
 builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProviderService>();
-builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IDbInitSeedsService, DbInitSeedsService>();
 builder.Services.AddScoped<IPermService, PermService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -199,9 +199,9 @@ var app = builder.Build();
 
 # region To take an instance from specific repository
 
-var scopedFactory1 = app.Services.GetService<IServiceScopeFactory>();
-using var scope1 = scopedFactory1!.CreateScope();
-ILoggingRepository loggingRepository = scope1.ServiceProvider.GetService<ILoggingRepository>()!;
+var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+using var scope = scopedFactory!.CreateScope();
+ILoggingRepository loggingRepository = scope.ServiceProvider.GetService<ILoggingRepository>()!;
 
 #endregion
 
