@@ -325,6 +325,7 @@ public static class SD
 
     public class Annotations
     {
+        public const string Name = "Name";
         public const string ConfirmationPassword = "Confirmation password";
         public const string DepartmentName = "Department";
         public const string ConfirmationPasswordNotMatch = "Password and confirmation password must match.";

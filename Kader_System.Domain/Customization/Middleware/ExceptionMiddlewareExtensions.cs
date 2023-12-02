@@ -21,10 +21,10 @@ public static class ExceptionMiddlewareExtensions
                     string text = new SelectListForExcLog()
                     {
                         Message = ex.Message,
-                        Error = ex.Message + ex.InnerException!.Message!
+                        Error = ex.Message + (ex.InnerException == null ? string.Empty : ex.InnerException.Message)
                     }.ToString() ?? string.Empty;
 
-                    await context.Response.WriteAsJsonAsync(text);
+                    await context.Response.WriteAsync(text);
                 }
             });
         });

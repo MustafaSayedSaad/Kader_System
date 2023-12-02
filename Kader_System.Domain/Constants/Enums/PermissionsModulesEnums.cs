@@ -3,5 +3,6 @@
 public enum PermissionsModulesEnums
 {
     Companies,
-    Setting
+    Setting,
+    MainScreenCat
 }

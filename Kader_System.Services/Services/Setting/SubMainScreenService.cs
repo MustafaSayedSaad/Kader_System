@@ -89,12 +89,29 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
 
     public async Task<Response<StCreateSubMainScreenRequest>> CreateSubMainScreenAsync(StCreateSubMainScreenRequest model)
     {
+        bool exists = false;
+        exists = await _unitOfWork.SubMainScreens.ExistAsync(x => x.Screen_sub_title_ar.Trim() == model.Screen_sub_title_ar
+        || x.Screen_sub_title_en.Trim() == model.Screen_sub_title_en.Trim() || x.Name.Trim() == model.Name.Trim());
+
+        if (exists)
+        {
+            string resultMsg = string.Format(_sharLocalizer[Localization.IsExist],
+                _sharLocalizer[Localization.SubMainScreen]);
+
+            return new()
+            {
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+
         var obj = await _unitOfWork.SubMainScreens.AddAsync(new StSubMainScreen
         {
             Screen_sub_title_en = model.Screen_sub_title_en,
             Screen_sub_title_ar = model.Screen_sub_title_ar,
             Screen_main_id = model.Screen_main_id,
             Url = model.Url,
+            Name = model.Name,
             ListOfActions = model.Actions.Select(ob => new StSubMainScreenAction
             {
                 ActionId = ob,
@@ -103,7 +120,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
         });
         await _unitOfWork.CompleteAsync();
 
-        return new Response<StCreateSubMainScreenRequest>()
+        return new()
         {
             Msg = _sharLocalizer[Localization.Done],
             Check = true,
@@ -115,13 +132,14 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
     {
         var obj = await _unitOfWork.SubMainScreens.GetFirstOrDefaultAsync(x => x.Id == id, includeProperties: "ListOfActions.Action");
 
+
         if (obj is null)
         {
             string resultMsg = _sharLocalizer[Localization.NotFoundData];
 
-            return new Response<StGetSubMainScreenByIdResponse>()
+            return new()
             {
-                Data = new(),
+                Data = null!,
                 Error = resultMsg,
                 Msg = resultMsg
             };
@@ -136,6 +154,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
                 Screen_sub_title_ar = obj.Screen_sub_title_ar,
                 Screen_sub_title_en = obj.Screen_sub_title_en,
                 Url = obj.Url,
+                Name = obj.Name,
                 Actions = obj.ListOfActions.Select(x => new ActionsData
                 {
                     Id = x.ActionId,
@@ -156,9 +175,9 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
             string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
                 _sharLocalizer[Localization.SubMainScreen]);
 
-            return new Response<StUpdateSubMainScreenRequest>()
+            return new()
             {
-                Data = new(),
+                Data = model,
                 Error = resultMsg,
                 Msg = resultMsg
             };
@@ -167,20 +186,24 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
         using var transaction = _unitOfWork.BeginTransaction();
         try
         {
-             _unitOfWork.SubMainScreenActions.RemoveRange(obj.ListOfActions);
-            await _unitOfWork.CompleteAsync();
-
-            var resultObj = await _unitOfWork.SubMainScreens.AddAsync(new StSubMainScreen
+            if (obj.ListOfActions.Count > 0)
             {
-                Screen_sub_title_en = model.Screen_sub_title_en,
-                Screen_sub_title_ar = model.Screen_sub_title_ar,
-                Screen_main_id = model.Screen_main_id,
-                Url = model.Url,
-                ListOfActions = model.Actions.Select(ob => new StSubMainScreenAction
-                {
-                    ActionId = ob
-                }).ToList()
-            });
+                _unitOfWork.SubMainScreenActions.RemoveRange(obj.ListOfActions);
+                await _unitOfWork.CompleteAsync();
+            }
+
+
+            var mapped = _mapper.Map<StSubMainScreen>(model);
+
+            _unitOfWork.SubMainScreens.Update(mapped);
+
+            await _unitOfWork.SubMainScreenActions.AddRangeAsync(model.Actions.Select(ob => new StSubMainScreenAction
+            {
+                ActionId = ob,
+                SubMainScreenId = id
+            }));
+
+
             await _unitOfWork.CompleteAsync();
             transaction.Commit();
 
@@ -217,7 +240,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
             string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
                 _sharLocalizer[Localization.SubMainScreen]);
 
-            return new Response<string>()
+            return new()
             {
                 Data = string.Empty,
                 Error = resultMsg,
@@ -227,19 +250,20 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
 
         string err = _sharLocalizer[Localization.Error];
 
+        _unitOfWork.SubMainScreenActions.RemoveRange(obj.ListOfActions);
         _unitOfWork.SubMainScreens.Remove(obj);
 
         bool result = await _unitOfWork.CompleteAsync() > 0;
 
         if (!result)
-            return new Response<string>()
+            return new()
             {
                 Check = false,
                 Data = string.Empty,
                 Error = err,
                 Msg = err
             };
-        return new Response<string>()
+        return new()
         {
             Check = true,
             Data = string.Empty,

@@ -3,20 +3,20 @@
 [Area(Modules.Setting)]
 [ApiExplorerSettings(GroupName = Modules.Setting)]
 [ApiController]
-[Authorize(Permissions.Setting.View)]
+//[Authorize(Permissions.Setting.View)]
 [Route("api/v1/")]
 public class MainScreensCategoriesController(IMainScreenCategoryService service) : ControllerBase
 {
     private readonly IMainScreenCategoryService _service = service;
 
+    [Authorize(Permissions.MainScreenCat.View)]
     [HttpGet(ApiRoutes.MainScreenCategory.ListOfMainScreensCategories)]
     public async Task<IActionResult> ListOfMainScreensCategoriesAsync() =>
         Ok(await _service.ListOfMainScreensCategoriesAsync(GetCurrentRequestLanguage()));
 
     [HttpGet(ApiRoutes.MainScreenCategory.GetAllMainScreenCategories)]
-    public async Task<IActionResult> GetAllMainScreensCategoriesAsync(StGetAllFiltrationsForMainScreenCategoryRequest model) =>
+    public async Task<IActionResult> GetAllMainScreensCategoriesAsync([FromQuery] StGetAllFiltrationsForMainScreenCategoryRequest model) =>
         Ok(await _service.GetAllMainScreensCategoriesAsync(GetCurrentRequestLanguage(), model));
-
 
     [HttpPost(ApiRoutes.MainScreenCategory.CreateMainScreenCategory)]
     public async Task<IActionResult> CreateServiceAsync([FromForm] StCreateMainScreenCategoryRequest model)

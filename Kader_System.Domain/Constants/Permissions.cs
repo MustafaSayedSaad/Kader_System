@@ -72,4 +72,14 @@ public static class Permissions
         public const string Delete = "Permissions.Companies.Delete";
         public const string ForceDelete = "Permissions.Companies.ForceDelete";
     }
+
+    public static class MainScreenCat
+    {
+        public const string View = "Permissions.MainScreenCat.View";
+        public const string Ptint = "Permissions.MainScreenCat.Ptint";
+        public const string Create = "Permissions.MainScreenCat.Create";
+        public const string Edit = "Permissions.MainScreenCat.Edit";
+        public const string Delete = "Permissions.MainScreenCat.Delete";
+        public const string ForceDelete = "Permissions.MainScreenCat.ForceDelete";
+    }
 }

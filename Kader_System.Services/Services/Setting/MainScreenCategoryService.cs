@@ -16,7 +16,7 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
                 {
                     Id = x.Id,
                     Screen_main_title = lang == Localization.Arabic ? x.Screen_main_title_ar : x.Screen_main_title_en,
-                    Screen_main_image = string.Concat(ReadRootPath.SettingImagesPath, x.Screen_main_image)
+                    Screen_main_image = x.Screen_main_image != null ? string.Concat(ReadRootPath.SettingImagesPath, x.Screen_main_image) : string.Empty
                 }, orderBy: x =>
                   x.OrderByDescending(x => x.Id));
 
@@ -54,7 +54,7 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
                  {
                      Id = x.Id,
                      Screen_main_title = lang == Localization.Arabic ? x.Screen_main_title_ar : x.Screen_main_title_en,
-                     Screen_main_image = string.Concat(ReadRootPath.SettingImagesPath, x.Screen_main_image)
+                     Screen_main_image = x.Screen_main_image != null ? string.Concat(ReadRootPath.SettingImagesPath, x.Screen_main_image) : string.Empty
                  }, orderBy: x =>
                    x.OrderByDescending(x => x.Id))).ToList()
         };
@@ -82,6 +82,22 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
 
     public async Task<Response<StCreateMainScreenCategoryRequest>> CreateMainScreenCategoryAsync(StCreateMainScreenCategoryRequest model)
     {
+        bool exists = false;
+        exists = await _unitOfWork.MainScreenCategories.ExistAsync(x => x.Screen_main_title_ar.Trim() == model.Screen_main_title_ar
+        && x.Screen_main_title_en.Trim() == model.Screen_main_title_en.Trim());
+
+        if (exists)
+        {
+            string resultMsg = string.Format(_sharLocalizer[Localization.IsExist],
+                _sharLocalizer[Localization.MainScreenCategory]);
+
+            return new()
+            {
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+
         string imageName = null!, imageExtension = null!;
         if (model.Screen_main_image is not null)
         {

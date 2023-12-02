@@ -26,14 +26,14 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
         {
             string resultMsg = _sharLocalizer[Localization.NotFoundData];
 
-            return new Response<IEnumerable<SelectListForUserResponse>>()
+            return new()
             {
                 Data = new List<SelectListForUserResponse>(),
                 Error = resultMsg,
                 Msg = resultMsg
             };
         }
-        return new Response<IEnumerable<SelectListForUserResponse>>()
+        return new()
         {
             //Msg = _sharLocalizer[Localization.Displayed],
             Data = result,
@@ -51,7 +51,7 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
                 Data = model,
                 Error = err,
                 Msg = string.Format(_sharLocalizer[Localization.IsExist],
-                _sharLocalizer[Localization.Role], $"({model.Name})"),
+                    _sharLocalizer[Localization.Role]),
                 Check = false
             };
         var role = new ApplicationRole()
@@ -64,13 +64,13 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
 
         var result = await _roleManager.CreateAsync(role);
         if (result.Succeeded)
-            return new Response<PermCreateRoleRequest>()
+            return new()
             {
                 Msg = _sharLocalizer[Localization.Done],
                 Check = true,
                 Data = model,
             };
-        return new Response<PermCreateRoleRequest>()
+        return new()
         {
             Error = result.Errors.Select(x => x.Description).First(),
             Msg = err
@@ -184,8 +184,6 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
     {
         Expression<Func<ApplicationUser, bool>> filter = x => x.IsActive && !x.IsDeleted
         &&
-        (model.UserId == null || x.Id == model.UserId)
-        &&
         (model.CreationStartDate == null || x.InsertDate!.Value.Date >= model.CreationStartDate.Value.Date)
         &&
         (model.CreationEndDate == null || x.InsertDate!.Value.Date <= model.CreationEndDate.Value.Date);
@@ -193,7 +191,7 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
         var result = new PermGetAllUsersRolesResponse
         {
             TotalRecords = await _unitOfWork.Users.CountAsync(filter),
-            Data = _userManager.Users.Where(filter)
+            Data = [.. _userManager.Users.Where(filter)
             .ToList()
             .Skip((model.PageNumber - 1) * model.PageSize)
             .Take(model.PageSize)
@@ -202,14 +200,12 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
                 Id = user.Id,
                 UserName = user.UserName!,
                 Email = user.Email!,
-                Roles = _userManager.GetRolesAsync(user).Result.ToList()
+                Roles = [.. _userManager.GetRolesAsync(user).Result]
             })
-            .ToList()
+            ]
         };
 
-        //var t2 = result.Data.Skip((model.PageNumber - 1) * model.PageSize).ToList();
-
-        return new Response<PermGetAllUsersRolesResponse>()
+        return new()
         {
             Data = result,
             Check = true
@@ -339,7 +335,7 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
                 await _roleManager.RemoveClaimAsync(role, claim);
 
 
-        var trueValues = model.ActionsWithClaimValues.Where(c => c.IsSelected).ToList();
+        var trueValues = model.ActionsWithClaimValues.Where(c => c.IsSelected && !roleClaims.Select(v => v.Value).Contains(c.ClaimValue)).ToList();
 
         if (trueValues.Count != 0)
             foreach (var claim in trueValues)

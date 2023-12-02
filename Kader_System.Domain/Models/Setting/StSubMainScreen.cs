@@ -5,11 +5,11 @@ public class StSubMainScreen : BaseEntity
 {
     [Key]
     public int Id { get; set; }
-    public string Screen_sub_title_en { get; set; } = string.Empty;
-    public string Screen_sub_title_ar { get; set; } = string.Empty;
-    public string Url { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
-
+    public required string Screen_sub_title_en { get; set; } 
+    public required string Screen_sub_title_ar { get; set; } 
+    public required string Url { get; set; } 
+    public required string Name { get; set; }
+    
     public int Screen_main_id { get; set; }
     [ForeignKey(nameof(Screen_main_id))]
     public StMainScreen MainScreen { get; set; } = default!;

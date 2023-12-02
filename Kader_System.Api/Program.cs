@@ -183,15 +183,16 @@ builder.Services.AddSwaggerGen(x =>
 
 builder.Services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationHandlerService>();
 builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProviderService>();
+builder.Services.AddSingleton<IStaticDataRepository, StaticDataRepository>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IDbInitSeedsService, DbInitSeedsService>();
 builder.Services.AddScoped<IPermService, PermService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ILoggingRepository, LoggingRepository>();
-builder.Services.AddScoped<IStaticDataRepository, StaticDataRepository>();
 builder.Services.AddScoped<IMainScreenCategoryService, MainScreenCategoryService>();
 builder.Services.AddScoped<IMainScreenService, MainScreenService>();
+builder.Services.AddScoped<ISubMainScreenService, SubMainScreenService>();
 
 #endregion
 

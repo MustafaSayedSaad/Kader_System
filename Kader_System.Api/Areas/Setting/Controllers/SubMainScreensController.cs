@@ -15,7 +15,7 @@ public class SubSubMainScreensController(ISubMainScreenService service) : Contro
 
 
     [HttpGet(ApiRoutes.SubMainScreen.GetAllSubMainScreens)]
-    public async Task<IActionResult> GetAllSubMainScreensAsync(StGetAllFiltrationsForSubMainScreenRequest model) =>
+    public async Task<IActionResult> GetAllSubMainScreensAsync([FromQuery] StGetAllFiltrationsForSubMainScreenRequest model) =>
         Ok(await _service.GetAllSubMainScreensAsync(GetCurrentRequestLanguage(), model));
 
 

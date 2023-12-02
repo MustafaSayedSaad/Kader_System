@@ -96,7 +96,7 @@ public class BaseRepository<T>(KaderDbContext context) : IBaseRepository<T> wher
 
         )
     {
-        IQueryable<T> query = dbSet.AsSplitQuery().AsNoTracking();
+        IQueryable<T> query = dbSet;
 
         if (filter != null)
             query = query.Where(filter);
@@ -104,7 +104,7 @@ public class BaseRepository<T>(KaderDbContext context) : IBaseRepository<T> wher
         if (includeProperties != null)
             foreach (var includeProperty in includeProperties.Split(new char[] { ',' },
                 StringSplitOptions.RemoveEmptyEntries))
-                query = query.Include(includeProperty);
+                query = query.Include(includeProperty).AsSplitQuery().AsNoTracking();
 
         return (await query.FirstOrDefaultAsync())!;
     }

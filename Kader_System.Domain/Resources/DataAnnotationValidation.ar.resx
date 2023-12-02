@@ -192,6 +192,12 @@
   <data name="Name in English" xml:space="preserve">
     <value>الاسم بالانجليزى</value>
   </data>
+  <data name="NameInArabic" xml:space="preserve">
+    <value>الاسم بالعربى</value>
+  </data>
+  <data name="NameInEnglish" xml:space="preserve">
+    <value>الاسم بالانجليزى</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>كلمه المرور</value>
   </data>
