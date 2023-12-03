@@ -3,7 +3,7 @@
 public static class ClaimsPrincipalExtensions
 {
     public static string GetUserId(this ClaimsPrincipal principal) =>
-        principal.FindFirstValue(RolesClaims.UserId)!;
+        principal.FindFirstValue(RequestClaims.UserId)!;
 
     public static string GetRoleId(this ClaimsPrincipal principal) =>
         principal.FindFirstValue(ClaimTypes.Role)!;

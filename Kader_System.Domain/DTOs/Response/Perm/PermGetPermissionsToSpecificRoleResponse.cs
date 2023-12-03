@@ -2,7 +2,7 @@
 
 public class PermGetPermissionsToSpecificRoleResponse
 {
-    public string RoleId { get; set; } = string.Empty;
-    public string RoleName { get; set; } = string.Empty;
+    public required string RoleId { get; set; } 
+    public required string RoleName { get; set; } 
     public List<GetEachSubMainWithActions> EachSubMainWithActions { get; set; } = [];
 }

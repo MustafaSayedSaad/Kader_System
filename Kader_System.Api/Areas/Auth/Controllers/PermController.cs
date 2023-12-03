@@ -91,9 +91,8 @@ public class PermController(IPermService service) : ControllerBase
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
 
-
     [HttpPost(ApiRoutes.Perm.UpdateRolePermissions)]
-    public async Task<IActionResult> UpdateRolePermissionsAsync(PermUpdateManagementModelRequest model)
+    public async Task<IActionResult> UpdateRolePermissionsAsync(PermUpdateRolePermissionsRequest model)
     {
         var response = await _service.UpdateRolePermissionsAsync(model);
         if (response.Check)
@@ -103,6 +102,28 @@ public class PermController(IPermService service) : ControllerBase
         return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
     }
 
+
+    [HttpGet(ApiRoutes.Perm.ManageUserPermissions)]
+    public async Task<IActionResult> ManageUserPermissionsAsync([FromRoute] string userId)
+    {
+        var response = await _service.ManageUserPermissionsAsync(userId, GetCurrentRequestLanguage());
+        if (response.Check)
+            return Ok(response);
+        else if (!response.Check)
+            return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
+        return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
+    }
+
+    [HttpPost(ApiRoutes.Perm.UpdateUserPermissions)]
+    public async Task<IActionResult> UpdateUserPermissionsAsync(PermUpdateUserPermissionsRequest model)
+    {
+        var response = await _service.UpdateUserPermissionsAsync(model);
+        if (response.Check)
+            return Ok(response);
+        else if (!response.Check)
+            return StatusCode(statusCode: StatusCodes.Status400BadRequest, response);
+        return StatusCode(statusCode: StatusCodes.Status500InternalServerError, response);
+    }
 
     private string GetCurrentRequestLanguage() =>
         Request.Headers.AcceptLanguage.ToString().Split(',').First();

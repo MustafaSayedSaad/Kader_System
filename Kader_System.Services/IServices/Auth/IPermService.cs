@@ -14,7 +14,10 @@ public interface IPermService
     Task<Response<PermGetManagementModelResponse>> UpdateUserRolesAsync(PermGetManagementModelResponse model);
 
     // Spicial to permissions(Claims) of role
-    Task<Response<PermUpdateManagementModelRequest>> UpdateRolePermissionsAsync(PermUpdateManagementModelRequest model);
+    Task<Response<PermUpdateRolePermissionsRequest>> UpdateRolePermissionsAsync(PermUpdateRolePermissionsRequest model);
     Task<Response<PermGetPermissionsToSpecificRoleResponse>> ManageRolePermissionsAsync(string roleId, string lang);
 
+    // Spicial to permissions(Claims) of user
+    Task<Response<PermUpdateUserPermissionsRequest>> UpdateUserPermissionsAsync(PermUpdateUserPermissionsRequest model);
+    Task<Response<PermGetPermissionsToSpecificUserResponse>> ManageUserPermissionsAsync(string userId, string lang);
 }

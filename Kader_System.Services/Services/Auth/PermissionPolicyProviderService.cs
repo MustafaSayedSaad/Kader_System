@@ -12,13 +12,13 @@ public class PermissionPolicyProviderService(IOptions<AuthorizationOptions> opti
 
     public Task<AuthorizationPolicy?> GetPolicyAsync(string policyName)
     {
-        if (policyName.StartsWith(RolesClaims.Permission, StringComparison.OrdinalIgnoreCase))
+        if (policyName.StartsWith(RequestClaims.Permission, StringComparison.OrdinalIgnoreCase))
         {
             var policy = new AuthorizationPolicyBuilder();
             policy.AddRequirements(new PermissionRequirementService(policyName));
             return Task.FromResult(policy.Build())!;
         }
-        else if (policyName.Equals(RolesClaims.DomainRestricted))
+        else if (policyName.Equals(RequestClaims.DomainRestricted))
         {
             var policy = new AuthorizationPolicyBuilder();
             policy.AddRequirements(new PermissionRequirementService(policyName));

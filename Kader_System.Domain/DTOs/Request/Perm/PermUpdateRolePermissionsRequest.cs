@@ -1,7 +1,7 @@
 ﻿namespace Kader_System.Domain.Dtos.Request.Perm;
 
-public class PermUpdateManagementModelRequest 
+public class PermUpdateRolePermissionsRequest
 {
-    public string RoleId { get; set; } = string.Empty;
+    public required string RoleId { get; set; }
     public List<ActionsWithClaimValue> ActionsWithClaimValues { get; set; } = [];
 }

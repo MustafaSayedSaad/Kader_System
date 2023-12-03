@@ -9,7 +9,7 @@ public static class Permissions
             [
                 new()
                 {
-                    ClaimValue = $"Permissions.{module}.View",
+                    ClaimValue = $"superAdminRole.{module}.View",
                     ActionId = (int)ActionsEnums.View
                 }
             ];
@@ -60,17 +60,6 @@ public static class Permissions
     public static class Setting
     {
         public const string View = "Permissions.Setting.View";
-    }
-
-
-    public static class Companies
-    {
-        public const string View = "Permissions.Companies.View";
-        public const string Ptint = "Permissions.Companies.Ptint";
-        public const string Create = "Permissions.Companies.Create";
-        public const string Edit = "Permissions.Companies.Edit";
-        public const string Delete = "Permissions.Companies.Delete";
-        public const string ForceDelete = "Permissions.Companies.ForceDelete";
     }
 
     public static class MainScreenCat

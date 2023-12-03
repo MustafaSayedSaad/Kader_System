@@ -34,66 +34,66 @@ public class AuthService : IAuthService
     {
         string err = _sharLocalizer[Localization.Error];
 
-        var user = await _unitOfWork.Users.GetFirstOrDefaultAsync(x => x.UserName == model.UserNameOrEmail);
+        var user = await _userManager.FindByNameAsync(model.UserName);
 
         if (user == null)
-            return new Response<AuthLoginUserResponse>
+            return new()
             {
-                Data = new AuthLoginUserResponse()
+                Data = new()
                 {
-                    UserName = model.UserNameOrEmail
+                    UserName = model.UserName
                 },
                 Error = err,
                 Msg = string.Format(_sharLocalizer[Localization.CannotBeFound],
-                _sharLocalizer[Localization.UserNameOrEmail]),
+                _sharLocalizer[Localization.UserName]),
                 Check = false
             };
 
         var test = await _signInManager.PasswordSignInAsync(user.UserName!, model.Password, model.RememberMe, false);
         if (!test.Succeeded)
-            return new Response<AuthLoginUserResponse>
+            return new()
             {
-                Data = new AuthLoginUserResponse()
+                Data = new()
                 {
-                    UserName = model.UserNameOrEmail
+                    UserName = model.UserName
                 },
                 Error = err,
                 Msg = _sharLocalizer[Localization.PasswordNotmatch],
                 Check = false
             };
 
-        if (!user.IsActive)
-        {
-            string resultMsg = string.Format(_sharLocalizer[Localization.NotActive],
-                _sharLocalizer[Localization.User], model.UserNameOrEmail);
+        //if (!user.IsActive)
+        //{
+        //    string resultMsg = string.Format(_sharLocalizer[Localization.NotActive],
+        //        _sharLocalizer[Localization.User], model.UserName);
 
-            return new Response<AuthLoginUserResponse>()
-            {
-                Data = new AuthLoginUserResponse()
-                {
-                    UserName = model.UserNameOrEmail
-                },
-                Error = resultMsg,
-                Msg = resultMsg
-            };
-        }
+        //    return new()
+        //    {
+        //        Data = new()
+        //        {
+        //            UserName = model.UserName
+        //        },
+        //        Error = resultMsg,
+        //        Msg = resultMsg
+        //    };
+        //}
 
 
-        if (model.DeviceId != null)
-        {
-            //user.DeviceId = model.DeviceId;
+        //if (model.DeviceId != null)
+        //{
+        //    //user.DeviceId = model.DeviceId;
 
-            await _unitOfWork.UserDevices.AddAsync(new ApplicationUserDevice
-            {
-                UserId = user.Id,
-                DeviceId = model.DeviceId
-            });
+        //    await _unitOfWork.UserDevices.AddAsync(new ApplicationUserDevice
+        //    {
+        //        UserId = user.Id,
+        //        DeviceId = model.DeviceId
+        //    });
 
-            await _unitOfWork.CompleteAsync();
-        }
+        //    await _unitOfWork.CompleteAsync();
+        //}
 
         var currentUserRoles = (await _userManager.GetRolesAsync(user)).ToList();
-        string superAdminRole = Domain.Constants.Enums.RolesEnums.Superadmin.ToString().Trim();
+        //string superAdminRole = Domain.Constants.Enums.RolesEnums.Superadmin.ToString().Trim();
 
         var jwtSecurityToken = await CreateJwtToken(user);
         var result = new AuthLoginUserResponse
@@ -394,7 +394,8 @@ public class AuthService : IAuthService
         _accessor!.HttpContext == null ? string.Empty : _accessor!.HttpContext!.User.GetUserId();
     private async Task<JwtSecurityToken> CreateJwtToken(ApplicationUser user)
     {
-        var roleClaims = new List<Claim>();
+        List<Claim> roleClaims = [];
+        List<Claim> listOfUserClaims = [];
 
         var roles = (await _userManager.GetRolesAsync(user)).ToList();
 
@@ -405,6 +406,10 @@ public class AuthService : IAuthService
             var ddd = _roleManager.GetClaimsAsync(dd!).Result;
             roleClaims.AddRange(ddd);
         }
+        
+        var userClaims = _userManager.GetClaimsAsync(user!).Result;
+        listOfUserClaims.AddRange(userClaims);
+
         for (int i = 0; i < roles.Count; i++)
             roleClaims.Add(new Claim(ClaimTypes.Role, roles[i]));
 
@@ -412,9 +417,10 @@ public class AuthService : IAuthService
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.UserName!),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(RolesClaims.UserId, user.Id)
+            new Claim(RequestClaims.UserId, user.Id)
         }
-        .Union(roleClaims);
+        .Union(roleClaims)
+        .Union(listOfUserClaims);
         //.Union(await _userManager.GetClaimsAsync(user));
 
         var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.SecretKey));

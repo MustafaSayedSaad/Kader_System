@@ -43,9 +43,11 @@ public static class SD
         public const string User = "User";
         public const string SuperAdmin = "SuperAdmin";
     }
-    public static class RolesClaims
+    public static class RequestClaims
     {
         public const string Permission = "Permission";
+        public const string RolePermission = "RolePermission";
+        public const string UserPermission = "UserPermission";
         public const string DomainRestricted = "DomainRestricted";
         public const string UserId = "uid";
     }
@@ -127,7 +129,8 @@ public static class SD
             public const string GetAllPermissionsByCategoryName = "GetAllPermissionsByCategoryName";
             public const string ManageRolePermissions = "ManageRolePermissions/{roleId}";
             public const string UpdateRolePermissions = "UpdateRolePermissions";
-            public const string UpdateRolePermissions1 = "UpdateRolePermissions1";
+            public const string ManageUserPermissions = "ManageUserPermissions/{userId}";
+            public const string UpdateUserPermissions = "UpdateUserPermissions";
         }
     }
 

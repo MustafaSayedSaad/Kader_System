@@ -277,9 +277,9 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
         {
             string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
                 _sharLocalizer[Localization.Role], roleId);
-            return new Response<PermGetPermissionsToSpecificRoleResponse>()
+            return new()
             {
-                Data = new(),
+                Data = null!,
                 Error = resultMsg,
                 Msg = resultMsg
             };
@@ -287,9 +287,9 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
 
         var roleClaims = _roleManager.GetClaimsAsync(role).Result.Select(c => c.Value).ToList();
 
-        var eachubMainWithActions = await _unitOfWork.SubMainScreenActions.GetEachSubMainWithActionsAsync(lang);
+        var eachsubMainWithActions = await _unitOfWork.SubMainScreenActions.GetEachSubMainWithActionsAsync(lang);
 
-        foreach (var action in eachubMainWithActions.SelectMany(x => x.Actions))
+        foreach (var action in eachsubMainWithActions.SelectMany(x => x.Actions))
             if (roleClaims.Any(c => c == action.ClaimValue))
                 action.IsSelected = true;
 
@@ -297,16 +297,16 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
         {
             RoleId = roleId,
             RoleName = role.Name!,
-            EachSubMainWithActions = eachubMainWithActions.ToList()
+            EachSubMainWithActions = [.. eachsubMainWithActions]
         };
 
-        return new Response<PermGetPermissionsToSpecificRoleResponse>()
+        return new()
         {
             Data = result,
             Check = true
         };
     }
-    public async Task<Response<PermUpdateManagementModelRequest>> UpdateRolePermissionsAsync(PermUpdateManagementModelRequest model)
+    public async Task<Response<PermUpdateRolePermissionsRequest>> UpdateRolePermissionsAsync(PermUpdateRolePermissionsRequest model)
     {
 
         var role = await _roleManager.FindByIdAsync(model.RoleId);
@@ -316,9 +316,9 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
             string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
                 _sharLocalizer[Localization.Role], model.RoleId);
 
-            return new Response<PermUpdateManagementModelRequest>()
+            return new()
             {
-                Data = new PermUpdateManagementModelRequest(),
+                Data = null!,
                 Error = resultMsg,
                 Msg = resultMsg
             };
@@ -339,9 +339,94 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
 
         if (trueValues.Count != 0)
             foreach (var claim in trueValues)
-                await _roleManager.AddClaimAsync(role, new Claim(RolesClaims.Permission, claim.ClaimValue));
+                await _roleManager.AddClaimAsync(role, new Claim(RequestClaims.RolePermission, claim.ClaimValue));
 
-        return new Response<PermUpdateManagementModelRequest>()
+        return new()
+        {
+            Data = model,
+            Check = true,
+            Msg = _sharLocalizer[Localization.Updated]
+        };
+    }
+
+    #endregion
+
+    #region Spicial to permissions(Claims) of user
+
+    public async Task<Response<PermGetPermissionsToSpecificUserResponse>> ManageUserPermissionsAsync(string userId, string lang)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+
+        if (user == null)
+        {
+            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
+                _sharLocalizer[Localization.User], userId);
+            return new()
+            {
+                Data = null!,
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+
+        var userClaims = _userManager.GetClaimsAsync(user).Result.Select(c => c.Value).ToList();
+        //var userClaim1s = _userManager.GetUsersForClaimAsync();
+
+        var eachsubMainWithActions = await _unitOfWork.SubMainScreenActions.GetEachSubMainWithActionsAsync(lang);
+
+        foreach (var action in eachsubMainWithActions.SelectMany(x => x.Actions))
+            if (userClaims.Any(c => c == action.ClaimValue))
+                action.IsSelected = true;
+
+        var result = new PermGetPermissionsToSpecificUserResponse()
+        {
+            UserId = userId,
+            UserName = user.UserName!,
+            EachSubMainWithActions = [.. eachsubMainWithActions]
+        };
+
+        return new()
+        {
+            Data = result,
+            Check = true
+        };
+    }
+    public async Task<Response<PermUpdateUserPermissionsRequest>> UpdateUserPermissionsAsync(PermUpdateUserPermissionsRequest model)
+    {
+
+        var user = await _userManager.FindByIdAsync(model.UserId);
+
+        if (user == null)
+        {
+            string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
+                _sharLocalizer[Localization.User], model.UserId);
+
+            return new()
+            {
+                Data = null!,
+                Error = resultMsg,
+                Msg = resultMsg
+            };
+        }
+
+        var userClaims = await _userManager.GetClaimsAsync(user);//true
+
+        var falseValues = model.ActionsWithClaimValues.Where(y => !y.IsSelected).Select(x => x.ClaimValue).ToList();
+
+        var removedClaims = userClaims.Where(x => falseValues.Contains(x.Value)).ToList();
+
+        if (removedClaims.Count != 0)
+            foreach (Claim claim in removedClaims)
+                await _userManager.RemoveClaimAsync(user, claim);
+
+
+        var trueValues = model.ActionsWithClaimValues.Where(c => c.IsSelected && !userClaims.Select(v => v.Value).Contains(c.ClaimValue)).ToList();
+
+        if (trueValues.Count != 0)
+            foreach (var claim in trueValues)
+                await _userManager.AddClaimAsync(user, new Claim(RequestClaims.UserPermission, claim.ClaimValue));
+
+        return new()
         {
             Data = model,
             Check = true,

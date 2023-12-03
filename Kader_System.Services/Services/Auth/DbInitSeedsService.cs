@@ -22,14 +22,14 @@ public class DbInitSeedsService(RoleManager<ApplicationRole> roleManager, IUnitO
             allRoleClaims.AddRange(Permissions.GeneratePermissionsList(module));
 
         foreach (var roleClaim in allRoleClaims)
-            if (!allClaims.Any(c => c.Type == RolesClaims.Permission &&  c.Value == roleClaim.ClaimValue))
+            if (!allClaims.Any(c => c.Type == RequestClaims.RolePermission &&  c.Value == roleClaim.ClaimValue))
             {
                 //await _roleManager.AddClaimAsync(superAdminRole!, new Claim(RolesClaims.Permission, permission));
 
                 await _unitOfWork.RoleClaims.AddAsync(new ApplicationRoleClaim
                 {
                     RoleId = superAdminRole!.Id,
-                    ClaimType = RolesClaims.Permission,
+                    ClaimType = RequestClaims.RolePermission,
                     ClaimValue = roleClaim.ClaimValue
                 });
                 await _unitOfWork.CompleteAsync();
