@@ -26,7 +26,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
         {
             string resultMsg = _sharLocalizer[Localization.NotFoundData];
 
-            return new Response<IEnumerable<StSelectListForSubMainScreenResponse>>()
+            return new()
             {
                 Data = [],
                 Error = resultMsg,
@@ -34,7 +34,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
             };
         }
 
-        return new Response<IEnumerable<StSelectListForSubMainScreenResponse>>()
+        return new()
         {
             Data = result,
             Check = true
@@ -69,7 +69,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
         {
             string resultMsg = _sharLocalizer[Localization.NotFoundData];
 
-            return new Response<StGetAllSubMainScreensResponse>()
+            return new()
             {
                 Data = new()
                 {
@@ -80,7 +80,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
             };
         }
 
-        return new Response<StGetAllSubMainScreensResponse>()
+        return new()
         {
             Data = result,
             Check = true
@@ -105,7 +105,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
             };
         }
 
-        var obj = await _unitOfWork.SubMainScreens.AddAsync(new StSubMainScreen
+        var obj = await _unitOfWork.SubMainScreens.AddAsync(new()
         {
             Screen_sub_title_en = model.Screen_sub_title_en,
             Screen_sub_title_ar = model.Screen_sub_title_ar,
@@ -145,9 +145,9 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
             };
         }
 
-        return new Response<StGetSubMainScreenByIdResponse>()
+        return new()
         {
-            Data = new StGetSubMainScreenByIdResponse
+            Data = new()
             {
                 Id = id,
                 Screen_cat_id = obj.Id,
@@ -207,7 +207,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
             await _unitOfWork.CompleteAsync();
             transaction.Commit();
 
-            return new Response<StUpdateSubMainScreenRequest>()
+            return new()
             {
                 Msg = _sharLocalizer[Localization.Done],
                 Check = true,
@@ -218,7 +218,7 @@ public class SubMainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<Share
         {
             transaction.Rollback();
             await _loggingRepository.LogExceptionInDb(ex, JsonConvert.SerializeObject(model));
-            return new Response<StUpdateSubMainScreenRequest>()
+            return new()
             {
                 Error = ex.Message,
                 Msg = ex.Message + (ex.InnerException == null ? string.Empty : ex.InnerException.Message)

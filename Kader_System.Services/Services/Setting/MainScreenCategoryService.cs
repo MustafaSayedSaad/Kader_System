@@ -24,15 +24,15 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
         {
             string resultMsg = _sharLocalizer[Localization.NotFoundData];
 
-            return new Response<IEnumerable<StSelectListForMainScreenCategoryResponse>>()
+            return new()
             {
-                Data = new List<StSelectListForMainScreenCategoryResponse>(),
+                Data = [],
                 Error = resultMsg,
                 Msg = resultMsg
             };
         }
 
-        return new Response<IEnumerable<StSelectListForMainScreenCategoryResponse>>()
+        return new()
         {
             Data = result,
             Check = true
@@ -58,13 +58,14 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
                  }, orderBy: x =>
                    x.OrderByDescending(x => x.Id))).ToList()
         };
+
         if (result.TotalRecords is 0)
         {
             string resultMsg = _sharLocalizer[Localization.NotFoundData];
 
-            return new Response<StGetAllMainScreensCategoriesResponse>()
+            return new()
             {
-                Data = new StGetAllMainScreensCategoriesResponse()
+                Data = new()
                 {
                     Items = []
                 },
@@ -73,7 +74,7 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
             };
         }
 
-        return new Response<StGetAllMainScreensCategoriesResponse>()
+        return new()
         {
             Data = result,
             Check = true
@@ -107,7 +108,7 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
         }
 
 
-        await _unitOfWork.MainScreenCategories.AddAsync(new StMainScreenCategory
+        await _unitOfWork.MainScreenCategories.AddAsync(new()
         {
             Screen_main_title_ar = model.Screen_main_title_ar,
             Screen_main_title_en = model.Screen_main_title_en,
@@ -116,7 +117,7 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
         });
         await _unitOfWork.CompleteAsync();
 
-        return new Response<StCreateMainScreenCategoryRequest>()
+        return new()
         {
             Msg = _sharLocalizer[Localization.Done],
             Check = true,
@@ -132,7 +133,7 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
         {
             string resultMsg = _sharLocalizer[Localization.NotFoundData];
 
-            return new Response<StGetMainScreenCategoryByIdResponse>()
+            return new()
             {
                 Data = new(),
                 Error = resultMsg,
@@ -140,9 +141,9 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
             };
         }
 
-        return new Response<StGetMainScreenCategoryByIdResponse>()
+        return new()
         {
-            Data = new StGetMainScreenCategoryByIdResponse
+            Data = new()
             {
                 Id = id,
                 Screen_main_title_ar = obj.Screen_main_title_ar,
@@ -162,7 +163,7 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
             string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
                 _sharLocalizer[Localization.MainScreenCategory]);
 
-            return new Response<StUpdateMainScreenCategoryRequest>()
+            return new()
             {
                 Data = model,
                 Error = resultMsg,
@@ -187,7 +188,7 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
         _unitOfWork.MainScreenCategories.Update(obj);
         await _unitOfWork.CompleteAsync();
 
-        return new Response<StUpdateMainScreenCategoryRequest>()
+        return new()
         {
             Check = true,
             Data = model,
@@ -209,7 +210,7 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
             string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
                 _sharLocalizer[Localization.MainScreenCategory]);
 
-            return new Response<string>()
+            return new()
             {
                 Data = string.Empty,
                 Error = resultMsg,
@@ -220,7 +221,7 @@ public class MainScreenCategoryService(IUnitOfWork unitOfWork, IStringLocalizer<
         _unitOfWork.MainScreenCategories.Remove(obj);
         await _unitOfWork.CompleteAsync();
 
-        return new Response<string>()
+        return new()
         {
             Check = true,
             Data = string.Empty,

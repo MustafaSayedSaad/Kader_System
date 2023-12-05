@@ -26,7 +26,7 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
         {
             string resultMsg = _sharLocalizer[Localization.NotFoundData];
 
-            return new Response<IEnumerable<StSelectListForMainScreenResponse>>()
+            return new()
             {
                 Data = [],
                 Error = resultMsg,
@@ -34,7 +34,7 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
             };
         }
 
-        return new Response<IEnumerable<StSelectListForMainScreenResponse>>()
+        return new()
         {
             Data = result,
             Check = true
@@ -87,8 +87,8 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
     public async Task<Response<StCreateMainScreenRequest>> CreateMainScreenAsync(StCreateMainScreenRequest model)
     {
         bool exists = false;
-        exists = await _unitOfWork.MainScreens.ExistAsync(x => x.Screen_cat_title_ar.Trim() == model.Screen_cat_title_ar
-        && x.Screen_cat_title_en.Trim() == model.Screen_cat_title_en.Trim());
+        exists = await _unitOfWork.MainScreens.ExistAsync(x => x.Screen_cat_title_ar.Trim() == model.Screen_main_title_ar
+        && x.Screen_cat_title_en.Trim() == model.Screen_main_title_en.Trim());
 
         if (exists)
         {
@@ -102,10 +102,10 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
             };
         }
 
-        await _unitOfWork.MainScreens.AddAsync(new StMainScreen
+        await _unitOfWork.MainScreens.AddAsync(new()
         {
-            Screen_cat_title_ar = model.Screen_cat_title_ar,
-            Screen_cat_title_en = model.Screen_cat_title_en,
+            Screen_cat_title_ar = model.Screen_main_title_ar,
+            Screen_cat_title_en = model.Screen_main_title_en,
             Screen_cat_id = model.Screen_main_id
         });
         await _unitOfWork.CompleteAsync();
@@ -158,7 +158,7 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
             string resultMsg = string.Format(_sharLocalizer[Localization.CannotBeFound],
                 _sharLocalizer[Localization.MainScreen]);
 
-            return new Response<StUpdateMainScreenRequest>()
+            return new()
             {
                 Data = model,
                 Error = resultMsg,
@@ -166,8 +166,8 @@ public class MainScreenService(IUnitOfWork unitOfWork, IStringLocalizer<SharedRe
             };
         }
 
-        obj.Screen_cat_title_ar = model.Screen_cat_title_ar;
-        obj.Screen_cat_title_en = model.Screen_cat_title_en;
+        obj.Screen_cat_title_ar = model.Screen_main_title_ar;
+        obj.Screen_cat_title_en = model.Screen_main_title_en;
         obj.Screen_cat_id = model.Screen_main_id;
 
         _unitOfWork.MainScreens.Update(obj);
