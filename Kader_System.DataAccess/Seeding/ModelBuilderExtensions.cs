@@ -1,4 +1,5 @@
 ﻿using Kader_System.Domain.Constants.Enums;
+using Kader_System.Domain.Models.HR;
 using Kader_System.Domain.Models.Setting;
 
 namespace Kader_System.DataAccess.Seeding;
@@ -48,17 +49,73 @@ public static class ModelBuilderExtensions
 
         modelBuilder.Entity<StAction>()
             .HasData(
-           new StAction(){ Id = 1, Name = "إظهار", NameInEnglish = ActionsEnums.View.ToString()},
+           new() { Id = 1, Name = "إظهار", NameInEnglish = ActionsEnums.View.ToString()},
+           new() { Id = 2, Name = "اضافة", NameInEnglish = ActionsEnums.Add.ToString()},
+           new() { Id = 3, Name = "تعديل", NameInEnglish = ActionsEnums.Edit.ToString()},
+           new() { Id = 4, Name = "حذف", NameInEnglish = ActionsEnums.Delete.ToString()},
+           new() { Id = 5, Name = "حذف نهائى", NameInEnglish = ActionsEnums.ForceDelete.ToString()},   
+           new() { Id = 6, Name = "طباعة", NameInEnglish = ActionsEnums.Ptint.ToString()}
+           );
 
-           new StAction(){ Id = 2, Name = "اضافة", NameInEnglish = ActionsEnums.Add.ToString()},
-           
-           new StAction(){ Id = 3, Name = "تعديل", NameInEnglish = ActionsEnums.Edit.ToString()},
+        modelBuilder.Entity<HrVacationType>()
+            .HasData(
+           new() { Id = 1, Name = "عام كامل", NameInEnglish = "Full year"},
+           new() { Id = 2, Name = "من تاريخ التعيين", NameInEnglish = "From hiring date"},
+           new() { Id = 3, Name = "من تاريخ الاستحقاق", NameInEnglish = "After hiring days"}
+           );
 
-           new StAction() { Id = 4, Name = "حذف", NameInEnglish = ActionsEnums.Delete.ToString()},
+        modelBuilder.Entity<HrAccountingWay>()
+            .HasData(
+           new() { Id = 1, Name = "كل الاتب", NameInEnglish = "All salary" },
+           new() { Id = 2, Name = "الراتب الرئيسى", NameInEnglish = "Main salary" },
+           new() { Id = 3, Name = "بدون راتب", NameInEnglish = "Without salary" }
+           );
 
-           new StAction() { Id = 5, Name = "حذف نهائى", NameInEnglish = ActionsEnums.ForceDelete.ToString()},
-          
-           new StAction() { Id = 6, Name = "طباعة", NameInEnglish = ActionsEnums.Ptint.ToString()}
+        modelBuilder.Entity<HrCompanyType>()
+            .HasData(
+           new() { Id = 1, Name = "شركة", NameInEnglish = "Company" },
+           new() { Id = 2, Name = "مؤسسة", NameInEnglish = "Corporate" }
+           );
+
+        modelBuilder.Entity<HrGender>()
+            .HasData(
+            new() { Id = 1, Name = "ذكر", NameInEnglish = "Male" },
+            new() { Id = 2, Name = "أنثى", NameInEnglish = "Female" }
+           );
+
+        modelBuilder.Entity<HrMilitaryStatus>()
+            .HasData(
+                new() { Id = 1, Name = "معفى", NameInEnglish = "Exempt" },
+                new() { Id = 2, Name = "مؤجل", NameInEnglish = "Delayed" },
+                new() { Id = 3, Name = "انهى الخدمة", NameInEnglish = "Completed" }
+            );
+
+        modelBuilder.Entity<HrMaritalStatus>()
+            .HasData(
+                new() { Id = 1, Name = "أعزب", NameInEnglish = "Single" },
+                new() { Id = 2, Name = "خاطب", NameInEnglish = "Engaged" },
+                new() { Id = 3, Name = "متزوج", NameInEnglish = "Married" },
+                new() { Id = 4, Name = "مطللق", NameInEnglish = "Divorced" }
+            );
+
+        modelBuilder.Entity<HrMilitaryStatus>()
+            .HasData(
+                new() { Id = 1, Name = "مسلم", NameInEnglish = "Muslim" },
+                new() { Id = 2, Name = "مسيحى", NameInEnglish = "Christian" },
+                new() { Id = 3, Name = "غير ذلك", NameInEnglish = "Otherwise" }
+            );
+
+        modelBuilder.Entity<HrSalaryPaymentWay>()
+            .HasData(
+                new() { Id = 1, Name = "بنكى", NameInEnglish = "Bank" },
+                new() { Id = 2, Name = "نقدى", NameInEnglish = "Cash" },
+                new() { Id = 3, Name = "حوالة مالية", NameInEnglish = "Money transfer" }
+            );
+
+        modelBuilder.Entity<HrEmployeeType>()
+            .HasData(
+            new() { Id = 1, Name = "مقيم", NameInEnglish = "Resident" },
+            new() { Id = 2, Name = "مواطن", NameInEnglish = "Citizen" }
            );
     }
 
