@@ -30,3 +30,4 @@ global using Microsoft.Extensions.FileProviders;
 global using Kader_System.Domain.Constants.Enums;
 global using Kader_System.Domain.Models.Setting;
 global using Kader_System.Domain.Interfaces.Setting;
+global using Kader_System.Domain.Models.HR;

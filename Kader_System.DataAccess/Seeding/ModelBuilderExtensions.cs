@@ -1,6 +1,7 @@
 ﻿using Kader_System.Domain.Constants.Enums;
 using Kader_System.Domain.Models.HR;
 using Kader_System.Domain.Models.Setting;
+using Kader_System.Domain.Models.Trans;
 
 namespace Kader_System.DataAccess.Seeding;
 
@@ -120,9 +121,28 @@ public static class ModelBuilderExtensions
 
         modelBuilder.Entity<HrEmployeeType>()
             .HasData(
-            new() { Id = 1, Name = "مقيم", NameInEnglish = "Resident" },
-            new() { Id = 2, Name = "مواطن", NameInEnglish = "Citizen" }
+                new() { Id = 1, Name = "مقيم", NameInEnglish = "Resident" },
+                new() { Id = 2, Name = "مواطن", NameInEnglish = "Citizen" }
            );
+
+        modelBuilder.Entity<HrValueType>()
+            .HasData(
+                new() { Id = 1, Name = "مبلغ", NameInEnglish = "Percent" },
+                new() { Id = 2, Name = "نسبة", NameInEnglish = "Amount" }
+           );
+
+        modelBuilder.Entity<TransSalaryEffect>()
+            .HasData(
+                new() { Id = 1, Name = "قطعى", NameInEnglish = "On time" },
+                new() { Id = 2, Name = "شهرى", NameInEnglish = "Monthly" }
+           );
+
+        modelBuilder.Entity<TransAmountType>()
+            .HasData(
+                new() { Id = 1, Name = "ساعة", NameInEnglish = "Hour" },
+                new() { Id = 2, Name = "أيام عمل", NameInEnglish = "Work days" },
+                new() { Id = 3, Name = "القيمة", NameInEnglish = "Value" }
+            );
     }
 
     public static void AddQueryFilterToAllEntitiesAssignableFrom<T>(this ModelBuilder modelBuilder,
