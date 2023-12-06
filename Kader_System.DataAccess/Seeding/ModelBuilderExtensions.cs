@@ -83,6 +83,12 @@ public static class ModelBuilderExtensions
             new() { Id = 2, Name = "أنثى", NameInEnglish = "Female" }
            );
 
+        modelBuilder.Entity<HrNationality>()
+            .HasData(
+            new() { Id = 1, Name = "مصرى", NameInEnglish = "Egyptian " },
+            new() { Id = 2, Name = "سعودى", NameInEnglish = "Saudian" }
+           );
+
         modelBuilder.Entity<HrMilitaryStatus>()
             .HasData(
                 new() { Id = 1, Name = "معفى", NameInEnglish = "Exempt" },
@@ -98,7 +104,7 @@ public static class ModelBuilderExtensions
                 new() { Id = 4, Name = "مطللق", NameInEnglish = "Divorced" }
             );
 
-        modelBuilder.Entity<HrMilitaryStatus>()
+        modelBuilder.Entity<HrRelegion>()
             .HasData(
                 new() { Id = 1, Name = "مسلم", NameInEnglish = "Muslim" },
                 new() { Id = 2, Name = "مسيحى", NameInEnglish = "Christian" },
