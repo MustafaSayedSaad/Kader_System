@@ -103,6 +103,248 @@ namespace Kader_System.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Hr_AccountingWays",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_AccountingWays", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hr_CompanyTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_CompanyTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hr_EmployeeTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_EmployeeTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hr_Genders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_Genders", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hr_MaritalStatus",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_MaritalStatus", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hr_MilitaryStatus",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_MilitaryStatus", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hr_Nationalities",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_Nationalities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hr_SalaryPaymentWays",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_SalaryPaymentWays", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hr_VacationTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_VacationTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hr_ValueTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_ValueTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HrRelegion",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HrRelegion", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "St_Actions",
                 columns: table => new
                 {
@@ -146,6 +388,50 @@ namespace Kader_System.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_St_MainScreenCategories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Trans_AmountTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Trans_AmountTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Trans_SalaryEffects",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameInEnglish = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Trans_SalaryEffects", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -426,7 +712,113 @@ namespace Kader_System.DataAccess.Migrations
                 schema: "dbo",
                 table: "Auth_Users",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "Email", "EmailConfirmed", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdateBy", "UpdateDate", "UserName", "VisiblePassword" },
-                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5basb1", 0, "cfa7d469-65bc-427b-a472-8bffec874ec2", null, null, "mohammed88@gmail.com", true, null, null, true, false, false, null, "MOHAMMED88@GMAIL.COM", "MR_MOHAMMED", "AQAAAAIAAYagAAAAEOmlRafv8iKwsyWKHv+OV+AeHN4D2hzTQDT0dXhh5UGC2ZI4jx1ez1SdFC1Z7OHb9w==", null, false, "c2fb2af1-2927-4a7a-a17b-dc290597ae68", false, null, null, "Mr_Mohammed", "Mohammed88" });
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5basb1", 0, "a1e648ca-31a0-4780-937f-38500ea0f5af", null, null, "mohammed88@gmail.com", true, null, null, true, false, false, null, "MOHAMMED88@GMAIL.COM", "MR_MOHAMMED", "AQAAAAIAAYagAAAAEEd5pzrfXaSqJWAi3h/VbQjO1QtBFPHb7udg7GmHlnEurEj4/tny7YvvwJNH6SLKDQ==", null, false, "f62e35a7-4e71-4525-beed-012060b975b9", false, null, null, "Mr_Mohammed", "Mohammed88" });
+
+            migrationBuilder.InsertData(
+                table: "HrRelegion",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "مسلم", "Muslim", null, null },
+                    { 2, null, null, null, null, true, false, "مسيحى", "Christian", null, null },
+                    { 3, null, null, null, null, true, false, "غير ذلك", "Otherwise", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hr_AccountingWays",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "كل الاتب", "All salary", null, null },
+                    { 2, null, null, null, null, true, false, "الراتب الرئيسى", "Main salary", null, null },
+                    { 3, null, null, null, null, true, false, "بدون راتب", "Without salary", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hr_CompanyTypes",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "شركة", "Company", null, null },
+                    { 2, null, null, null, null, true, false, "مؤسسة", "Corporate", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hr_EmployeeTypes",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "مقيم", "Resident", null, null },
+                    { 2, null, null, null, null, true, false, "مواطن", "Citizen", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hr_Genders",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "ذكر", "Male", null, null },
+                    { 2, null, null, null, null, true, false, "أنثى", "Female", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hr_MaritalStatus",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "أعزب", "Single", null, null },
+                    { 2, null, null, null, null, true, false, "خاطب", "Engaged", null, null },
+                    { 3, null, null, null, null, true, false, "متزوج", "Married", null, null },
+                    { 4, null, null, null, null, true, false, "مطللق", "Divorced", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hr_MilitaryStatus",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "معفى", "Exempt", null, null },
+                    { 2, null, null, null, null, true, false, "مؤجل", "Delayed", null, null },
+                    { 3, null, null, null, null, true, false, "انهى الخدمة", "Completed", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hr_Nationalities",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "مصرى", "Egyptian ", null, null },
+                    { 2, null, null, null, null, true, false, "سعودى", "Saudian", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hr_SalaryPaymentWays",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "بنكى", "Bank", null, null },
+                    { 2, null, null, null, null, true, false, "نقدى", "Cash", null, null },
+                    { 3, null, null, null, null, true, false, "حوالة مالية", "Money transfer", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hr_VacationTypes",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "عام كامل", "Full year", null, null },
+                    { 2, null, null, null, null, true, false, "من تاريخ التعيين", "From hiring date", null, null },
+                    { 3, null, null, null, null, true, false, "من تاريخ الاستحقاق", "After hiring days", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Hr_ValueTypes",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "مبلغ", "Percent", null, null },
+                    { 2, null, null, null, null, true, false, "نسبة", "Amount", null, null }
+                });
 
             migrationBuilder.InsertData(
                 table: "St_Actions",
@@ -439,6 +831,25 @@ namespace Kader_System.DataAccess.Migrations
                     { 4, null, null, null, null, true, false, "حذف", "Delete", null, null },
                     { 5, null, null, null, null, true, false, "حذف نهائى", "ForceDelete", null, null },
                     { 6, null, null, null, null, true, false, "طباعة", "Ptint", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Trans_AmountTypes",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "ساعة", "Hour", null, null },
+                    { 2, null, null, null, null, true, false, "أيام عمل", "Work days", null, null },
+                    { 3, null, null, null, null, true, false, "القيمة", "Value", null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Trans_SalaryEffects",
+                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                values: new object[,]
+                {
+                    { 1, null, null, null, null, true, false, "قطعى", "On time", null, null },
+                    { 2, null, null, null, null, true, false, "شهرى", "Monthly", null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -557,7 +968,46 @@ namespace Kader_System.DataAccess.Migrations
                 name: "Com_Logs");
 
             migrationBuilder.DropTable(
+                name: "Hr_AccountingWays");
+
+            migrationBuilder.DropTable(
+                name: "Hr_CompanyTypes");
+
+            migrationBuilder.DropTable(
+                name: "Hr_EmployeeTypes");
+
+            migrationBuilder.DropTable(
+                name: "Hr_Genders");
+
+            migrationBuilder.DropTable(
+                name: "Hr_MaritalStatus");
+
+            migrationBuilder.DropTable(
+                name: "Hr_MilitaryStatus");
+
+            migrationBuilder.DropTable(
+                name: "Hr_Nationalities");
+
+            migrationBuilder.DropTable(
+                name: "Hr_SalaryPaymentWays");
+
+            migrationBuilder.DropTable(
+                name: "Hr_VacationTypes");
+
+            migrationBuilder.DropTable(
+                name: "Hr_ValueTypes");
+
+            migrationBuilder.DropTable(
+                name: "HrRelegion");
+
+            migrationBuilder.DropTable(
                 name: "St_SubMainScreenActions");
+
+            migrationBuilder.DropTable(
+                name: "Trans_AmountTypes");
+
+            migrationBuilder.DropTable(
+                name: "Trans_SalaryEffects");
 
             migrationBuilder.DropTable(
                 name: "Auth_Roles",

@@ -4,6 +4,7 @@ using Kader_System.DataAccesss.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kader_System.DataAccess.Migrations
 {
     [DbContext(typeof(KaderDbContext))]
-    partial class KaderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231207085628_SecondtMig")]
+    partial class SecondtMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,7 +214,7 @@ namespace Kader_System.DataAccess.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5basb1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "aef5203a-9a24-400d-9e7d-3bc210ab345e",
+                            ConcurrencyStamp = "ffb8319c-c438-4911-a55c-5d867de1d734",
                             Email = "mohammed88@gmail.com",
                             EmailConfirmed = true,
                             IsActive = true,
@@ -219,9 +222,9 @@ namespace Kader_System.DataAccess.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MOHAMMED88@GMAIL.COM",
                             NormalizedUserName = "MR_MOHAMMED",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGpsmwFuOpOySB6FPCtnLqpWFxV8OC3qeiS0D/AyINnLaQ0DRjFKJ3RLaA8B9B8NAA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGlBbpIfd0W7AJYzXuedezuFs5m9xoAG32b7zBsbEp7VpFewio1I4rRDueAXrbaZ6A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ba371f68-9714-4534-91d7-2cee6f0af117",
+                            SecurityStamp = "f8a123fe-4469-411e-94d0-b798ccd643c8",
                             TwoFactorEnabled = false,
                             UserName = "Mr_Mohammed",
                             VisiblePassword = "Mohammed88"
@@ -2550,6 +2553,59 @@ namespace Kader_System.DataAccess.Migrations
                     b.ToTable("St_SubMainScreenActions");
                 });
 
+            modelBuilder.Entity("Kader_System.Domain.Models.Trans.TranSalaryIncrease", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
+                    b.Property<string>("DeleteBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Employee_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Increase_type")
+                        .HasColumnType("int");
+
+                    b.Property<string>("InsertBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("InsertDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UpdateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Employee_id");
+
+                    b.HasIndex("Increase_type");
+
+                    b.ToTable("Tran_SalaryIncreases");
+                });
+
             modelBuilder.Entity("Kader_System.Domain.Models.Trans.TransAllowance", b =>
                 {
                     b.Property<int>("Id")
@@ -2940,59 +2996,6 @@ namespace Kader_System.DataAccess.Migrations
                             Name = "شهرى",
                             NameInEnglish = "Monthly"
                         });
-                });
-
-            modelBuilder.Entity("Kader_System.Domain.Models.Trans.TransSalaryIncrease", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
-
-                    b.Property<string>("DeleteBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Employee_id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Increase_type")
-                        .HasColumnType("int");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdateBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Employee_id");
-
-                    b.HasIndex("Increase_type");
-
-                    b.ToTable("Trans_SalaryIncreases");
                 });
 
             modelBuilder.Entity("Kader_System.Domain.Models.Trans.TransVacation", b =>
@@ -3387,6 +3390,25 @@ namespace Kader_System.DataAccess.Migrations
                     b.Navigation("SubMainScreen");
                 });
 
+            modelBuilder.Entity("Kader_System.Domain.Models.Trans.TranSalaryIncrease", b =>
+                {
+                    b.HasOne("Kader_System.Domain.Models.HR.HrEmployee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("Employee_id")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Kader_System.Domain.Models.HR.HrValueType", "ValueType")
+                        .WithMany()
+                        .HasForeignKey("Increase_type")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("ValueType");
+                });
+
             modelBuilder.Entity("Kader_System.Domain.Models.Trans.TransAllowance", b =>
                 {
                     b.HasOne("Kader_System.Domain.Models.HR.HrAllowance", "Allowance")
@@ -3493,25 +3515,6 @@ namespace Kader_System.DataAccess.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("SalaryEffect");
-                });
-
-            modelBuilder.Entity("Kader_System.Domain.Models.Trans.TransSalaryIncrease", b =>
-                {
-                    b.HasOne("Kader_System.Domain.Models.HR.HrEmployee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("Employee_id")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("Kader_System.Domain.Models.HR.HrValueType", "ValueType")
-                        .WithMany()
-                        .HasForeignKey("Increase_type")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("ValueType");
                 });
 
             modelBuilder.Entity("Kader_System.Domain.Models.Trans.TransVacation", b =>
