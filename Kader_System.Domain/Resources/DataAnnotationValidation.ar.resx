@@ -144,6 +144,9 @@
   <data name="Company" xml:space="preserve">
     <value>الشركة</value>
   </data>
+  <data name="CompanyOwner" xml:space="preserve">
+    <value>مالك لشركة</value>
+  </data>
   <data name="Completed" xml:space="preserve">
     <value>اكتمال البيانات</value>
   </data>

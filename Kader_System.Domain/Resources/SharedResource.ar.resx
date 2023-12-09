@@ -120,6 +120,9 @@
   <data name="CannotBeFound" xml:space="preserve">
     <value>{0} ليست موجودة</value>
   </data>
+  <data name="Company" xml:space="preserve">
+    <value>الشركة</value>
+  </data>
   <data name="Deleted" xml:space="preserve">
     <value>تم الحذف بنجاح</value>
   </data>

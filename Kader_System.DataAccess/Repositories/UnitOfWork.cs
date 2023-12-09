@@ -18,7 +18,7 @@ public class UnitOfWork : IUnitOfWork
     public IAccountingWayRepository AccountingWays { get; private set; }
     public IAllowanceRepository Allowances { get; private set; }
     public IBenefitRepository Benefits { get; private set; }
-    public ICompanyRepository Companys { get; private set; }
+    public ICompanyRepository Companies { get; private set; }
     public ICompanyTypeRepository CompanyTypes { get; private set; }
     public IContractAllowancesDetailRepository ContractAllowancesDetails { get; private set; }
     public IContractRepository Contracts { get; private set; }

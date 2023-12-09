@@ -8,6 +8,11 @@ public static class SD
         public const string SettingFilesPath = "/wwwroot/Files/Setting/";
         public const string SettingAudiosPath = "/wwwroot/Audios/Setting/";
         public const string SettingVideosPath = "/wwwroot/Videos/Setting/";
+
+        public const string HRImagesPath = "/wwwroot/Images/HR/";
+        public const string HRFilesPath = "/wwwroot/Files/HR/";
+        public const string HRAudiosPath = "/wwwroot/Audios/HR/";
+        public const string HRVideosPath = "/wwwroot/Videos/HR/";
     }
     public static class ReadRootPath
     {
@@ -15,6 +20,11 @@ public static class SD
         public const string SettingFilesPath = "Files/Setting/";
         public const string SettingAudiosPath = "Audios/Setting/";
         public const string SettingVideosPath = "Videos/Setting/";
+
+        public const string HRImagesPath = "Images/HR/";
+        public const string HRFilesPath = "Files/HR/";
+        public const string HRAudiosPath = "Audios/HR/";
+        public const string HRVideosPath = "Videos/HR/";
     }
 
     public static class FileSettings
@@ -355,6 +365,7 @@ public static class SD
 
         public const string NameInArabic = "Name in Arabic";
         public const string NameInEnglish = "Name in English";
+        public const string CompanyOwner = "Company owner";
         public const string PersonalEmail = "Personal Email";
         public const string PhoneNumber = "Phone number";
         public const string HireDate = "Hire date";

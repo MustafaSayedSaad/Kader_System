@@ -27,7 +27,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\Audios\" />
     <Folder Include="wwwroot\Files\" />
-    <Folder Include="wwwroot\Images\Setting\" />
+    <Folder Include="wwwroot\Images\HR\" />
     <Folder Include="wwwroot\Videos\" />
   </ItemGroup>
 

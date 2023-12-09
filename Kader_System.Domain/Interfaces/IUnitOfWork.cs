@@ -1,7 +1,4 @@
-﻿using Kader_System.Domain.Interfaces.HR;
-using Kader_System.Domain.Interfaces.Trans;
-
-namespace Kader_System.Domain.Interfaces;
+﻿namespace Kader_System.Domain.Interfaces;
 
 public interface IUnitOfWork : IDisposable
 {
@@ -21,7 +18,7 @@ public interface IUnitOfWork : IDisposable
     IAccountingWayRepository AccountingWays { get; }
     IAllowanceRepository Allowances { get; }
     IBenefitRepository Benefits { get; }
-    ICompanyRepository Companys { get; }
+    ICompanyRepository Companies { get; }
     ICompanyTypeRepository CompanyTypes { get; }
     IContractAllowancesDetailRepository ContractAllowancesDetails { get; }
     IContractRepository Contracts { get; }

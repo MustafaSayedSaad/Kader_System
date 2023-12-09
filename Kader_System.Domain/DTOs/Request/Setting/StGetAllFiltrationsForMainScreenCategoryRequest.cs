@@ -2,6 +2,4 @@
 
 public class StGetAllFiltrationsForMainScreenCategoryRequest : PaginationRequest
 {
-    [DefaultValue(false)]
-    public bool IsDeleted { get; set; }
 }

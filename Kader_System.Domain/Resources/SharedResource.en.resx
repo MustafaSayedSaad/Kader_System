@@ -120,6 +120,9 @@
   <data name="CannotBeFound" xml:space="preserve">
     <value>{0} cannot be found</value>
   </data>
+  <data name="Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
   <data name="Deleted" xml:space="preserve">
     <value>Deleted successfully</value>
   </data>

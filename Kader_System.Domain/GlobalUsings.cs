@@ -32,3 +32,5 @@ global using Kader_System.Domain.Models.Setting;
 global using Kader_System.Domain.Interfaces.Setting;
 global using Kader_System.Domain.Models.HR;
 global using Kader_System.Domain.Models.Trans;
+global using Kader_System.Domain.Interfaces.HR;
+global using Kader_System.Domain.Interfaces.Trans;
