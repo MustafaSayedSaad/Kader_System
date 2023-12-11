@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Allowance" xml:space="preserve">
+    <value>البدل</value>
+  </data>
+  <data name="Benefit" xml:space="preserve">
+    <value>اسم المستحق</value>
+  </data>
   <data name="CannotBeFound" xml:space="preserve">
     <value>{0} ليست موجودة</value>
   </data>
   <data name="Company" xml:space="preserve">
     <value>الشركة</value>
+  </data>
+  <data name="Deduction" xml:space="preserve">
+    <value>اسم الخصم</value>
   </data>
   <data name="Deleted" xml:space="preserve">
     <value>تم الحذف بنجاح</value>
@@ -140,6 +149,9 @@
   </data>
   <data name="NotFoundData" xml:space="preserve">
     <value>لا يوجد بيانات</value>
+  </data>
+  <data name="Qualification" xml:space="preserve">
+    <value>المؤهل</value>
   </data>
   <data name="Role" xml:space="preserve">
     <value>المسئولية</value>

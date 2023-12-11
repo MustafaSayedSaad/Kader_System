@@ -18,6 +18,7 @@ using Serilog;
 using System.Text.Json.Serialization;
 using System.Text;
 using Kader_System.Services.Services.Setting;
+using Kader_System.Services.Services.HR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -198,6 +199,13 @@ builder.Services.AddScoped<ILoggingRepository, LoggingRepository>();
 builder.Services.AddScoped<IMainScreenCategoryService, MainScreenCategoryService>();
 builder.Services.AddScoped<IMainScreenService, MainScreenService>();
 builder.Services.AddScoped<ISubMainScreenService, SubMainScreenService>();
+
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<IAllowanceService, AllowanceService>();
+builder.Services.AddScoped<IBenefitService, BenefitService>();
+builder.Services.AddScoped<IDeductionService, DeductionService>();
+builder.Services.AddScoped<IQualificationService, QualificationService>();
+builder.Services.AddScoped<IShiftService, ShiftService>();
 
 #endregion
 

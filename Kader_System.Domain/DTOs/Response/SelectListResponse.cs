@@ -40,6 +40,13 @@ public class ListOfEmployeeRequestTypesResponse
     public string? LinkPath { get; set; }
     public bool IsActive { get; set; } 
 }
+
+public class SelectListLookupResponse
+{
+    public int Id { get; set; }
+    public required string Name_ar { get; set; }
+    public required string Name_en { get; set; }
+}
 public class CheckBox
 {
     public string DisplayValue { get; set; } = string.Empty;

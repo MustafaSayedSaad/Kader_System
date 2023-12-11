@@ -2,11 +2,11 @@
 
 public interface IShiftService
 {
-    Task<Response<IEnumerable<StSelectListForMainScreenCategoryResponse>>> ListOfMainScreensCategoriesAsync(string lang);
-    Task<Response<StGetAllMainScreensCategoriesResponse>> GetAllMainScreensCategoriesAsync(string lang, StGetAllFiltrationsForMainScreenCategoryRequest model);
-    Task<Response<StCreateMainScreenCategoryRequest>> CreateMainScreenCategoryAsync(StCreateMainScreenCategoryRequest model);
-    Task<Response<StGetMainScreenCategoryByIdResponse>> GetMainScreenCategoryByIdAsync(int id);
-    Task<Response<StUpdateMainScreenCategoryRequest>> UpdateMainScreenCategoryAsync(int id, StUpdateMainScreenCategoryRequest model);
-    Task<Response<string>> UpdateActiveOrNotMainScreenCategoryAsync(int id);
-    Task<Response<string>> DeleteMainScreenCategoryAsync(int id);
+    Task<Response<IEnumerable<SelectListResponse>>> ListOfShiftsAsync(string lang);
+    Task<Response<HrGetAllShiftsResponse>> GetAllShiftsAsync(string lang, HrGetAllFiltrationsForShiftsRequest model);
+    Task<Response<HrCreateShiftRequest>> CreateShiftAsync(HrCreateShiftRequest model);
+    Task<Response<HrGetShiftByIdResponse>> GetShiftByIdAsync(int id);
+    Task<Response<HrUpdateShiftRequest>> UpdateShiftAsync(int id, HrUpdateShiftRequest model);
+    Task<Response<string>> UpdateActiveOrNotShiftAsync(int id);
+    Task<Response<string>> DeleteShiftAsync(int id);
 }

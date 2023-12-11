@@ -153,6 +153,55 @@ public static class SD
             public const string GetCompanyById = "company/{id}";
             public const string DeleteCompany = "company/{id}";
         }
+
+        public class Allowance
+        {
+            public const string ListOfAllowances = "allowance/create";
+            public const string GetAllAllowances = "allowance";
+            public const string CreateAllowance = "allowance";
+            public const string UpdateAllowance = "allowance/{id}";
+            public const string GetAllowanceById = "allowance/{id}";
+            public const string DeleteAllowance = "allowance/{id}";
+        }
+        public class Benefit
+        {
+            public const string ListOfBenefits = "benefit/create";
+            public const string GetAllBenefits = "benefit";
+            public const string CreateBenefit = "benefit";
+            public const string UpdateBenefit = "benefit/{id}";
+            public const string GetBenefitById = "benefit/{id}";
+            public const string DeleteBenefit = "benefit/{id}";
+        }
+
+        public class Deduction
+        {
+            public const string ListOfDeductions = "deduction/create";
+            public const string GetAllDeductions = "deduction";
+            public const string CreateDeduction = "deduction";
+            public const string UpdateDeduction = "deduction/{id}";
+            public const string GetDeductionById = "deduction/{id}";
+            public const string DeleteDeduction = "deduction/{id}";
+        }
+
+        public class Qualification
+        {
+            public const string ListOfQualifications = "qualification/create";
+            public const string GetAllQualifications = "qualification";
+            public const string CreateQualification = "qualification";
+            public const string UpdateQualification = "qualification/{id}";
+            public const string GetQualificationById = "qualification/{id}";
+            public const string DeleteQualification = "qualification/{id}";
+        }
+
+        public class Shift
+        {
+            public const string ListOfShifts = "shift/create";
+            public const string GetAllShifts = "shift";
+            public const string CreateShift = "shift";
+            public const string UpdateShift = "shift/{id}";
+            public const string GetShiftById = "shift/{id}";
+            public const string DeleteShift = "shift/{id}";
+        }
     }
 
     public static class Localization
@@ -257,6 +306,11 @@ public static class SD
         public const string Email_Password_Incorrect = "Email_Password_Incorrect";
         public const string UserDataIsIncorrect = "UserDataIsIncorrect";
         public const string Company = "Company";
+        public const string Allowance = "Allowance";
+        public const string Benefit = "Benefit";
+        public const string Qualification = "Qualification";
+        public const string Deduction = "Deduction";
+
         public const string Image = "Image";
         public const string CompanyIsNotActive = "Company is not active";
         public const string NotActive = "NotActive";

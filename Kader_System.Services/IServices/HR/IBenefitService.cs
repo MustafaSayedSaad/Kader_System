@@ -2,11 +2,11 @@
 
 public interface IBenefitService
 {
-    Task<Response<IEnumerable<StSelectListForMainScreenCategoryResponse>>> ListOfMainScreensCategoriesAsync(string lang);
-    Task<Response<StGetAllMainScreensCategoriesResponse>> GetAllMainScreensCategoriesAsync(string lang, StGetAllFiltrationsForMainScreenCategoryRequest model);
-    Task<Response<StCreateMainScreenCategoryRequest>> CreateMainScreenCategoryAsync(StCreateMainScreenCategoryRequest model);
-    Task<Response<StGetMainScreenCategoryByIdResponse>> GetMainScreenCategoryByIdAsync(int id);
-    Task<Response<StUpdateMainScreenCategoryRequest>> UpdateMainScreenCategoryAsync(int id, StUpdateMainScreenCategoryRequest model);
-    Task<Response<string>> UpdateActiveOrNotMainScreenCategoryAsync(int id);
-    Task<Response<string>> DeleteMainScreenCategoryAsync(int id);
+    Task<Response<IEnumerable<SelectListResponse>>> ListOfBenefitsAsync(string lang);
+    Task<Response<HrGetAllBenefitsResponse>> GetAllBenefitsAsync(string lang, HrGetAllFiltrationsForBenefitsRequest model);
+    Task<Response<HrCreateBenefitRequest>> CreateBenefitAsync(HrCreateBenefitRequest model);
+    Task<Response<HrGetBenefitByIdResponse>> GetBenefitByIdAsync(int id);
+    Task<Response<HrUpdateBenefitRequest>> UpdateBenefitAsync(int id, HrUpdateBenefitRequest model);
+    Task<Response<string>> UpdateActiveOrNotBenefitAsync(int id);
+    Task<Response<string>> DeleteBenefitAsync(int id);
 }

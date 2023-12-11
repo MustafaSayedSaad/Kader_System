@@ -2,11 +2,11 @@
 
 public interface IDeductionService
 {
-    Task<Response<IEnumerable<StSelectListForMainScreenCategoryResponse>>> ListOfMainScreensCategoriesAsync(string lang);
-    Task<Response<StGetAllMainScreensCategoriesResponse>> GetAllMainScreensCategoriesAsync(string lang, StGetAllFiltrationsForMainScreenCategoryRequest model);
-    Task<Response<StCreateMainScreenCategoryRequest>> CreateMainScreenCategoryAsync(StCreateMainScreenCategoryRequest model);
-    Task<Response<StGetMainScreenCategoryByIdResponse>> GetMainScreenCategoryByIdAsync(int id);
-    Task<Response<StUpdateMainScreenCategoryRequest>> UpdateMainScreenCategoryAsync(int id, StUpdateMainScreenCategoryRequest model);
-    Task<Response<string>> UpdateActiveOrNotMainScreenCategoryAsync(int id);
-    Task<Response<string>> DeleteMainScreenCategoryAsync(int id);
+    Task<Response<IEnumerable<SelectListResponse>>> ListOfDeductionsAsync(string lang);
+    Task<Response<HrGetAllDeductionsResponse>> GetAllDeductionsAsync(string lang, HrGetAllFiltrationsForDeductionsRequest model);
+    Task<Response<HrCreateDeductionRequest>> CreateDeductionAsync(HrCreateDeductionRequest model);
+    Task<Response<HrGetDeductionByIdResponse>> GetDeductionByIdAsync(int id);
+    Task<Response<HrUpdateDeductionRequest>> UpdateDeductionAsync(int id, HrUpdateDeductionRequest model);
+    Task<Response<string>> UpdateActiveOrNotDeductionAsync(int id);
+    Task<Response<string>> DeleteDeductionAsync(int id);
 }
