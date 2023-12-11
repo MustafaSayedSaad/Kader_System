@@ -65,7 +65,7 @@ public class UnitOfWork : IUnitOfWork
         AccountingWays = new AccountingWayRepository(_context);
         Allowances = new AllowanceRepository(_context);
         Benefits = new BenefitRepository(_context);
-        Companys = new CompanyRepository(_context);
+        Companies = new CompanyRepository(_context);
         CompanyTypes = new CompanyTypeRepository(_context);
         ContractAllowancesDetails = new ContractAllowancesDetailRepository(_context);
         Contracts = new ContractRepository(_context);

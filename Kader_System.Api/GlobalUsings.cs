@@ -15,3 +15,5 @@ global using Kader_System.Domain.Dtos.Request.Perm;
 global using Kader_System.Services.IServices.Setting;
 global using Kader_System.Domain.Dtos.Request.Setting;
 global using Kader_System.Domain.Models.Setting;
+global using Kader_System.Services.IServices.HR;
+global using Kader_System.Domain.Dtos.Request.HR;

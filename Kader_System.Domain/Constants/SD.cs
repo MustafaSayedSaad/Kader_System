@@ -36,6 +36,7 @@ public static class SD
     {
         public const string Auth = "Auth";
         public const string Setting = "Setting";
+        public const string HR = "HR";
         public const string V1 = "v1";
         public const string Bearer = "Bearer";
 
@@ -141,6 +142,16 @@ public static class SD
             public const string UpdateRolePermissions = "UpdateRolePermissions";
             public const string ManageUserPermissions = "ManageUserPermissions/{userId}";
             public const string UpdateUserPermissions = "UpdateUserPermissions";
+        }
+
+        public class Company
+        {
+            public const string ListOfCompanies = "company/create";
+            public const string GetAllCompanies = "company";
+            public const string CreateCompany = "company";
+            public const string UpdateCompany = "company/{id}";
+            public const string GetCompanyById = "company/{id}";
+            public const string DeleteCompany = "company/{id}";
         }
     }
 

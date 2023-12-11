@@ -18,9 +18,9 @@ public static class ManageFilesHelper
         };
     }
 
-    public static List<GetFileNameAndExtension> UploadFiles(List<IFormFile> files, string path)
+    public static List<GetFileNameAndExtension> UploadFiles(IFormFileCollection files, string path)
     {
-        List<GetFileNameAndExtension> list = new();
+        List<GetFileNameAndExtension> list = [];
         foreach (var file in files)
         {
             string fileName = Guid.NewGuid() + "_" + file.FileName;
@@ -56,24 +56,24 @@ public static class ManageFilesHelper
         }
     }
 
-    public static List<GetFileNameAndExtension> UploadFiles(IFormFileCollection files, string path)
-    {
-        List<GetFileNameAndExtension> list = new();
-        foreach (var file in files)
-        {
-            string fileName = Guid.NewGuid() + "_" + file.FileName;
-            string finalFilePath = Path.Combine(Directory.GetCurrentDirectory() + path, fileName);
-            using (var Stream = new FileStream(finalFilePath, FileMode.Create))
-            {
-                file.CopyTo(Stream);
-            };
-            list.Add(new GetFileNameAndExtension
-            {
-                FileName = fileName,
-                FileExtension = Path.GetExtension(file.FileName)
-            });
-        }
-        return list;
-    }
+    //public static List<GetFileNameAndExtension> UploadFiles(IFormFileCollection files, string path)
+    //{
+    //    List<GetFileNameAndExtension> list = new();
+    //    foreach (var file in files)
+    //    {
+    //        string fileName = Guid.NewGuid() + "_" + file.FileName;
+    //        string finalFilePath = Path.Combine(Directory.GetCurrentDirectory() + path, fileName);
+    //        using (var Stream = new FileStream(finalFilePath, FileMode.Create))
+    //        {
+    //            file.CopyTo(Stream);
+    //        };
+    //        list.Add(new GetFileNameAndExtension
+    //        {
+    //            FileName = fileName,
+    //            FileExtension = Path.GetExtension(file.FileName)
+    //        });
+    //    }
+    //    return list;
+    //}
 
 }

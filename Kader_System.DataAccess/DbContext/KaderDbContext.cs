@@ -95,8 +95,8 @@ public class KaderDbContext(DbContextOptions<KaderDbContext> options, IHttpConte
 
             if (entityEntry.State == EntityState.Added)
             {
-                ((BaseEntity)entityEntry.Entity).InsertDate = dateNow;
-                ((BaseEntity)entityEntry.Entity).InsertBy = userId;
+                ((BaseEntity)entityEntry.Entity).Add_date = dateNow;
+                ((BaseEntity)entityEntry.Entity).Added_by = userId;
             }
             if (entityEntry.State == EntityState.Deleted)
             {

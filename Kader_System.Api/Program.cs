@@ -147,6 +147,11 @@ builder.Services.AddSwaggerGen(x =>
         Title = $"{Shared.KaderSystem} {Modules.Setting}",
         Version = Modules.V1
     });
+    x.SwaggerDoc(Modules.HR, new OpenApiInfo
+    {
+        Title = $"{Shared.KaderSystem} {Modules.HR}",
+        Version = Modules.V1
+    });
 
     x.AddSecurityDefinition(Modules.Bearer, new OpenApiSecurityScheme
     {
@@ -236,6 +241,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction() || app.Env
     {
         x.SwaggerEndpoint($"/swagger/{Modules.Auth}/swagger.json", "Auth_Management v1");
         x.SwaggerEndpoint($"/swagger/{Modules.Setting}/swagger.json", "Setting_Management v1");
+        x.SwaggerEndpoint($"/swagger/{Modules.HR}/swagger.json", "HR_Management v1");
     });
 }
 

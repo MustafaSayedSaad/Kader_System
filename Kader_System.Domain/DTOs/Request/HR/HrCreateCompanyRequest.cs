@@ -21,5 +21,5 @@ public class HrCreateCompanyRequest
 
 
     [AllowedLetters(FileSettings.SpecialChar), MaxFileLettersCount(FileSettings.Length)]
-    public IFormCollection Company_contracts { get; set; } = default!;
+    public IFormFileCollection Company_contracts { get; set; } = default!;
 }

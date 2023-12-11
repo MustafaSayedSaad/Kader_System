@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Kader_System.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class SecondMig : Migration
+    public partial class FirstMid : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,10 +24,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Title_name_ar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -47,10 +47,10 @@ namespace Kader_System.DataAccess.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -89,10 +89,10 @@ namespace Kader_System.DataAccess.Migrations
                     ObjJson = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     InnerException = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -109,10 +109,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -133,10 +133,10 @@ namespace Kader_System.DataAccess.Migrations
                     Name_ar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name_en = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -155,10 +155,10 @@ namespace Kader_System.DataAccess.Migrations
                     Name_ar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name_en = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -175,10 +175,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -199,10 +199,10 @@ namespace Kader_System.DataAccess.Migrations
                     Name_ar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name_en = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -219,10 +219,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -241,10 +241,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -263,10 +263,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -289,10 +289,10 @@ namespace Kader_System.DataAccess.Migrations
                     Has_need_license = table.Column<bool>(type: "bit", nullable: false),
                     Has_additional_time = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -309,10 +309,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -331,10 +331,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -353,10 +353,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -378,10 +378,10 @@ namespace Kader_System.DataAccess.Migrations
                     Name_ar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Has_additional_time = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -398,10 +398,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -424,10 +424,10 @@ namespace Kader_System.DataAccess.Migrations
                     Start_shift = table.Column<TimeOnly>(type: "time", nullable: false),
                     End_shift = table.Column<TimeOnly>(type: "time", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -444,10 +444,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -466,10 +466,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -488,10 +488,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -510,10 +510,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -536,10 +536,10 @@ namespace Kader_System.DataAccess.Migrations
                     Screen_main_image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageExtension = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -556,10 +556,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -578,10 +578,10 @@ namespace Kader_System.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -627,10 +627,10 @@ namespace Kader_System.DataAccess.Migrations
                     RevokedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     User_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -677,10 +677,10 @@ namespace Kader_System.DataAccess.Migrations
                     DeviceId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -725,10 +725,10 @@ namespace Kader_System.DataAccess.Migrations
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -780,12 +780,14 @@ namespace Kader_System.DataAccess.Migrations
                     Name_en = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name_ar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Company_owner = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Company_licenses = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Company_licenses_extension = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Company_type = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -813,10 +815,10 @@ namespace Kader_System.DataAccess.Migrations
                     Name_ar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Vacation_type = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -841,10 +843,10 @@ namespace Kader_System.DataAccess.Migrations
                     Screen_cat_title_ar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Screen_cat_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -856,6 +858,34 @@ namespace Kader_System.DataAccess.Migrations
                         name: "FK_St_MainScreens_St_MainScreenCategories_Screen_cat_id",
                         column: x => x.Screen_cat_id,
                         principalTable: "St_MainScreenCategories",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hr_CompanyContracts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Company_contracts = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Company_contracts_extension = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Company_id = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hr_CompanyContracts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Hr_CompanyContracts_Hr_Companies_Company_id",
+                        column: x => x.Company_id,
+                        principalTable: "Hr_Companies",
                         principalColumn: "Id");
                 });
 
@@ -873,10 +903,10 @@ namespace Kader_System.DataAccess.Migrations
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Company_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -899,10 +929,10 @@ namespace Kader_System.DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Company_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -957,10 +987,10 @@ namespace Kader_System.DataAccess.Migrations
                     EmployeeType_id = table.Column<int>(type: "int", nullable: false),
                     Job_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1037,10 +1067,10 @@ namespace Kader_System.DataAccess.Migrations
                     AccountingWay_id = table.Column<int>(type: "int", nullable: false),
                     Vacation_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1072,10 +1102,10 @@ namespace Kader_System.DataAccess.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Screen_main_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1099,10 +1129,10 @@ namespace Kader_System.DataAccess.Migrations
                     Section_id = table.Column<int>(type: "int", nullable: false),
                     Department_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1136,10 +1166,10 @@ namespace Kader_System.DataAccess.Migrations
                     FileExtension = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Employee_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1164,10 +1194,10 @@ namespace Kader_System.DataAccess.Migrations
                     FileExtension = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Employee_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1195,10 +1225,10 @@ namespace Kader_System.DataAccess.Migrations
                     Employee_id = table.Column<int>(type: "int", nullable: false),
                     Allowance_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1238,10 +1268,10 @@ namespace Kader_System.DataAccess.Migrations
                     Employee_id = table.Column<int>(type: "int", nullable: false),
                     Benefit_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1284,10 +1314,10 @@ namespace Kader_System.DataAccess.Migrations
                     Covenant_amount = table.Column<double>(type: "float", nullable: false),
                     Employee_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1317,10 +1347,10 @@ namespace Kader_System.DataAccess.Migrations
                     Employee_id = table.Column<int>(type: "int", nullable: false),
                     Deduction_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1361,10 +1391,10 @@ namespace Kader_System.DataAccess.Migrations
                     Increase_type = table.Column<int>(type: "int", nullable: false),
                     Employee_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1396,10 +1426,10 @@ namespace Kader_System.DataAccess.Migrations
                     Employee_id = table.Column<int>(type: "int", nullable: false),
                     Vacation_system_d_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1428,10 +1458,10 @@ namespace Kader_System.DataAccess.Migrations
                     SubMainScreenId = table.Column<int>(type: "int", nullable: false),
                     ActionId = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1462,10 +1492,10 @@ namespace Kader_System.DataAccess.Migrations
                     Salary_effect_id = table.Column<int>(type: "int", nullable: false),
                     Contract_id = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    InsertDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Add_date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    InsertBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Added_by = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -1493,18 +1523,18 @@ namespace Kader_System.DataAccess.Migrations
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "Auth_Roles",
-                columns: new[] { "Id", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NormalizedName", "Title_name_ar", "UpdateBy", "UpdateDate" },
-                values: new object[] { "fab4fac1-c546-41de-aebc-a14da68957ab1", "1", null, null, null, null, true, false, "Superadmin", "SUPERADMIN", "سوبر أدمن", null, null });
+                columns: new[] { "Id", "Add_date", "Added_by", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NormalizedName", "Title_name_ar", "UpdateBy", "UpdateDate" },
+                values: new object[] { "fab4fac1-c546-41de-aebc-a14da68957ab1", null, null, "1", null, null, true, false, "Superadmin", "SUPERADMIN", "سوبر أدمن", null, null });
 
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "Auth_Users",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "Email", "EmailConfirmed", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdateBy", "UpdateDate", "UserName", "VisiblePassword" },
-                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5basb1", 0, "967e7bf7-d73d-4c32-b328-114a3edc9206", null, null, "mohammed88@gmail.com", true, null, null, true, false, false, null, "MOHAMMED88@GMAIL.COM", "MR_MOHAMMED", "AQAAAAIAAYagAAAAEDEuZBrofgReTe8mdpTKmQY8JSB5hERlbBj/bCudc1bW5oRbcxWxndNbcSny41PgvA==", null, false, "a40316d2-9383-4421-bf12-b49299339d24", false, null, null, "Mr_Mohammed", "Mohammed88" });
+                columns: new[] { "Id", "AccessFailedCount", "Add_date", "Added_by", "ConcurrencyStamp", "DeleteBy", "DeleteDate", "Email", "EmailConfirmed", "IsActive", "IsDeleted", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UpdateBy", "UpdateDate", "UserName", "VisiblePassword" },
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5basb1", 0, null, null, "d64c8836-9919-484c-b883-7c2e35ad90de", null, null, "mohammed88@gmail.com", true, true, false, false, null, "MOHAMMED88@GMAIL.COM", "MR_MOHAMMED", "AQAAAAIAAYagAAAAEBdc3TQE87jCh1KsEn3Fur3RUzXOpFxd2kuzjg8BiQiRTn8EVkHrb8XlXMXXHx81jA==", null, false, "c01d7e93-2bf0-4b9a-a8f9-2e23f6637588", false, null, null, "Mr_Mohammed", "Mohammed88" });
 
             migrationBuilder.InsertData(
                 table: "HrRelegion",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "مسلم", "Muslim", null, null },
@@ -1514,7 +1544,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hr_AccountingWays",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "كل الاتب", "All salary", null, null },
@@ -1524,7 +1554,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hr_CompanyTypes",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "شركة", "Company", null, null },
@@ -1533,7 +1563,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hr_EmployeeTypes",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "مقيم", "Resident", null, null },
@@ -1542,7 +1572,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hr_Genders",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "ذكر", "Male", null, null },
@@ -1551,7 +1581,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hr_MaritalStatus",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "أعزب", "Single", null, null },
@@ -1562,7 +1592,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hr_MilitaryStatus",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "معفى", "Exempt", null, null },
@@ -1572,7 +1602,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hr_Nationalities",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "مصرى", "Egyptian ", null, null },
@@ -1581,7 +1611,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hr_SalaryPaymentWays",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "بنكى", "Bank", null, null },
@@ -1591,7 +1621,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hr_VacationTypes",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "عام كامل", "Full year", null, null },
@@ -1601,7 +1631,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Hr_ValueTypes",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "مبلغ", "Percent", null, null },
@@ -1610,7 +1640,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "St_Actions",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "إظهار", "View", null, null },
@@ -1623,7 +1653,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Trans_AmountTypes",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "ساعة", "Hour", null, null },
@@ -1633,7 +1663,7 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Trans_SalaryEffects",
-                columns: new[] { "Id", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
+                columns: new[] { "Id", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "Name", "NameInEnglish", "UpdateBy", "UpdateDate" },
                 values: new object[,]
                 {
                     { 1, null, null, null, null, true, false, "قطعى", "On time", null, null },
@@ -1643,7 +1673,7 @@ namespace Kader_System.DataAccess.Migrations
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "Auth_UserRoles",
-                columns: new[] { "RoleId", "UserId", "DeleteBy", "DeleteDate", "InsertBy", "InsertDate", "IsActive", "IsDeleted", "UpdateBy", "UpdateDate" },
+                columns: new[] { "RoleId", "UserId", "Add_date", "Added_by", "DeleteBy", "DeleteDate", "IsActive", "IsDeleted", "UpdateBy", "UpdateDate" },
                 values: new object[] { "fab4fac1-c546-41de-aebc-a14da68957ab1", "b74ddd14-6340-4840-95c2-db12554843e5basb1", null, null, null, null, true, false, null, null });
 
             migrationBuilder.CreateIndex(
@@ -1706,6 +1736,11 @@ namespace Kader_System.DataAccess.Migrations
                 name: "IX_Hr_Companies_Company_type",
                 table: "Hr_Companies",
                 column: "Company_type");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Hr_CompanyContracts_Company_id",
+                table: "Hr_CompanyContracts",
+                column: "Company_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Hr_ContractAllowancesDetails_Contract_id",
@@ -1954,6 +1989,9 @@ namespace Kader_System.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Com_Logs");
+
+            migrationBuilder.DropTable(
+                name: "Hr_CompanyContracts");
 
             migrationBuilder.DropTable(
                 name: "Hr_ContractAllowancesDetails");

@@ -58,8 +58,8 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
         {
             Name = model.Name
         };
-        role.InsertBy = role.UpdateBy = GetUserId();
-        role.InsertDate = role.UpdateDate = new DateTime().NowEg();
+        role.Added_by = role.UpdateBy = GetUserId();
+        role.Add_date = role.UpdateDate = new DateTime().NowEg();
         role.Title_name_ar = model.Title_name_ar;
 
         var result = await _roleManager.CreateAsync(role);
@@ -184,9 +184,9 @@ public class PermService(UserManager<ApplicationUser> userManager, IStringLocali
     {
         Expression<Func<ApplicationUser, bool>> filter = x => x.IsActive && !x.IsDeleted
         &&
-        (model.CreationStartDate == null || x.InsertDate!.Value.Date >= model.CreationStartDate.Value.Date)
+        (model.CreationStartDate == null || x.Add_date!.Value.Date >= model.CreationStartDate.Value.Date)
         &&
-        (model.CreationEndDate == null || x.InsertDate!.Value.Date <= model.CreationEndDate.Value.Date);
+        (model.CreationEndDate == null || x.Add_date!.Value.Date <= model.CreationEndDate.Value.Date);
 
         var result = new PermGetAllUsersRolesResponse
         {

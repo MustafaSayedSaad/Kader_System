@@ -24,7 +24,7 @@ public class LoggingRepository : ILoggingRepository
                 InnerException = exception?.InnerException?.Message ?? string.Empty,
                 StackTrace = exception?.StackTrace ?? string.Empty,
                 ObjJson = objJson,
-                InsertBy = _accessor?.HttpContext?.User?.FindFirst(JwtRegisteredClaimNames.NameId)?.Value ?? string.Empty
+                Added_by = _accessor?.HttpContext?.User?.FindFirst(JwtRegisteredClaimNames.NameId)?.Value ?? string.Empty
             });
             return await _context.SaveChangesAsync() > 0;
         }

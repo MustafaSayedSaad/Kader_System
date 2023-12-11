@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kader_System.DataAccess.Migrations
 {
     [DbContext(typeof(KaderDbContext))]
-    [Migration("20231207181716_SecondMig")]
-    partial class SecondMig
+    [Migration("20231210234113_FirstMid")]
+    partial class FirstMid
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,12 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -38,12 +44,6 @@ namespace Kader_System.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -125,6 +125,12 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -141,12 +147,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -214,7 +214,7 @@ namespace Kader_System.DataAccess.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5basb1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "967e7bf7-d73d-4c32-b328-114a3edc9206",
+                            ConcurrencyStamp = "d64c8836-9919-484c-b883-7c2e35ad90de",
                             Email = "mohammed88@gmail.com",
                             EmailConfirmed = true,
                             IsActive = true,
@@ -222,9 +222,9 @@ namespace Kader_System.DataAccess.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MOHAMMED88@GMAIL.COM",
                             NormalizedUserName = "MR_MOHAMMED",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDEuZBrofgReTe8mdpTKmQY8JSB5hERlbBj/bCudc1bW5oRbcxWxndNbcSny41PgvA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBdc3TQE87jCh1KsEn3Fur3RUzXOpFxd2kuzjg8BiQiRTn8EVkHrb8XlXMXXHx81jA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a40316d2-9383-4421-bf12-b49299339d24",
+                            SecurityStamp = "c01d7e93-2bf0-4b9a-a8f9-2e23f6637588",
                             TwoFactorEnabled = false,
                             UserName = "Mr_Mohammed",
                             VisiblePassword = "Mohammed88"
@@ -264,6 +264,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -273,12 +279,6 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<string>("DeviceId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -333,16 +333,16 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -400,6 +400,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -410,12 +416,6 @@ namespace Kader_System.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("ExpiresOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -456,16 +456,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -527,16 +527,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -572,16 +572,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -617,6 +617,18 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company_licenses")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company_licenses_extension")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Company_owner")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -628,12 +640,6 @@ namespace Kader_System.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -663,6 +669,54 @@ namespace Kader_System.DataAccess.Migrations
                     b.ToTable("Hr_Companies");
                 });
 
+            modelBuilder.Entity("Kader_System.Domain.Models.HR.HrCompanyContract", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company_contracts")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Company_contracts_extension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Company_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DeleteBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UpdateBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Company_id");
+
+                    b.ToTable("Hr_CompanyContracts");
+                });
+
             modelBuilder.Entity("Kader_System.Domain.Models.HR.HrCompanyType", b =>
                 {
                     b.Property<int>("Id")
@@ -671,16 +725,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -734,6 +788,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -753,12 +813,6 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<string>("FileName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -796,6 +850,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Contract_id")
                         .HasColumnType("int");
 
@@ -803,12 +863,6 @@ namespace Kader_System.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -851,16 +905,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -896,16 +950,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -943,6 +997,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<int>("AccountingWay_id")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -1018,12 +1078,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<DateOnly>("Immediately_date")
                         .HasColumnType("date");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -1108,6 +1162,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -1124,12 +1184,6 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<string>("FileName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -1158,16 +1212,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -1221,6 +1275,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Company_id")
                         .HasColumnType("int");
 
@@ -1228,12 +1288,6 @@ namespace Kader_System.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Ip")
@@ -1286,16 +1340,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -1349,6 +1403,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -1360,12 +1420,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<bool>("Has_need_license")
                         .HasColumnType("bit");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -1400,16 +1454,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -1479,16 +1533,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -1550,16 +1604,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -1613,6 +1667,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -1621,12 +1681,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<bool>("Has_additional_time")
                         .HasColumnType("bit");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -1661,16 +1715,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -1732,16 +1786,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -1803,6 +1857,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Company_id")
                         .HasColumnType("int");
 
@@ -1810,12 +1870,6 @@ namespace Kader_System.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -1853,6 +1907,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -1861,12 +1921,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<int>("Department_id")
                         .HasColumnType("int");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -1900,6 +1954,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -1908,12 +1968,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<TimeOnly>("End_shift")
                         .HasColumnType("time");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -1951,6 +2005,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Apply_months")
                         .HasColumnType("int");
 
@@ -1958,12 +2018,6 @@ namespace Kader_System.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -2013,6 +2067,12 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<int>("AccountingWay_id")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Days_count")
                         .HasColumnType("int");
 
@@ -2020,12 +2080,6 @@ namespace Kader_System.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -2068,16 +2122,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -2139,16 +2193,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -2202,6 +2256,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -2216,12 +2276,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<string>("InnerException")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -2260,16 +2314,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -2355,16 +2409,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -2405,6 +2459,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -2413,12 +2473,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<string>("ImageExtension")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -2456,16 +2510,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -2517,16 +2571,16 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<int>("ActionId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -2564,6 +2618,12 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<DateOnly>("Action_month")
                         .HasColumnType("date");
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Allowance_id")
                         .HasColumnType("int");
 
@@ -2578,12 +2638,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<int>("Employee_id")
                         .HasColumnType("int");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -2622,16 +2676,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -2696,6 +2750,12 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<DateOnly>("Action_month")
                         .HasColumnType("date");
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Attachment")
                         .HasColumnType("nvarchar(max)");
 
@@ -2713,12 +2773,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<int>("Employee_id")
                         .HasColumnType("int");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -2762,6 +2816,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Covenant_amount")
                         .HasColumnType("float");
 
@@ -2776,12 +2836,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<int>("Employee_id")
                         .HasColumnType("int");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -2824,6 +2878,12 @@ namespace Kader_System.DataAccess.Migrations
                     b.Property<DateOnly>("Action_month")
                         .HasColumnType("date");
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Attachment")
                         .HasColumnType("nvarchar(max)");
 
@@ -2841,12 +2901,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<int>("Employee_id")
                         .HasColumnType("int");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -2890,16 +2944,16 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DeleteBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeleteDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -2953,6 +3007,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
@@ -2967,12 +3027,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<int>("Increase_type")
                         .HasColumnType("int");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -3006,6 +3060,12 @@ namespace Kader_System.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("Add_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Added_by")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Days_count")
                         .HasColumnType("float");
 
@@ -3017,12 +3077,6 @@ namespace Kader_System.DataAccess.Migrations
 
                     b.Property<int>("Employee_id")
                         .HasColumnType("int");
-
-                    b.Property<string>("InsertBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("InsertDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -3132,6 +3186,17 @@ namespace Kader_System.DataAccess.Migrations
                     b.HasOne("Kader_System.Domain.Models.HR.HrCompanyType", "CompanyType")
                         .WithMany()
                         .HasForeignKey("Company_type")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("CompanyType");
+                });
+
+            modelBuilder.Entity("Kader_System.Domain.Models.HR.HrCompanyContract", b =>
+                {
+                    b.HasOne("Kader_System.Domain.Models.HR.HrCompany", "CompanyType")
+                        .WithMany("ListOfsContract")
+                        .HasForeignKey("Company_id")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -3541,6 +3606,11 @@ namespace Kader_System.DataAccess.Migrations
                     b.Navigation("ListOfDevices");
 
                     b.Navigation("RefreshTokens");
+                });
+
+            modelBuilder.Entity("Kader_System.Domain.Models.HR.HrCompany", b =>
+                {
+                    b.Navigation("ListOfsContract");
                 });
 
             modelBuilder.Entity("Kader_System.Domain.Models.HR.HrContract", b =>
